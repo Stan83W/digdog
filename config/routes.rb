@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+
+  get '/dashboard', to: "users#dashboard"
+
   resources :users
   resources :records
   resources :wants
   resources :findings
-
 
   devise_for :users
   root to: 'pages#home'
