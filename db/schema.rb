@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821145029) do
+
+ActiveRecord::Schema.define(version: 20170821144855) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "records", force: :cascade do |t|
+    t.integer "discogs_id"
+    t.string "styles"
+    t.string "genres"
+    t.string "title"
+    t.string "artists"
+    t.string "labels"
+    t.integer "year"
+    t.string "discogs_uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
