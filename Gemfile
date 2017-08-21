@@ -18,7 +18,6 @@ gem 'simple_form'
 gem 'uglifier'
 
 # Front
-gem 'stylus'
 gem 'jeet'
 
 group :development, :test do
