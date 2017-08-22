@@ -2,18 +2,19 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable
 
-def fetch_discogs_want_list
+  def index
+  end
 
-  #1 Call à l'api
+  def fetch_discogs_want_list
 
-  #2 Pour chaque item de l'api, créer un Record (Record.new), mais
-  # ne pas le persister en base (pas de save/create)
+    #1 Call à l'api
 
-  #3 -> return array de records
+    #2 Pour chaque item de l'api, créer un Record (Record.new), mais
+    # ne pas le persister en base (pas de save/create)
 
-end
+    #3 -> return array de records
 
-
+  end
 end

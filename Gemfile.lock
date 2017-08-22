@@ -56,6 +56,10 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    discogs-wrapper (2.3.0)
+      hashie (~> 3.0)
+      httparty (~> 0.14)
+      oauth (~> 0.5.1)
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -65,6 +69,9 @@ GEM
       sass (>= 3.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    hashie (3.5.6)
+    httparty (0.15.6)
+      multi_xml (>= 0.5.2)
     i18n (0.8.6)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -89,9 +96,11 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     multi_json (1.12.1)
+    multi_xml (0.6.0)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    oauth (0.5.3)
     orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.10.4)
@@ -190,6 +199,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   devise
+  discogs-wrapper
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)
