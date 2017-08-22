@@ -1,10 +1,12 @@
-<%= @records %>
-
 <% @records.each do |record| %>
 	
-	<% unless record["basic_information"]["thumb"].nil? %>
-		<%= image_tag record["basic_information"]["thumb"] %>
+
+	<div class="record">
+	<p><%= record.artists[0]["name"] %> — <%= record.title %></p>
+	<% unless record.image_thumb.nil? %>
+		<%= image_tag record.image_thumb %>
 	<% end %>
+	</div>
 	
 	
 <% end %>

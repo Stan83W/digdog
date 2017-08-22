@@ -32,12 +32,18 @@ class DiscogsController < ApplicationController
 
   def wantlist
 
+    if @discogs.authenticated?
+      
     #1 Call à l'api
 
     @user     = @discogs.get_identity
     @response = @discogs.get_user_wantlist(@user.username)
+    @records = []
     wants = @response.wants
 
+    #2 Pour chaque item de l'api, créer un Record (Record.new), mais
+    # ne pas le persister en base (pas de save/create)
+    
     wants.each do |want|
       want = want["basic_information"]
       record = Record.new(
@@ -50,13 +56,18 @@ class DiscogsController < ApplicationController
         image_thumb: want["thumb"], 
         discogs_uri: want["resource_url"]
       )
-      
+      @records << record
     end
 
-    #2 Pour chaque item de l'api, créer un Record (Record.new), mais
-    # ne pas le persister en base (pas de save/create)
-
     #3 -> return array de records
+
+    @records
+
+    else
+
+      redirect_to authenticate_discogs_path
+
+    end
 
   end
 
