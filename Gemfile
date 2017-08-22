@@ -11,6 +11,10 @@ gem 'redis'
 gem 'discogs-wrapper'
 gem 'activerecord-session_store'
 
+#Search
+gem 'ebay_ruby'
+gem 'craigslist_scraper'
+
 # Front
 gem 'jeet'
 gem 'autoprefixer-rails'

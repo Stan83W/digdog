@@ -56,6 +56,7 @@ GEM
     byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
+    craigslist_scraper (0.0.2.alpha)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -66,6 +67,7 @@ GEM
       hashie (~> 3.0)
       httparty (~> 0.14)
       oauth (~> 0.5.1)
+    ebay_ruby (0.0.2)
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -205,8 +207,10 @@ DEPENDENCIES
   activerecord-session_store
   autoprefixer-rails
   bootstrap-sass
+  craigslist_scraper
   devise
   discogs-wrapper
+  ebay_ruby
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)

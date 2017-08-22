@@ -1,0 +1,10 @@
+<%= @records %>
+
+<% @records.each do |record| %>
+	
+	<% unless record["basic_information"]["thumb"].nil? %>
+		<%= image_tag record["basic_information"]["thumb"] %>
+	<% end %>
+	
+	
+<% end %>

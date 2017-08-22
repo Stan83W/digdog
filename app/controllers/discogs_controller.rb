@@ -14,7 +14,7 @@ class DiscogsController < ApplicationController
     if session[:request_token].is_a? OAuth::RequestToken
       request_token = session[:request_token]
     else
-      consumer      = OAuth::Consumer.new(session[:request_token]["consumer"]["key"], session[:request_token]["consumer"]["secret"], site: session[:request_token]["consumer"]["site"])
+      consumer      = OAuth::Consumer.new(session[:request_token]["consumer"])
       request_token = OAuth::RequestToken.from_hash(consumer, { oauth_token: session[:request_token]["token"], oauth_token_secret: session[:request_token]["secret"]})
     end
 
@@ -24,18 +24,34 @@ class DiscogsController < ApplicationController
     session[:request_token] = nil
     session[:access_token]  = access_token
 
-    redirect_to root_path
+    redirect_to wantlist_discogs_path
   end
 
   def index
   end
 
-  def wants
+  def wantlist
 
     #1 Call à l'api
 
     @user     = @discogs.get_identity
     @response = @discogs.get_user_wantlist(@user.username)
+    wants = @response.wants
+
+    wants.each do |want|
+      want = want["basic_information"]
+      record = Record.new(
+        discogs_id: want["id"], 
+        title: want["title"], 
+        labels: want["labels"], 
+        artists: want["artists"], 
+        styles: want["styles"], 
+        year: want["year"], 
+        image_thumb: want["thumb"], 
+        discogs_uri: want["resource_url"]
+      )
+      
+    end
 
     #2 Pour chaque item de l'api, créer un Record (Record.new), mais
     # ne pas le persister en base (pas de save/create)
