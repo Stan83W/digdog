@@ -1,8 +1,7 @@
 class DiscogsController < ApplicationController
-  before_action :set_client, except: [ :authenticate, :callback ]
+  before_action :set_client
 
   def authenticate
-    @discogs      = Discogs::Wrapper.new("Digdog")
     app_key      = ENV["DISCOGS_API_KEY"]
     app_secret   = ENV["DISCOGS_API_SECRET"]
     request_data = @discogs.get_request_token(app_key, app_secret,
@@ -14,7 +13,6 @@ class DiscogsController < ApplicationController
   end
 
   def callback
-    @discogs      = Discogs::Wrapper.new("Digdog")
     @consumer     = OAuth::Consumer.new(session[:request_token]["consumer"]["key"], session[:request_token]["consumer"]["secret"], site: "https://api.discogs.com")
     request_token = OAuth::RequestToken.from_hash(@consumer, { oauth_token: session[:request_token]["token"], oauth_token_secret: session[:request_token]["secret"]})
     verifier      = params[:oauth_verifier]
@@ -23,7 +21,7 @@ class DiscogsController < ApplicationController
     session[:request_token] = nil
     session[:access_token]  = access_token
 
-    redirect_to :action => "index"
+    redirect_to root_path
   end
 
   def index
