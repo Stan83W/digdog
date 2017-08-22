@@ -8,7 +8,11 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.3'
 gem 'redis'
+gem 'discogs-wrapper'
+gem 'activerecord-session_store'
 
+# Front
+gem 'jeet'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -16,10 +20,6 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
-gem 'discogs-wrapper'
-
-# Front
-gem 'jeet'
 
 group :development, :test do
   gem 'pry-byebug'

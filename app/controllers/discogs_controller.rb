@@ -4,19 +4,22 @@ class DiscogsController < ApplicationController
   def authenticate
     app_key      = ENV["DISCOGS_API_KEY"]
     app_secret   = ENV["DISCOGS_API_SECRET"]
-    request_data = @discogs.get_request_token(app_key, app_secret,
-                                              "http://localhost:3000/discogs/callback")
-
+    request_data = @discogs.get_request_token(app_key, app_secret, "http://localhost:3000/discogs/callback")
     session[:request_token] = request_data[:request_token]
 
     redirect_to request_data[:authorize_url]
   end
 
   def callback
-    @consumer     = OAuth::Consumer.new(session[:request_token]["consumer"]["key"], session[:request_token]["consumer"]["secret"], site: "https://api.discogs.com")
-    request_token = OAuth::RequestToken.from_hash(@consumer, { oauth_token: session[:request_token]["token"], oauth_token_secret: session[:request_token]["secret"]})
-    verifier      = params[:oauth_verifier]
-    access_token  = @discogs.authenticate(request_token, verifier)
+    if session[:request_token].is_a? OAuth::RequestToken
+      request_token = session[:request_token]
+    else
+      consumer      = OAuth::Consumer.new(session[:request_token]["consumer"]["key"], session[:request_token]["consumer"]["secret"], site: session[:request_token]["consumer"]["site"])
+      request_token = OAuth::RequestToken.from_hash(consumer, { oauth_token: session[:request_token]["token"], oauth_token_secret: session[:request_token]["secret"]})
+    end
+
+    verifier        = params[:oauth_verifier]
+    access_token    = @discogs.authenticate(request_token, verifier)
 
     session[:request_token] = nil
     session[:access_token]  = access_token
