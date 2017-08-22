@@ -1,9 +1,8 @@
 class DiscogsController < ApplicationController
-  before_action do
-    @discogs = Discogs::Wrapper.new("Test OAuth", session[:access_token])
-  end
+  before_action :set_client, except: [ :authenticate, :callback ]
 
   def authenticate
+    @discogs      = Discogs::Wrapper.new("Digdog")
     app_key      = ENV["DISCOGS_API_KEY"]
     app_secret   = ENV["DISCOGS_API_SECRET"]
     request_data = @discogs.get_request_token(app_key, app_secret,
@@ -15,7 +14,9 @@ class DiscogsController < ApplicationController
   end
 
   def callback
-    request_token = session[:request_token]
+    @discogs      = Discogs::Wrapper.new("Digdog")
+    @consumer     = OAuth::Consumer.new(session[:request_token]["consumer"]["key"], session[:request_token]["consumer"]["secret"], site: "https://api.discogs.com")
+    request_token = OAuth::RequestToken.from_hash(@consumer, { oauth_token: session[:request_token]["token"], oauth_token_secret: session[:request_token]["secret"]})
     verifier      = params[:oauth_verifier]
     access_token  = @discogs.authenticate(request_token, verifier)
 
@@ -30,10 +31,10 @@ class DiscogsController < ApplicationController
 
   def wants
 
+    #1 Call à l'api
+
     @user     = @discogs.get_identity
     @response = @discogs.get_user_wantlist(@user.username)
-
-    #1 Call à l'api
 
     #2 Pour chaque item de l'api, créer un Record (Record.new), mais
     # ne pas le persister en base (pas de save/create)
@@ -55,28 +56,34 @@ class DiscogsController < ApplicationController
     @user = @discogs.get_identity
   end
 
-  def add_want
-    release_id = "2489281"
+  private
 
-    @user     = @discogs.get_identity
-    @response = @discogs.add_release_to_user_wantlist(@user.username, release_id)
+  def set_client
+    @discogs = Discogs::Wrapper.new("OAuth", session[:access_token])
   end
 
-  def edit_want
-    release_id = "2489281"
-    notes      = "Added via the Discogs Ruby Gem. But, you *DO* want it now!!"
-    rating     = 5
+  # def add_want
+  #   release_id = "2489281"
 
-    @user     = @discogs.get_identity
-    @response = @discogs.edit_release_in_user_wantlist(@user.username,
-                                                       release_id,
-                                                       {:notes => notes, :rating => rating})
-  end
+  #   @user     = @discogs.get_identity
+  #   @response = @discogs.add_release_to_user_wantlist(@user.username, release_id)
+  # end
 
-  def remove_want
-    release_id = "2489281"
+  # def edit_want
+  #   release_id = "2489281"
+  #   notes      = "Added via the Discogs Ruby Gem. But, you *DO* want it now!!"
+  #   rating     = 5
 
-    @user     = @discogs.get_identity
-    @response = @discogs.delete_release_from_user_wantlist(@user.username, release_id)
-  end
+  #   @user     = @discogs.get_identity
+  #   @response = @discogs.edit_release_in_user_wantlist(@user.username,
+  #                                                      release_id,
+  #                                                      {:notes => notes, :rating => rating})
+  # end
+
+  # def remove_want
+  #   release_id = "2489281"
+
+  #   @user     = @discogs.get_identity
+  #   @response = @discogs.delete_release_from_user_wantlist(@user.username, release_id)
+  # end
 end
