@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 20170822110232) do
     t.json "artists"
     t.json "labels"
     t.integer "year"
-    t.string "image_thumb"
+    t.string "thumb"
+    t.json "images"
     t.string "discogs_uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

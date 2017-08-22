@@ -1,0 +1,8 @@
+<div class="record">
+	<p><%= @record.artists[0]["name"] %> — <%= @record.title %></p>
+	<% unless @record.image_thumb.nil? %>
+	<%= image_tag @record.image_thumb %>
+	<% end %>
+</div>
+
+<%= p @record %>

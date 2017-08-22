@@ -8,7 +8,8 @@ class CreateRecords < ActiveRecord::Migration[5.1]
       t.json :artists
       t.json :labels
       t.integer :year
-      t.string :image_thumb
+      t.string :thumb
+      t.json :images
       t.string :discogs_uri
 
       t.timestamps

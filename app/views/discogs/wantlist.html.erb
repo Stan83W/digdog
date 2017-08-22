@@ -3,8 +3,8 @@
 
 	<div class="record">
 	<p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-	<% unless record.image_thumb.nil? %>
-		<%= image_tag record.image_thumb %>
+	<% unless record.images.empty? %>
+		<%= image_tag record.images.first["uri"] %>
 	<% end %>
 	</div>
 	
