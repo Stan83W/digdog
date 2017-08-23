@@ -1,11 +1,21 @@
 class User < ApplicationRecord
+    has_many :wants
+    has_many :records, through: :wants
+    has_many :findings, through: :records
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable, 
+    :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: [:discogs]
 
   def index
+  end
+
+  def findings?
+    findings = []
+    self.records.each do |record|
+      record.findings
+    end
   end
 
   def self.find_for_discogs_oauth(auth)
@@ -29,4 +39,5 @@ class User < ApplicationRecord
 
     # return user
   end
+
 end
