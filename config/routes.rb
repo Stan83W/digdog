@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'wants/user:references'
+
+  get 'wants/record:references'
+
   devise_for :users
   resources :records, only: [:index, :show]
 
