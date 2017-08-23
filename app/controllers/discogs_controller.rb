@@ -28,6 +28,7 @@ class DiscogsController < ApplicationController
   end
 
   def index
+    @results = EbayScrapperService.find_by_keywords(params[:query])
   end
 
   def wantlist
@@ -47,6 +48,7 @@ class DiscogsController < ApplicationController
       wants.each do |want|
         want = want["basic_information"]
         discogs_id = want["id"]
+
         if Record.has?(discogs_id)
           record = Record.find_by_discogs_id(discogs_id)
         else
@@ -77,6 +79,16 @@ class DiscogsController < ApplicationController
 
   end
 
+  #ebay scrapper
+
+  def find_by_keywords(keywords)
+    keywords = CGI::escape(keywords)
+    api_key = ENV["EBAY_API_KEY"]
+    url = "http://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&SECURITY-APPNAME=#{api_key}&GLOBAL-ID=EBAY-US&keywords=#{keywords}"
+    json_response = JSON.parse(open(url).read)
+
+    @results = json_response["findItemsByKeywordsResponse"][0]["searchResult"][0]["item"]
+  end
 
   def show
     @record = @discogs.get_release(params[:id])
