@@ -12,6 +12,7 @@ class DiscogsController < ApplicationController
   end
 
   def callback
+    binding.pry
     if session[:request_token].is_a? OAuth::RequestToken
       request_token = session[:request_token]
     else
