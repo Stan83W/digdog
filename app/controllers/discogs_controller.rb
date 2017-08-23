@@ -1,4 +1,5 @@
 class DiscogsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:authenticate, :callback]
   before_action :set_client
 
   def authenticate
@@ -99,12 +100,12 @@ class DiscogsController < ApplicationController
     @discogs = Discogs::Wrapper.new("OAuth", session[:access_token])
   end
 
-  def add_want(id)
-    release_id = "2489281"
+  # def add_want(id)
+  #   release_id = "2489281"
 
-    @user     = @discogs.get_identity
-    @response = @discogs.add_release_to_user_wantlist(@user.username, release_id)
-  end
+  #   @user     = @discogs.get_identity
+  #   @response = @discogs.add_release_to_user_wantlist(@user.username, release_id)
+  # end
 
   # def edit_want
   #   release_id = "2489281"

@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+
+	<%= @go_to_wantlist %>
+
+<% else %>
+
+	<%= render 'shared/introduction' %>
+
+<% end %>

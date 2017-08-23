@@ -1,0 +1,64 @@
+body,
+html {
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  background: $primary;
+}
+
+html {
+  font-size: .7vw;
+}
+
+body {
+  font-family: $body-font;
+  font-size: 1.5rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-ligatures: contextual;
+  -moz-font-feature-settings: "calt";
+  -webkit-font-feature-settings: "calt";
+  font-feature-settings: "calt";
+}
+
+p {
+  margin-bottom: 1em;
+  line-height: 100%;
+  &:last-child {
+    margin-bottom: 0;
+ }
+}
+
+::selection {
+  color: $primary;
+  background: $secondary;
+}
+
+::-moz-selection {
+  color: $primary;
+  background: $secondary;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  box-sizing: border-box
+}
+
+.lazyimg,
+.plyr--video {
+  opacity: 0;
+}
+
+.lazyimg.lazyloaded,
+.lazyimg.flickity-lazyloaded,
+.plyr--video.plyr--ready {
+  opacity: 1;
+}
+
+.wrapper {
+  padding: calc(6% + #{$gutter}) $gutter $gutter calc(7.8% + #{$gutter});
+}
+

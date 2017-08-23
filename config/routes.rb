@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  devise_for :users
-
-  resources :records, only: [ :index, :show ] do
+  resources :records, only: [:index, :show] do
     resources :wants, only: [ :create ]
   end
 
   get 'discogs/:id' => 'discogs#show', :constraints  => {:id => /.+\.\w{3,4}/}
-
   resources :discogs do
     collection do
       get :authenticate
