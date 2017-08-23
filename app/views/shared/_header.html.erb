@@ -8,7 +8,7 @@
 <div id="navigation">
 
 <% if user_signed_in? %>
-  <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+  <ul class="login">
     <li>
       <%= link_to authenticate_discogs_path do %>
         <%= t(".login_discogs", default: "Log to Discogs") %>
@@ -22,8 +22,8 @@
   </ul>
 <% else %>
   <!-- Login link (when logged out) -->
-  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-  <%= link_to t(".sign_in", default: "Login Discogs"), authenticate_discogs_path, class: "navbar-wagon-item navbar-wagon-link" %>
+  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "login" %>
+  <%= link_to t(".sign_in", default: "Login Discogs"), authenticate_discogs_path, class: "login" %>
 <% end %>
 </div>
 </header>
