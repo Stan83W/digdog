@@ -1,4 +1,6 @@
 class Record < ApplicationRecord
+  has_many :wants
+  has_many :findings
 
   validates :discogs_id, uniqueness: true, presence: true
 
@@ -6,12 +8,7 @@ class Record < ApplicationRecord
     !find_by_discogs_id(discogs_id).nil?
   end
 
-  def wanted?
-
+  def self.find_by_discogs_id(discogs_id)
+    find_by(discogs_id: discogs_id)
   end
-
-  def found?
-
-  end
-
 end

@@ -1,3 +1,42 @@
+    <!-- clement : cf. affichage différentes listes // statuts   -->
+
+<!-- List findings  -->
+
+
+<!-- Wantlist digdog -->
+
+<% @wants.each do |want| %>
+  <div class="wanted">
+    <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
+      <% unless want.record.images.empty? %>
+        <% want.record.images.each do |image| %>
+          <%= image_tag image["uri"] %>
+        <% end %>
+      <% end %>
+    </div>
+<% end %>
+
+<!-- Wnatlist discogs  -->
+
+<% @records.each do |record| %>
+  <%= simple_form_for([record, Want.new]) do |f| %>
+    <div class="record wanted found">
+      <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
+      <% unless record.images.empty? %>
+        <% record.images.each do |image| %>
+          <%= image_tag image["uri"] %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+    <%= f.submit "Créer want" %>
+  <% end %>
+<% end %>
+
+
+    <!-- sofia, cf. oage d'acceuil connecté et non connecté   -->
+
+
 <% if user_signed_in? %>
 
   <% @records.each do |record| %>
@@ -8,7 +47,6 @@
       <% record.images.each do |image| %>
         <%= image_tag image["uri"] %>
       <% end %>
-
     <% end %>
     </div>
 
