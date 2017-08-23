@@ -10,5 +10,9 @@ class UsersController < ApplicationController
 
   end
 
+  def go_to_wantlist
+    redirect_to wantlist_discogs_path
+  end
+
 
 end
