@@ -16,10 +16,8 @@ header {
     right: 0;
   }
 }
-li {
+.login {
   list-style-type: none;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+  text-decoration: none;
+  color: $secondary;
 }
