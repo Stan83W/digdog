@@ -107,6 +107,7 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    normalize-rails (4.1.1)
     oauth (0.5.3)
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
@@ -223,6 +224,7 @@ DEPENDENCIES
   jeet
   jquery-rails
   listen (~> 3.0.5)
+  normalize-rails
   omniauth-discogs
   omniauth-oauth
   pg

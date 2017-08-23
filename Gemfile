@@ -17,6 +17,7 @@ gem 'activerecord-session_store'
 gem 'craigslist_scraper'
 
 # Front
+gem 'normalize-rails'
 gem 'jeet'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

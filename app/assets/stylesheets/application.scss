@@ -1,6 +1,7 @@
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
+@import "config/metrics";
 // @import "config/bootstrap_variables";
 
 // External libraries
@@ -8,6 +9,7 @@
 // @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "normalize-rails";
 
 // Your CSS partials
 @import "layouts/index";
