@@ -67,7 +67,6 @@ GEM
       hashie (~> 3.0)
       httparty (~> 0.14)
       oauth (~> 0.5.1)
-    ebay_ruby (0.0.2)
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -108,7 +107,16 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    normalize-rails (4.1.1)
     oauth (0.5.3)
+    omniauth (1.6.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-discogs (0.0.3)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.10.4)
@@ -210,13 +218,15 @@ DEPENDENCIES
   craigslist_scraper
   devise
   discogs-wrapper
-  ebay_ruby
   figaro
   font-awesome-sass
   jbuilder (~> 2.0)
   jeet
   jquery-rails
   listen (~> 3.0.5)
+  normalize-rails
+  omniauth-discogs
+  omniauth-oauth
   pg
   pry-byebug
   pry-rails

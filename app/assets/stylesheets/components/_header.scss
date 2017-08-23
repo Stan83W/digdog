@@ -1,6 +1,10 @@
-.brand {
-	width: 200px;
-	margin-left: -3px;
-	position: fixed;
-	top: 6px;
+header {
+  padding: $gutter;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  #site-logo {
+    width: 16.66666666667%
+  }
 }
