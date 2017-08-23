@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'users#dashboard'
+  root to: 'users#index'
 
 end
