@@ -3,7 +3,4 @@ class Want < ApplicationRecord
   belongs_to :record
 
 
-
-
-
 end
