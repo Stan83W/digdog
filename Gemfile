@@ -8,11 +8,12 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.1.3'
 gem 'redis'
+gem 'omniauth-oauth'
+gem 'omniauth-discogs'
 gem 'discogs-wrapper'
 gem 'activerecord-session_store'
 
 #Search
-gem 'ebay_ruby'
 gem 'craigslist_scraper'
 
 # Front

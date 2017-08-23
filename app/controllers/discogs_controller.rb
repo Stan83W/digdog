@@ -1,4 +1,5 @@
 class DiscogsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:authenticate, :callback]
   before_action :set_client
 
   def authenticate
