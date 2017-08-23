@@ -16,7 +16,7 @@
   <% end %>
 <% else %>
   <!-- Login link (when logged out) -->
-  <%= link_to t(".sign_in", default: "Log in"), authenticate_discogs_path, class: "login" %>
+  <%= link_to t(".sign_in", default: "Log in"), authenticate_discogs_path, id: "login" %>
 <% end %>
 </div>
 </header>
