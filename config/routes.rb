@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'discogs#wantlist'
+  root to: 'users#index'
 
 end

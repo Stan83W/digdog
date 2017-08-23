@@ -1,0 +1,6 @@
+<div id="search" class="form-group inline m0">
+    <%= form_tag(users_path, method: :get, class: "form-inline") do %>
+    <%= submit_tag "Search", class: "form-control", id: 'submit' %>
+    <%= text_field_tag 'record', nil, placeholder: 'Which record?', class: "form-control", value: params[:record] %>
+    <% end %>
+  </div>
