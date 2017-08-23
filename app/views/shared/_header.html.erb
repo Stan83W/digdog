@@ -6,24 +6,17 @@
   </div>
 
 <div id="navigation">
-
-<% if user_signed_in? %>
-  <ul class="login">
-    <li>
-      <%= link_to authenticate_discogs_path do %>
-        <%= t(".login_discogs", default: "Log to Discogs") %>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <%= t(".sign_out", default: "Log out") %>
-      <% end %>
-    </li>
-  </ul>
-<% else %>
-  <!-- Login link (when logged out) -->
-  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "login" %>
-  <%= link_to t(".sign_in", default: "Login Discogs"), authenticate_discogs_path, class: "login" %>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to authenticate_discogs_path do %>
+      <%= t(".login_discogs", default: "Log to Discogs", class: "login") %>
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <%= t(".sign_out", default: "Log out", class: "login") %>
+    <% end %>
+  <% else %>
+    <!-- Login link (when logged out) -->
+    <%= link_to t(".sign_in", default: "Login", class: "login"), new_user_session_path %>
+    <%= link_to t(".sign_in", default: "Login Discogs", class: "login"), authenticate_discogs_path %>
+  <% end %>
 </div>
 </header>
