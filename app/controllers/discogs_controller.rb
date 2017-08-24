@@ -13,9 +13,6 @@ class DiscogsController < ApplicationController
       @wants = Want.where(user_id: current_user.id)
       @wants = @wants.map(&:record)
 
-      @findings = Finding.all
-      @findings = @findings.map(&:record)
-
       #2 Pour chaque item de l'api, créer un Record (Record.new)
       @records = []
 
