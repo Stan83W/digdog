@@ -1,5 +1,5 @@
-const flkty = new Flickity('.Slider', {
-  cellSelector: '.Slide',
+const flkty = new Flickity('.slider', {
+  cellSelector: '.slide',
   setGallerySize: false,
   cellAlign: 'left',
   pageArrows: false,
