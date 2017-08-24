@@ -26,13 +26,13 @@ class User < ApplicationRecord
     user_params[:email] = auth.info.username + '@digdog.com'
     user_params = user_params.to_h
     user = User.find_by(provider: auth.provider, discogs_id: auth.uid)
-    user ||= User.find_by(email: user_params[:email]) # User did a regular sign up in the past.
+    user ||= User.find_by(email: user_params["email"]) # User did a regular sign up in the past.
     if user
       user.update(user_params)
     else
       user = User.new(user_params)
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
-      user.save
+      user.save!
     end
     return user
   end

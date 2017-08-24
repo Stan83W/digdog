@@ -58,6 +58,7 @@ input, [type='text'], [type='password'], [type='date'], [type='datetime'], [type
 	border-bottom: 1px solid;
 	color: $secondary;
 	background: transparent;
+  box-shadow: none;
 }
 
 input::placeholder {
