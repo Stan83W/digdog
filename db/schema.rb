@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823102730) do
+ActiveRecord::Schema.define(version: 20170824074832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,14 @@ ActiveRecord::Schema.define(version: 20170823102730) do
 
   create_table "records", force: :cascade do |t|
     t.integer "discogs_id"
-    t.string "styles"
-    t.string "genres"
+    t.json "styles"
+    t.json "genres"
     t.string "title"
-    t.string "artists"
-    t.string "labels"
+    t.json "artists"
+    t.json "labels"
     t.integer "year"
+    t.string "thumb"
+    t.json "images"
     t.string "discogs_uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,14 +64,15 @@ ActiveRecord::Schema.define(version: 20170823102730) do
     t.string "name"
     t.integer "discogs_id"
     t.string "discogs_wantlist_url"
-    t.string "discogs_username"
-    t.string "discogs_avatar"
     t.string "discogs_uri"
     t.integer "phone_number"
     t.string "provider"
     t.string "uid"
     t.string "token"
     t.datetime "token_expiry"
+    t.boolean "admin"
+    t.string "username"
+    t.string "picture"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
