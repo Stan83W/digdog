@@ -8,7 +8,7 @@
 <% @wants.each do |want| %>
   <div class="wanted">
     <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
-      <% unless want.record.images.empty? %>
+      <% unless want.record.images.nil? %>
         <% want.record.images.each do |image| %>
           <%= image_tag image["uri"] %>
         <% end %>
@@ -22,7 +22,7 @@
   <%= simple_form_for([record, Want.new]) do |f| %>
     <div class="record wanted found">
       <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-      <% unless record.images.empty? %>
+      <% unless record.images.nil? %>
         <% record.images.each do |image| %>
           <%= image_tag image["uri"] %>
         <% end %>
