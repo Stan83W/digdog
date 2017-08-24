@@ -2,30 +2,21 @@ class DiscogsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:authenticate, :callback]
   before_action :set_client
 
-  def index
-    # @results = EbayScrapperService.find_by_keywords(params[:query])
-  end
-
   def wantlist
 
     if @discogs.authenticated?
-
-      #1 Call à l'api
-
-      @user     = @discogs.get_identity
-      @response = @discogs.get_user_wantlist(@user.username)
-      @records = []
-      wants = @response.wants
+      if current_user.discogs_wantlist.nil?
+        get_wantlist
+      end
 
       #wants digdog afin de les exclure de @records
-      #checker methode where
       @wants = Want.where(user_id: current_user.id)
 
-      #2 Pour chaque item de l'api, créer un Record (Record.new), mais
-      # ne pas le persister en base (pas de save/create)
+      #2 Pour chaque item de l'api, créer un Record (Record.new)
+      @records = []
 
-      unless wants.nil?
-        wants.each do |want|
+      unless current_user.discogs_wantlist.nil?
+        current_user.discogs_wantlist.each do |want|
           want = want["basic_information"]
           discogs_id = want["id"]
 
@@ -48,15 +39,10 @@ class DiscogsController < ApplicationController
         end
       end
 
-      #3 -> return array de records : @records
-
       #4 --> retrieve records present in digdog wantlist from discogs wantlist to avoid duplicate
       @records = @records - @wants.map(&:record)
-
     else
-
       redirect_to root_path
-
     end
 
   end
@@ -65,11 +51,22 @@ class DiscogsController < ApplicationController
     @record = @discogs.get_release(params[:id])
   end
 
+  def reload_wantlist
+    get_wantlist
+  end
+
   def whoami
     @user = @discogs.get_identity
   end
 
   private
+
+  def get_wantlist
+    # Fetch wantlist
+    discogs_wantlist = @discogs.get_user_wantlist(current_user.username).wants
+    # Save it in DB
+    current_user.update(discogs_wantlist: discogs_wantlist)
+  end
 
   def get_release_images(id)
     @discogs.get_release(id)["images"]
