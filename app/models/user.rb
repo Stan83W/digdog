@@ -27,6 +27,7 @@ class User < ApplicationRecord
     user_params = user_params.to_h
     user = User.find_by(provider: auth.provider, discogs_id: auth.uid)
     user ||= User.find_by(email: user_params["email"]) # User did a regular sign up in the past.
+    # binding.pry
     if user
       user.update(user_params)
     else
