@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :wantlist
     end
   end
-
+  
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
