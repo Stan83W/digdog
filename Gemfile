@@ -13,6 +13,10 @@ gem 'omniauth-discogs'
 gem 'discogs-wrapper'
 gem 'activerecord-session_store'
 
+#Background Tasks
+gem 'sidekiq'
+gem 'sidekiq-failures', github: 'mhfs/sidekiq-failures'
+
 #Search
 gem 'craigslist_scraper'
 
@@ -29,6 +33,8 @@ gem 'uglifier'
 
 group :development, :test do
   gem 'pry-byebug'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'

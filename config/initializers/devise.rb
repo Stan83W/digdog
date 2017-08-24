@@ -5,7 +5,7 @@ Devise.setup do |config|
   config.omniauth :discogs, ENV["DISCOGS_API_KEY"], ENV["DISCOGS_API_SECRET"],
     scope: 'email',
     info_fields: 'email, first_name, last_name'
-  
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.

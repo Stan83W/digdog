@@ -1,16 +1,35 @@
 <% if user_signed_in? %>
-  <% render 'shared/searchbar' %>
-  <% @records.each do |record| %>
-    <div class="record">
-    <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-    <% unless record.images.nil? %>
-      <% record.images.each do |image| %>
-        <%= image_tag image["uri"] %>
-      <% end %>
+
+<% render 'shared/searchbar' %>
+
+<div id="records-list">
+
+<% @records.each do |record| %>
+    
+    <% if @wants.include?(record) %>
+      <% wanted = true %>
+      <% @findings = Finding.where(record_id: record.id) %>
+      <% found = true if !@findings.empty? %>
     <% end %>
+
+    <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
+      <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
+      <% unless record.images.nil? %>
+        <% record.images.each do |image| %>
+          <%= image_tag image["uri"] %>
+        <% end %>
+      <% end %>
+      <%= simple_form_for([record, Want.new]) do |f| %>
+        <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+        <%= f.submit "Créer want" %>
+      <% end %>
     </div>
-  <% end %>
-<% else %>
-  <%= render 'shared/introduction' %>
 <% end %>
 
+</div>
+
+<% else %>
+
+<%= render 'shared/introduction' %>
+
+<% end %>

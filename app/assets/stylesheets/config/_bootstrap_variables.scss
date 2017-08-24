@@ -6,20 +6,24 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
-$font-size-base: 18px;
+$body-bg:                 $primary;
+$font-size-base: 15px;
 
 // Colors
-$gray-base:       $gray;
-$brand-primary:   $blue;
-$brand-success:   $green;
-$brand-info:      $yellow;
-$brand-danger:    $red;
-$brand-warning:   $orange;
+$gray-base:              $secondary;
+$text-color:             $secondary;
+$link-color:             $secondary;
+$link-hover-color:       $secondary;
+$link-hover-decoration:  none;
+$brand-primary:          $secondary;
+$brand-success:          $secondary;
+$brand-info:             $secondary;
+$brand-danger:           $secondary;
+$brand-warning:          $secondary;
 
 // Buttons & inputs' radius
-$border-radius-base:  2px;
-$border-radius-large: 2px;
-$border-radius-small: 2px;
+$border-radius-base:  0px;
+$border-radius-large: 0px;
+$border-radius-small: 0px;
 
 // Override other variables below!
