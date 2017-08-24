@@ -1,43 +1,62 @@
+
 <% if user_signed_in? %>
 <!-- List findings  -->
 
-<!--   <% @user_findings.each d o user_finding %>
+<!--   <% #@user_findings.each d o user_finding %>
     <div class="found">
-      <p><%= user_findings.record%></p>
+      <p><%= #user_findings.record %></p>
     </div>
   <% #end %> -->
 
-<!-- Wantlist digdog -->
+<div id="records-list">
+</div>
 
-  <% @wants.each do |want| %>
-    <div class="wanted">
-      <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
-        <% unless want.record.images.empty? %>
-          <% want.record.images.each do |image| %>
-            <%= image_tag image["uri"] %>
-          <% end %>
+<% @wants.each do |want| %>
+  <div class="wanted">
+    <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
+      <% unless want.record.images.nil? %>
+        <% want.record.images.each do |image| %>
+          <%= image_tag image["uri"] %>
         <% end %>
-      </div>
-  <% end %>
+      <% end %>
+    </div>
+<% end %>
 
-  <!-- Wantlist discogs  -->
+<!-- Wantlist discogs  -->
+
+<% @records.each do |record| %>
+    <div class="record wanted found">
+      <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
+      <% unless record.images.nil? %>
+        <% record.images.each do |image| %>
+          <%= image_tag image["uri"] %>
+        <% end %>
+      <% end %>
+      <%= simple_form_for([record, Want.new]) do |f| %>
+        <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+        <%= f.submit "Créer want" %>
+      <% end %>
+    </div>
+<% end %>
+
+
+    <!-- sofia, cf. oage d'acceuil connecté et non connecté   -->
+
+
+<% if user_signed_in? %>
 
   <% @records.each do |record| %>
-    <%= simple_form_for([record, Want.new]) do |f| %>
-      <div class="record wanted found">
-        <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-        <% unless record.images.empty? %>
-          <% record.images.each do |image| %>
-            <%= image_tag image["uri"] %>
-          <% end %>
-        <% end %>
-      </div>
-      <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
-      <%= f.submit "Dig it for me" %>
-    <% end %>
-  <% end %>
 
-<!--  if first visit / not signed in : Home page "track rare records 24/7 -->
+    <div class="record">
+    <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
+    <% unless record.images.nil? %>
+      <% record.images.each do |image| %>
+        <%= image_tag image["uri"] %>
+      <% end %>
+    <% end %>
+    </div>
+
+  <% end %>
 
 <% else %>
 
