@@ -1,5 +1,24 @@
 <div id="records-list">
-  
+  <ul>
+    <% @records.each do |record| %>
+      <li>
+        <%= simple_form_for([record, Want.new]) do |f| %>
+          <div class="infos">
+            <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
+          </div>
+          <% unless record.images.nil? %>
+            <% record.images.first(2).each do |image| %>
+              <div class="album-cover" style="background-image: url('<%= image_path image['uri'] %>');">
+              </div>              
+            <% end %>
+          <% end %>
+          <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+          <%= f.submit "Créer want" %>
+        <% end %>       
+      </li>
+    <% end %>
+
+  </ul>
 </div>
 
 <!-- clement : cf. affichage différentes listes // statuts   -->
@@ -21,20 +40,6 @@
 
 <!-- Wnatlist discogs  -->
 
-<% @records.each do |record| %>
-  <%= simple_form_for([record, Want.new]) do |f| %>
-    <div class="record wanted found">
-      <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-      <% unless record.images.nil? %>
-        <% record.images.each do |image| %>
-          <%= image_tag image["uri"] %>
-        <% end %>
-      <% end %>
-    </div>
-    <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
-    <%= f.submit "Créer want" %>
-  <% end %>
-<% end %>
 
 
     <!-- sofia, cf. oage d'acceuil connecté et non connecté   -->
