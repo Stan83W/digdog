@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :records, only: [:index, :show]
+
+  resources :records, only: [:index, :show] do
+    resources :wants, only: [ :create ]
+  end
 
   get 'discogs/:id' => 'discogs#show', :constraints  => {:id => /.+\.\w{3,4}/}
-
   resources :discogs do
     collection do
       get :authenticate
@@ -18,6 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'discogs#wantlist'
+  # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
+  root to: 'discogs#wantlist'
 end

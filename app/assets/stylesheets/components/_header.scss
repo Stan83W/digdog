@@ -4,6 +4,8 @@ header {
   width: 100%;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
   #site-logo {
     width: 16.66666666667%;
     svg {
@@ -12,14 +14,14 @@ header {
   }
   #navigation {
     position: absolute;
+    margin-top: $gutter;
     top: 0;
     right: 0;
   }
 }
-li {
-  list-style-type: none;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+#login {
+  text-decoration: none;
+  color: $secondary;
+  border: 1px solid $secondary;
+  padding: 10px 10px;
 }
