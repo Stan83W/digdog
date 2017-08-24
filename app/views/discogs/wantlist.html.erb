@@ -1,67 +1,31 @@
-<div id="records-list">
-  <ul>
-    <% @records.each do |record| %>
-      <li>
-        <%= simple_form_for([record, Want.new]) do |f| %>
-          <div class="infos">
-            <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-          </div>
-          <% unless record.images.nil? %>
-            <% record.images.first(2).each do |image| %>
-              <div class="album-cover" style="background-image: url('<%= image_path image['uri'] %>');">
-              </div>              
-            <% end %>
-          <% end %>
-          <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
-          <%= f.submit "Créer want" %>
-        <% end %>       
-      </li>
-    <% end %>
-
-  </ul>
-</div>
-
-<!-- clement : cf. affichage différentes listes // statuts   -->
-
-<!-- List findings  -->
-
-<!-- Wantlist digdog -->
-
-<% @wants.each do |want| %>
-  <div class="wanted">
-    <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
-      <% unless want.record.images.nil? %>
-        <% want.record.images.each do |image| %>
-          <%= image_tag image["uri"] %>
-        <% end %>
-      <% end %>
-    </div>
-<% end %>
-
-<!-- Wnatlist discogs  -->
-
-
-
-    <!-- sofia, cf. oage d'acceuil connecté et non connecté   -->
-
-
 <% if user_signed_in? %>
+<div id="records-list">
 
   <% @records.each do |record| %>
-
-    <div class="record">
-    <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-    <% unless record.images.nil? %>
-      <% record.images.each do |image| %>
-        <%= image_tag image["uri"] %>
-      <% end %>
-    <% end %>
-    </div>
-
+   <% if @wants.include?(record) %>
+     <% wanted = true %>
+     <% @findings = Finding.where(record_id: record.id) %>
+     <% found = true if !@findings.empty? %>
+   <% end %> 
+   <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
+     <div class="record-infos">
+     <%= record.artists[0]["name"] %> — <%= record.title %>
+     </div>
+     <% unless record.images.nil? %>
+       <% record.images[0..3].each do |image| %>
+          <div class="album-cover">
+            <%= image_tag image['uri'] %>
+          </div>
+       <% end %>
+     <% end %>
+     <%= simple_form_for([record, Want.new]) do |f| %>
+       <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+       <%= f.submit "Créer want" %>
+     <% end %>
+   </div>
   <% end %>
+</div>
 
 <% else %>
-
   <%= render 'shared/introduction' %>
-
 <% end %>
