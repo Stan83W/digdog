@@ -3,7 +3,6 @@ class DiscogsController < ApplicationController
   before_action :set_client
 
   def authenticate
-    binding.pry
     app_key      = ENV["DISCOGS_API_KEY"]
     app_secret   = ENV["DISCOGS_API_SECRET"]
     request_data = @discogs.get_request_token(app_key, app_secret, "http://localhost:3000/discogs/callback")
