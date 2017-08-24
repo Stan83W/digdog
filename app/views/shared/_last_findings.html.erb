@@ -1,14 +1,17 @@
-<div class="slider">
-  <% @records.each do |record| %>
-      <% unless record.images.nil? %>
-        <% record.images.each do |image| %>
-          <div class="slide" data-title="<%= record.title %>" data-time="10 days ago">
-              <%= image_tag image["uri"] %>
-          </div>
+<% unless @records.nil? %>
+  <div class="slider">
+      
+    <% @records.each do |record| %>
+        <% unless record.images.nil? %>
+          <% record.images.each do |image| %>
+            <div class="slide" data-title="<%= record.title %>" data-time="10 days ago">
+                <%= image_tag image["uri"] %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-  <% end %>
-  <div class="current-title"></div>
-</div>
+    <% end %>
+    <div class="current-title"></div>
+  </div>
+<% end %>
 
 
