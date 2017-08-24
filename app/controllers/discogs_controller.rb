@@ -40,7 +40,7 @@ class DiscogsController < ApplicationController
       @user     = @discogs.get_identity
       @response = @discogs.get_user_wantlist(@user.username)
       @records = []
-      discogs_wants = @response.discogs_wants
+      discogs_wants = @response.wants
 
       #wants digdog du current user afin de les exclure de @records
       @wants = Want.where(user_id: current_user.id)
