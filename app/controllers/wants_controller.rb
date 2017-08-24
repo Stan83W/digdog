@@ -12,6 +12,10 @@ class WantsController < ApplicationController
     @want.save
     if @want.save
       redirect_to wantlist_discogs_path
+    else
+
     end
   end
 end
+
+
