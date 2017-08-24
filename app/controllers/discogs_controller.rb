@@ -40,39 +40,38 @@ class DiscogsController < ApplicationController
       @user     = @discogs.get_identity
       @response = @discogs.get_user_wantlist(@user.username)
       @records = []
-      wants = @response.wants
+      discogs_wants = @response.discogs_wants
 
-      #wants digdog afin de les exclure de @records
-      #checker methode where
+      #wants digdog du current user afin de les exclure de @records
       @wants = Want.where(user_id: current_user.id)
+
+
 
       #2 Pour chaque item de l'api, créer un Record (Record.new), mais
       # ne pas le persister en base (pas de save/create)
 
-      wants.each do |want|
-        want = want["basic_information"]
-        discogs_id = want["id"]
+      discogs_wants.each do |discogs_want|
+        discogs_want = discogs_want["basic_information"]
+        discogs_id = discogs_want["id"]
 
         if Record.has?(discogs_id)
           record = Record.find_by_discogs_id(discogs_id)
         else
           record = Record.create(
             discogs_id: discogs_id,
-            title: want["title"],
-            labels: want["labels"],
-            artists: want["artists"],
-            styles: want["styles"],
-            year: want["year"],
-            thumb: want["thumb"],
-            images: get_release_images(want["id"]),
-            discogs_uri: want["resource_url"]
+            title: discogs_want["title"],
+            labels: discogs_want["labels"],
+            artists: discogs_want["artists"],
+            styles: discogs_want["styles"],
+            year: discogs_want["year"],
+            thumb: discogs_want["thumb"],
+            images: get_release_images(discogs_want["id"]),
+            discogs_uri: discogs_want["resource_url"]
           )
         end
+        #3 -> return array de records : @records
         @records << record
       end
-
-      #3 -> return array de records : @records
-
       #4 --> retrieve records present in digdog wantlist from discogs wantlist to avoid duplicate
       @records = @records - @wants.map(&:record)
 
@@ -102,14 +101,14 @@ class DiscogsController < ApplicationController
     @discogs = Discogs::Wrapper.new("OAuth", session[:access_token])
   end
 
-  # def add_want(id)
+  # def add_discogs_want(id)
   #   release_id = "2489281"
 
   #   @user     = @discogs.get_identity
   #   @response = @discogs.add_release_to_user_wantlist(@user.username, release_id)
   # end
 
-  # def edit_want
+  # def edit_discogs_want
   #   release_id = "2489281"
   #   notes      = "Added via the Discogs Ruby Gem. But, you *DO* want it now!!"
   #   rating     = 5
@@ -120,7 +119,7 @@ class DiscogsController < ApplicationController
   #                                                      {:notes => notes, :rating => rating})
   # end
 
-  # def remove_want
+  # def remove_discogs_want
   #   release_id = "2489281"
 
   #   @user     = @discogs.get_identity

@@ -3,8 +3,16 @@
 <% if user_signed_in? %>
 
 <!-- List findings  -->
-
-<!-- <% @findings.each  finding%>  -->
+  <% @wfindings.each do |findings| %>
+    <div class="wanted">
+      <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
+        <% unless want.record.images.empty? %>
+          <% want.record.images.each do |image| %>
+            <%= image_tag image["uri"] %>
+          <% end %>
+        <% end %>
+      </div>
+  <% end %>
 
 <!-- Wantlist digdog -->
 
@@ -19,7 +27,7 @@
       </div>
   <% end %>
 
-  <!-- Wnatlist discogs  -->
+  <!-- Wantlist discogs  -->
 
   <% @records.each do |record| %>
     <%= simple_form_for([record, Want.new]) do |f| %>
