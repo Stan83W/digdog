@@ -5,7 +5,9 @@ const flkty = new Flickity('.slider', {
   pageArrows: false,
   pageDots: false,
   pauseAutoPlayOnHover: false,
-  autoPlay: 1500,
+  autoPlay: 3000,
+  selectedAttraction: 0.01,
+  friction: 0.2,
   prevNextButtons: false,
   wrapAround: true
 });
