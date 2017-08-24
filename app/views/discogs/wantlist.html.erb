@@ -1,17 +1,11 @@
 <% if user_signed_in? %>
-
 <!-- List findings  -->
 
-  <% @findings.each do |findings| %>
-    <div class="wanted">
-      <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
-        <% unless want.record.images.empty? %>
-          <% want.record.images.each do |image| %>
-            <%= image_tag image["uri"] %>
-          <% end %>
-        <% end %>
-      </div>
-  <% end %>
+<!--   <% @user_findings.each d o user_finding %>
+    <div class="found">
+      <p><%= user_findings.record%></p>
+    </div>
+  <% #end %> -->
 
 <!-- Wantlist digdog -->
 

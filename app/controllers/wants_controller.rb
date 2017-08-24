@@ -1,8 +1,4 @@
 class WantsController < ApplicationController
-  def all
-    @wants = Want.all
-  end
-
   def create
     @user = current_user
     @want = Want.new
