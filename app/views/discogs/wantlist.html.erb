@@ -2,21 +2,15 @@
 
 <div id="records-list">
 
-<% @wants.each do |want| %>
-  <div class="wanted">
-    <p><%= want.record.artists[0]["name"] %> - <%= want.record.title %></p>
-      <% unless want.record.images.nil? %>
-        <% want.record.images.each do |image| %>
-          <%= image_tag image["uri"] %>
-        <% end %>
-      <% end %>
-    </div>
-<% end %>
-
-<!-- Wantlist discogs  -->
-
 <% @records.each do |record| %>
-    <div class="record wanted found">
+    
+    <% if @wants.include?(record) %>
+      <% wanted = true %>
+      <% @findings = Finding.where(record_id: record.id) %>
+      <% found = true if !@findings.empty? %>
+    <% end %>
+
+    <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
       <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
       <% unless record.images.nil? %>
         <% record.images.each do |image| %>
