@@ -1,23 +1,16 @@
 <% if user_signed_in? %>
-
   <% render 'shared/searchbar' %>
   <% @records.each do |record| %>
-
     <div class="record">
     <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
     <% unless record.images.nil? %>
       <% record.images.each do |image| %>
         <%= image_tag image["uri"] %>
       <% end %>
-
     <% end %>
     </div>
-
   <% end %>
-
 <% else %>
-
   <%= render 'shared/introduction' %>
-
 <% end %>
 
