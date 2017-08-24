@@ -27,16 +27,12 @@ header {
       width: 40%;
     }
   }
-  #navigation {
+  #login {
+    text-transform: uppercase;
     position: absolute;
-    margin-top: $gutter;
-    top: 0;
-    right: 0;
+    top: $gutter;
+    right: $gutter;
+    border: 1px solid $secondary;
+    padding: 10px 15px;
   }
-}
-#login {
-  text-decoration: none;
-  color: $secondary;
-  border: 1px solid $secondary;
-  padding: 10px 15px;
 }

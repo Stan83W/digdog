@@ -1,4 +1,7 @@
 <% if user_signed_in? %>
+
+<% render 'shared/searchbar' %>
+
 <div id="records-list">
 
   <% @records.each do |record| %>
