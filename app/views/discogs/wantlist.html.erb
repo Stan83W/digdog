@@ -19,10 +19,9 @@
     </div>
 <% end %>
 
-<!-- Wnatlist discogs  -->
+<!-- Wantlist discogs  -->
 
 <% @records.each do |record| %>
-  <%= simple_form_for([record, Want.new]) do |f| %>
     <div class="record wanted found">
       <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
       <% unless record.images.nil? %>
@@ -30,10 +29,11 @@
           <%= image_tag image["uri"] %>
         <% end %>
       <% end %>
+      <%= simple_form_for([record, Want.new]) do |f| %>
+        <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+        <%= f.submit "Créer want" %>
+      <% end %>
     </div>
-    <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
-    <%= f.submit "Créer want" %>
-  <% end %>
 <% end %>
 
 
