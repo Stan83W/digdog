@@ -39,17 +39,13 @@
     </div>
   </div>
 
-<div id="navigation login" style="margin-top: 10px;">
+<div id="navigation">
 
 <% if user_signed_in? %>
-  <%= link_to user_discogs_omniauth_authorize_path do %>
-    <%= t(".login_discogs", default: "Login with Discogs") %>
-  <% end %>
   <%= link_to destroy_user_session_path, method: :delete do %>
     <%= t(".sign_out", default: "Log out") %>
   <% end %>
 <% else %>
-  <!-- Login link (when logged out) -->
   <%= link_to t(".sign_in", default: "Login with Discogs"), user_discogs_omniauth_authorize_path, id: "login" %>
 <% end %>
 </div>
