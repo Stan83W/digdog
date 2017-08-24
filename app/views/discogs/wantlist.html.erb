@@ -1,12 +1,15 @@
-<div id="records-list">
-  
-</div>
 
-<!-- clement : cf. affichage différentes listes // statuts   -->
-
+<% if user_signed_in? %>
 <!-- List findings  -->
 
-<!-- Wantlist digdog -->
+<!--   <% #@user_findings.each d o user_finding %>
+    <div class="found">
+      <p><%= #user_findings.record %></p>
+    </div>
+  <% #end %> -->
+
+<div id="records-list">
+</div>
 
 <% @wants.each do |want| %>
   <div class="wanted">

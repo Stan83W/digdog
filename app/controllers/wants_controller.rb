@@ -1,9 +1,4 @@
 class WantsController < ApplicationController
-
-  def all
-    @wants = Want.all
-  end
-
   def create
     @user = current_user
     @want = Want.new
@@ -12,8 +7,9 @@ class WantsController < ApplicationController
     @want.save
     if @want.save
       redirect_to wantlist_discogs_path
+      #affichage / réorganisation de la page
     else
-
+      #afficher message de "pas sauvé / merci de faire..."
     end
   end
 end
