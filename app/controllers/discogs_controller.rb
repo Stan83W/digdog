@@ -17,6 +17,10 @@ class DiscogsController < ApplicationController
       @records = []
       wants = @response.wants
 
+      #wants digdog afin de les exclure de @records
+      #checker methode where
+      @wants = Want.where(user_id: current_user.id)
+
       #2 Pour chaque item de l'api, créer un Record (Record.new), mais
       # ne pas le persister en base (pas de save/create)
 
@@ -44,9 +48,10 @@ class DiscogsController < ApplicationController
         end
       end
 
-      #3 -> return array de records
+      #3 -> return array de records : @records
 
-      @records
+      #4 --> retrieve records present in digdog wantlist from discogs wantlist to avoid duplicate
+      @records = @records - @wants.map(&:record)
 
     else
 
