@@ -7,9 +7,21 @@ header {
   display: flex;
   justify-content: space-between;
   #site-logo {
+    position: relative;
     width: 16.66666666667%;
     svg {
       fill: $secondary;
+    }
+    .logo-top, .logo-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .logo-top {
+      width: 100%;
+    }
+    .logo-left {
+      width: 40%;
     }
   }
   #navigation {
