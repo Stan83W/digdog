@@ -1,8 +1,13 @@
 <div class="slider">
-  <div class="slide">1</div>
-  <div class="slide">2</div>
-  <div class="slide">3</div>
-  <div class="slide">4</div>
-  <div class="slide">5</div>
-  <div class="slide">6</div>
+  <% @records.each do |record| %>
+    <div class="record wanted found">
+      <% unless record.images.nil? %>
+        <% record.images.each do |image| %>
+          <div class="slide"><%= image_tag image["uri"] %></div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
+

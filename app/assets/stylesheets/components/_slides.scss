@@ -13,16 +13,17 @@
 }
 
 .slide {
-  width: 400px;
-  height: 400px;
+  width: 40%;
   font-size: 2rem;
   color: #fff;
   transform-origin: top;
   background: black;
-  filter: blur(10px);
-  transform: scale(0.5);
+  transform: scale(0.7);
   transform-origin: center;
-  transition: filter 500ms ease, transform 500ms ease;
+  transition: transform 500ms ease;
+  img {
+    width: 100%;
+  }
 }
 .slide.is-selected {
   filter: blur(0px);
