@@ -1,13 +1,14 @@
 <div class="slider">
   <% @records.each do |record| %>
-    <div class="record wanted found">
       <% unless record.images.nil? %>
         <% record.images.each do |image| %>
-          <div class="slide"><%= image_tag image["uri"] %></div>
+          <div class="slide" data-title="<%= record.title %>" data-time="10 days ago">
+              <%= image_tag image["uri"] %>
+          </div>
         <% end %>
       <% end %>
-    </div>
   <% end %>
+  <div class="current-title"></div>
 </div>
 
 
