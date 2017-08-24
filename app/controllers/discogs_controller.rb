@@ -37,13 +37,11 @@ class DiscogsController < ApplicationController
     if @discogs.authenticated?
 
       #1 Call à l'api
+
       @user     = @discogs.get_identity
       @response = @discogs.get_user_wantlist(@user.username)
       @records = []
       wants = @response.wants
-
-      #wants digdog
-      @wants = Want.all
 
       #2 Pour chaque item de l'api, créer un Record (Record.new), mais
       # ne pas le persister en base (pas de save/create)
