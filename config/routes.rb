@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get :edit_want
       get :remove_want
       get :wantlist
+      get :reload_wantlist
     end
   end
   

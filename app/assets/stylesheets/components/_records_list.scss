@@ -1,0 +1,42 @@
+#records-list {
+  .record {
+    position: relative;
+    vertical-align: top;
+    margin-top: $gutter;
+    border-top: 1px solid;
+    height: 200px;
+    display: inline;
+    margin-right: $gutter;
+    &.wanted {
+      background: blue;
+      &.found {
+        background: yellow;
+      }
+    }
+    .record-infos {
+      display: inline-block;
+      vertical-align: top;
+      width: 16.6666vw;
+      padding-top: $gutter;
+      padding-right: $gutter;
+      margin-bottom: $gutter;
+      height: 200px;
+    }
+   
+   .record-content {
+     display: inline;
+     margin-bottom: $gutter;
+    }
+  
+    .album-cover {
+      display: inline-block;
+      padding-right: $gutter;
+      padding-top: $gutter;
+      img {
+        height: 200px;
+        margin-bottom: $gutter;
+     }
+    }
+  }
+}
+

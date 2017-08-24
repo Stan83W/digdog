@@ -10,9 +10,14 @@
      <% @findings = Finding.where(record_id: record.id) %>
      <% found = true if !@findings.empty? %>
    <% end %> 
+   <%= link_to record_path(record) do %>
    <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
      <div class="record-infos">
      <%= record.artists[0]["name"] %> — <%= record.title %>
+     <%= simple_form_for([record, Want.new]) do |f| %>
+       <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+       <%= f.submit "Dig it" %>
+     <% end %>
      </div>
      <% unless record.images.nil? %>
        <% record.images[0..3].each do |image| %>
@@ -21,11 +26,8 @@
           </div>
        <% end %>
      <% end %>
-     <%= simple_form_for([record, Want.new]) do |f| %>
-       <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
-       <%= f.submit "Créer want" %>
-     <% end %>
    </div>
+  <% end %> 
   <% end %>
 </div>
 

@@ -9,7 +9,7 @@
   <%= t(".sign_out", default: "Log out") %>
   <% end %>
   <% else %>
-  <%= link_to t(".sign_in", default: "Login with Discogs"), user_discogs_omniauth_authorize_path, id: "login" %>
+  <%= link_to t(".sign_in", default: "Login with Discogs"), user_discogs_omniauth_authorize_path %>
   <% end %>
 </div>
 
