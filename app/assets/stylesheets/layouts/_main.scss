@@ -71,6 +71,27 @@ input[type='submit'] {
 	margin: 0;
 }
 
+h1, h2, h3 {
+  margin: 0;
+  margin-bottom: $gutter;
+  font-weight: normal;
+  font-size: inherit;
+}
+
+h1, h2 {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.button, input.button {
+  text-transform: uppercase;
+  border: 1px solid $secondary !important;
+  padding: 10px 15px !important;
+}
+
 .lazyimg,
 .plyr--video {
   opacity: 0;

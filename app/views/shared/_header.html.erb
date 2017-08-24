@@ -2,7 +2,7 @@
 
 <%= render 'shared/logo' %>
 
-<div id="login">
+<div id="login" class="button">
 
   <% if user_signed_in? %>
   <%= link_to destroy_user_session_path, method: :delete do %>
