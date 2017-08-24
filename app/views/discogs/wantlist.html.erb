@@ -21,7 +21,7 @@
      <% end %>
      </div>
      <% unless record.images.nil? %>
-       <% record.images[0..3].each do |image| %>
+       <% record.images[0..1].each do |image| %>
           <div class="album-cover">
             <%= image_tag image['uri'] %>
           </div>
