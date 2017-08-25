@@ -23,6 +23,14 @@ class DiscogsController < ApplicationController
 
           if Record.has?(discogs_id)
             record = Record.find_by_discogs_id(discogs_id)
+            if record.images.nil?
+              record_json = get_release_json(want["id"])
+              record.update(
+                styles: record_json["styles"],
+                genres: record_json["genres"],
+                images: record_json["images"],
+              )
+            end
           else
             record_json = get_release_json(want["id"])
             record = Record.create(
@@ -30,7 +38,7 @@ class DiscogsController < ApplicationController
               title: want["title"],
               labels: want["labels"],
               artists: want["artists"],
-              styles: want["styles"],
+              styles: record_json["styles"],
               genres: record_json["genres"],
               year: want["year"],
               thumb: want["thumb"],
