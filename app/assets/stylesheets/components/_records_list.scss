@@ -1,9 +1,10 @@
 #records-list {
+  margin-top: 2px;
   .record {
     position: relative;
     vertical-align: top;
-    margin-top: ($gutter*2);
-    border-top: 1px solid;
+    margin-top: $gutter;
+    border-top: 2px solid;
     height: 200px;
     display: inline;
     margin-right: ($gutter*2);

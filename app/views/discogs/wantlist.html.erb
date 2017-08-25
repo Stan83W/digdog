@@ -13,8 +13,8 @@
    <%= link_to record_path(record) do %>
    <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
      <div class="record-infos">
-     <h2><%= record.artists[0]["name"] %></h2>
-     <h3><%= record.title %></h3>
+     <h2><%= record.title %></h2>
+     <h3><%= record.artists[0]["name"] %></h3>
      <%= simple_form_for([record, Want.new]) do |f| %>
        <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
        <%= f.submit "Dig it", class: "button" %>
