@@ -12,6 +12,7 @@ gem 'omniauth-oauth'
 gem 'omniauth-discogs'
 gem 'discogs-wrapper'
 gem 'activerecord-session_store'
+gem 'pg_search'
 
 #Background Tasks
 gem 'sidekiq'
