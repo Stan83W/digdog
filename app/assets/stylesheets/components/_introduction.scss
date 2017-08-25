@@ -2,9 +2,16 @@
 	display: flex;
 	justify-content: space-between;
 }
-
 .banner-text h1 {
-	font-size: 8em;
+	font-size: 5em;
 	font-weight: lighter;
 	margin-top: 10px;
+}
+.content-body > ol > li {
+  font-size: 20px;
+  font-weight: lighter;
+  line-height: 140%;
+}
+.content-body {
+  flex-shrink: 15;
 }
