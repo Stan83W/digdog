@@ -1,9 +1,18 @@
-<div>
+<div class="record-content">
 	<h2><%= @record.title %></h2>
-	<h3><%= @record.artists[0]["name"] %></h3>
-	<h3><%= @record.labels[0]["name"] %></h3>
+	<% @record.artists.each do |artist| %>
+		<h3><%= artist["name"] %></h3>
+	<% end %>
+	<% @record.labels.each do |label| %>
+		<h3><%= label["name"] %></h3>
+	<% end %>
 	<h3><%= @record.year %></h3>
-	<h3><%= @record.genres %></h3>
-	<h3><%= @record.styles %></h3>
+	<% @record.genres.each do |genre| %>
+		<h3><%= genre %></h3>
+	<% end %>
+	<% @record.styles.each do |style| %>
+		<h3><%= style %></h3>
+	<% end %>
 	<%= image_tag @record.images.first["uri"] %>
+	
 </div>
