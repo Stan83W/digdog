@@ -10,10 +10,13 @@
   margin-bottom: calc(#{$gutter} * 2);
 }
 .infos {
-	padding-left: $gutter;
+	padding-left: calc(#{$gutter} * 2);
 	width: 30vw;
 	.item-infos {
 		border-top: 3px inset $secondary;
-		padding-top: 1.2vw;
+		padding-top: 0.9vw;
 	}
-}    
+}
+.categories {
+	text-transform: capitalize;
+} 
