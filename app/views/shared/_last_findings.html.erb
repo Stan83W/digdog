@@ -1,16 +1,18 @@
 <% if findings.any? %>
   <div class="slider">
     <% findings.each do |finding| %>
-      <% parent_record = Record.find(finding.record_id) %>
-      <% unless parent_record.images.nil? %>
-        <% parent_record.images.each do |image| %>
-          <div class="slide" data-title="<%= parent_record.title %>" data-provider="<%= finding.provider %>">
+      <% record = finding.record %>
+      <% unless record.images.nil? %>
+        <% record.images.each do |image| %>
+          <div class="slide" data-title="<%= finding.record.title %>" data-provider="Found on <%= finding.provider %> 1 day ago">
             <%= image_tag image["uri"] %>
           </div>
         <% end %>
       <% end %>
     <% end %>
-    <div class="current-title"></div>
-    <div class="current-provider"></div>
+    <div class="current-infos">
+      <h1 class="current-title"></h1>
+      <div class="current-provider"></div>
+    </div>
   </div>
 <% end %>

@@ -28,4 +28,5 @@ const flkty = $last_findings.data('flickity');
 
 $last_findings.on( 'select.flickity', function() {
   $(".current-title").html( $(flkty.selectedElement).data("title") );
+  $(".current-provider").html( $(flkty.selectedElement).data("provider") );
 });
