@@ -17,6 +17,7 @@ var $last_findings = $('.slider').flickity({
   cellAlign: 'left',
   pageArrows: false,
   pageDots: false,
+  draggable: false,
   pauseAutoPlayOnHover: false,
   autoPlay: 3000,
   selectedAttraction: 0.01,
