@@ -1,29 +1,28 @@
-<div class="container">
-	<div class="record-content">
-		<%= image_tag @record.images.first["uri"], class: "cover" %>
-		<div class="infos">
-			<h2 class="item-infos"><%= @record.title %></h2>
-			<% @record.artists.each do |artist| %>
-				<div class="item-infos">
-					<h2>Artists</h2>
-					<h2 class="categories">— <%= artist["name"] %></h2>
-					<% end %>
-					<% @record.labels.each do |label| %>
-						<h2>Labels</h2>
-						<h2 class="categories">— <%= label["name"] %></h2>
-					<% end %>
-					<h2>Year</h2>
-					<h2 class="categories">— <%= @record.year %></h2>
-					<% @record.genres.each do |genre| %>
-						<h2>Genres</h2>
-						<h2 class="categories">— <%= genre %></h2>
-					<% end %>
-					<% @record.styles.each do |style| %>
-						<h2>Styles</h2>
-						<h2 class="categories">— <%= style %></h2>
-					<% end %>
-				</div>
-		</div>
+<%= render template: 'discogs/wantlist' %>
+
+<div class="record-content">
+	 <%= image_tag @record.images.first["uri"], class: "cover" %>
+	<div class="infos">
+		<h2 class="item-infos"><%= @record.title %></h2>
+		<% @record.artists.first(1).each do |artist| %>
+			<div class="item-infos">
+				<h2 class="categories mb4"><%= artist["name"] %></h2>
+				<% end %>
+				<% @record.labels.each do |label| %>
+					<h2>Labels</h2>
+					<h2 class="categories">    <%= label["name"] %></h2>
+				<% end %>
+				<h2>Year</h2>
+				<h2 class="categories">    <%= @record.year %></h2>
+				<% @record.genres.each do |genre| %>
+					<h2>Genres</h2>
+					<h2 class="categories">    <%= genre %></h2>
+				<% end %>
+				<% @record.styles.each do |style| %>
+					<h2>Styles</h2>
+					<h2 class="categories">    <%= style %></h2>
+				<% end %>
+			</div>
 	</div>
-	<a href="" class="button">Dig it</a>	
 </div>
+<!-- 	<a href="" class="button">Dig it</a>	 -->

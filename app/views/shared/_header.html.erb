@@ -2,7 +2,9 @@
 
   <%= render 'shared/logo' %>
 
+  <% unless @records.nil? %>
   <%= render 'shared/searchbar' %>
+  <% end %>
 
   <div id="login" class="button">
     <% if user_signed_in? %>
