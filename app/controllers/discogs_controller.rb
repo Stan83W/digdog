@@ -24,15 +24,17 @@ class DiscogsController < ApplicationController
           if Record.has?(discogs_id)
             record = Record.find_by_discogs_id(discogs_id)
           else
+            record_json = get_release_json(want["id"])
             record = Record.create(
               discogs_id: discogs_id,
               title: want["title"],
               labels: want["labels"],
               artists: want["artists"],
               styles: want["styles"],
+              genres: record_json["genres"],
               year: want["year"],
               thumb: want["thumb"],
-              images: get_release_images(want["id"]),
+              images: record_json["images"],
               discogs_uri: want["resource_url"]
             )
           end
@@ -69,8 +71,8 @@ class DiscogsController < ApplicationController
     current_user.update(discogs_wantlist: discogs_wantlist)
   end
 
-  def get_release_images(id)
-    @discogs.get_release(id)["images"]
+  def get_release_json(id)
+    @discogs.get_release(id)
   end
 
   def set_client
