@@ -19,10 +19,8 @@
       display: inline-block;
       vertical-align: top;
       width: 22vw;
-      padding-top: ($gutter*2);
-      padding-right: ($gutter*2);
-      margin-bottom: ($gutter*2);
-      height: (200px + $gutter*2);
+      padding-top: ($gutter/2.8);
+      height: (200px + $gutter/2);
     }
    
    .record-content {
@@ -32,14 +30,14 @@
   
     .album-cover {
       display: inline-block;
-      padding-right: ($gutter*2);
-      padding-top: ($gutter*2);
+      // padding-right: ($gutter);
+      padding-top: ($gutter/2);
       &:last-child {
         padding-right: 0;
       }
       img {
         height: 200px;
-        margin-bottom: ($gutter*2);
+        margin-bottom: ($gutter);
      }
     }
     form {
