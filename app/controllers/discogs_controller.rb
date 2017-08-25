@@ -3,24 +3,21 @@ class DiscogsController < ApplicationController
   before_action :set_client
 
   def wantlist
-
     if @discogs.authenticated?
       if current_user.discogs_wantlist.nil?
         get_wantlist
       end
-
       #wants digdog afin de les exclure de @records
       @wants = Want.where(user_id: current_user.id)
       @wants = @wants.map(&:record)
-
       #2 Pour chaque item de l'api, créer un Record (Record.new)
-      @records = []
 
+
+      @records = []
       unless current_user.discogs_wantlist.nil?
         current_user.discogs_wantlist.each do |want|
           want = want["basic_information"]
           discogs_id = want["id"]
-
           if Record.has?(discogs_id)
             record = Record.find_by_discogs_id(discogs_id)
           else
@@ -36,16 +33,16 @@ class DiscogsController < ApplicationController
               discogs_uri: want["resource_url"]
             )
           end
+          if params[:artists]
+            @records = search(params[:artists])
+          else
           @records << record
+          end
         end
       end
-
-      #4 --> retrieve records present in digdog wantlist from discogs wantlist to avoid duplicate
-      # @records = @records - @wants.map(&:record)
     else
       redirect_to root_path
     end
-
   end
 
   def show
@@ -61,6 +58,11 @@ class DiscogsController < ApplicationController
   end
 
   private
+
+  def search(params)
+    @records = Record.where(artists: params)
+  end
+
 
   def get_wantlist
     # Fetch wantlist

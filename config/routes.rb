@@ -7,16 +7,18 @@ Rails.application.routes.draw do
   end
 
   get 'discogs/:id' => 'discogs#show', :constraints  => {:id => /.+\.\w{3,4}/}
+
   resources :discogs do
     collection do
       get :add_want
       get :edit_want
       get :remove_want
       get :wantlist
+      get :search
       get :reload_wantlist
     end
   end
-  
+
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do

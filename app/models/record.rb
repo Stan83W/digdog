@@ -12,3 +12,16 @@ class Record < ApplicationRecord
     find_by(discogs_id: discogs_id)
   end
 end
+
+# essai code search
+# in model
+  # include PgSearch
+  # pg_search_scope :search_by_title, against: [ :title ]
+# tag dispo
+    # t.integer "discogs_id"
+    # t.json "styles"
+    # t.json "genres"
+    # t.string "title"
+    # t.json "artists"
+    # t.json "labels"
+    # t.integer "year"
