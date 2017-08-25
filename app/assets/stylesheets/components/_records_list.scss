@@ -1,26 +1,45 @@
+$record-height: 13vw;
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 #records-list {
   margin-top: 2px;
   .record {
     position: relative;
     vertical-align: top;
     margin-top: $gutter;
-    border-top: 2px solid;
-    height: 200px;
+    border-top: 3px inset $secondary;
+    transition: border-top 150ms ease;
+    height: $record-height;
     display: inline;
-    margin-right: ($gutter*2);
-    &.wanted {
-      background: blue;
-      &.found {
-        background: yellow;
+    margin-right: 2vw;
+    &:hover {
+      h2 {
+        animation: blink 50ms infinite alternate;
+      }
+    }
+    &.wanted .record-infos{
+      // background: blue;
+      &.found .record-infos{
+        // background: yellow;
       }
     }
     .record-infos {
       position: relative;
       display: inline-block;
       vertical-align: top;
-      width: 22vw;
-      padding-top: ($gutter/2.8);
-      height: (200px + $gutter/2);
+      width: 25vw;
+      height: $record-height;
+      h2 {
+        margin-top: ($gutter/2.8);
+      }
     }
    
    .record-content {
@@ -32,15 +51,21 @@
       display: inline-block;
       // padding-right: ($gutter);
       padding-top: ($gutter/2);
+      width: $record-height;
+      height: $record-height;
       &:last-child {
         padding-right: 0;
       }
       img {
-        height: 200px;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center left;
         margin-bottom: ($gutter);
      }
     }
     form {
+      display: none;
       position: absolute;
       bottom: 0;
       left: 0;

@@ -12,6 +12,13 @@
    <% end %> 
    <%= link_to record_path(record) do %>
    <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
+     <% unless record.images.nil? %>
+       <% record.images[0..1].each do |image| %>
+          <div class="album-cover">
+            <%= image_tag image['uri'] %>
+          </div>
+       <% end %>
+     <% end %>
      <div class="record-infos">
      <h2><%= record.title %></h2>
      <h3><%= record.artists[0]["name"] %></h3>
@@ -20,13 +27,6 @@
        <%= f.submit "Dig it", class: "button" %>
      <% end %>
      </div>
-     <% unless record.images.nil? %>
-       <% record.images[0..1].each do |image| %>
-          <div class="album-cover">
-            <%= image_tag image['uri'] %>
-          </div>
-       <% end %>
-     <% end %>
    </div>
   <% end %> 
   <% end %>
