@@ -11,4 +11,18 @@ class Record < ApplicationRecord
   def self.find_by_discogs_id(discogs_id)
     find_by(discogs_id: discogs_id)
   end
+
+
+  # test search
+
+def self.search(search)
+  if search
+    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  else
+    find(:all)
+  end
+end
+
+
+
 end

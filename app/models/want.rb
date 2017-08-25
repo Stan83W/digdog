@@ -4,6 +4,4 @@ class Want < ApplicationRecord
 
   validates :user_id, presence: true
   validates :record_id, presence: true, uniqueness: { scope: :user_id }
-
-
 end
