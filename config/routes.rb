@@ -13,9 +13,10 @@ Rails.application.routes.draw do
       get :edit_want
       get :remove_want
       get :wantlist
+      get :reload_wantlist
     end
   end
-
+  
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do

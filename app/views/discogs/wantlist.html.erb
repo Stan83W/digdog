@@ -1,35 +1,37 @@
 <% if user_signed_in? %>
 
-<%= render 'shared/last_findings' %>
+<% render 'shared/searchbar' %>
 
 <div id="records-list">
 
-<% @records.each do |record| %>
-
-    <% if @wants.include?(record) %>
-      <% wanted = true %>
-      <% @findings = Finding.where(record_id: record.id) %>
-      <% found = true if !@findings.empty? %>
-    <% end %>
-
-    <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
-      <p><%= record.artists[0]["name"] %> — <%= record.title %></p>
-      <% unless record.images.nil? %>
-        <% record.images.each do |image| %>
-          <%= image_tag image["uri"] %>
-        <% end %>
-      <% end %>
-      <%= simple_form_for([record, Want.new]) do |f| %>
-        <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
-        <%= f.submit "Créer want" %>
-      <% end %>
-    </div>
-<% end %>
-
+  <% @records.each do |record| %>
+   <% if @wants.include?(record) %>
+     <% wanted = true %>
+     <% @findings = Finding.where(record_id: record.id) %>
+     <% found = true if !@findings.empty? %>
+   <% end %> 
+   <%= link_to record_path(record) do %>
+   <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
+     <% unless record.images.nil? %>
+       <% record.images[0..1].each do |image| %>
+          <div class="album-cover">
+            <%= image_tag image['uri'] %>
+          </div>
+       <% end %>
+     <% end %>
+     <div class="record-infos">
+     <h2><%= record.title %></h2>
+     <h3><%= record.artists[0]["name"] %></h3>
+     <%= simple_form_for([record, Want.new]) do |f| %>
+       <%= f.input :record_id, as: :hidden, input_html: { value: record.id } %>
+       <%= f.submit "Dig it", class: "button" %>
+     <% end %>
+     </div>
+   </div>
+  <% end %> 
+  <% end %>
 </div>
 
 <% else %>
-
-<%= render 'shared/introduction' %>
-
+  <%= render 'shared/introduction' %>
 <% end %>
