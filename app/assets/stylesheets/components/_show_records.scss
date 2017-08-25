@@ -6,15 +6,17 @@
 	display: flex;
 }
 .cover {
-  height: 45vw;
-  margin-bottom: calc(#{$gutter} * 2);
+  display: block;
 }
 .infos {
 	padding-left: calc(#{$gutter} * 2);
 	width: 30vw;
-	.item-infos {
-		border-top: 3px inset $secondary;
-		padding-top: 0.9vw;
+    .indic {
+      position: relative;
+    }
+  .item-infos {
+    border-top: 3px inset $secondary;
+    padding-top: 0.9vw;
 	}
 }
 .categories {

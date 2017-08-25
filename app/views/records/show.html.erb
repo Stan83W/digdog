@@ -23,6 +23,20 @@
 					<h2 class="categories">    <%= style %></h2>
 				<% end %>
 			</div>
+      <%= link_to([@record, Want.new], remote: true, method: :post) do %>
+         <div class="indic indic-dig" data-record-id="<%= @record.id %>">
+           <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+            <g class="add">
+              <polygon points="103.8,159.5 103.8,40.5 96.2,40.5 96.2,159.5 "/>
+              <polygon points="40.5,103.8 159.5,103.8 159.5,96.2 40.5,96.2 "/>
+            </g>
+            <g class="arrow">
+            <polygon points="160.8,94.1 103.8,152.1 103.8,33.2 96.2,33.2 96.2,152.1 39.1,94.1 33.7,99.5 100,166.8 166.3,99.5 "/>
+            </g>
+            </svg>
+         </div>
+      <% end %>
 	</div>
 </div>
 <!-- 	<a href="" class="button">Dig it</a>	 -->

@@ -2,9 +2,10 @@
 
 <% render 'shared/searchbar' %>
 
-<div id="records-list">
   
   <% if @records %>
+    
+    <div id="records-list">
     
     <% @records.each do |record| %>
      <% if @wants.include?(record) %>
@@ -27,19 +28,19 @@
        <% if wanted && !found %>
           <div class="indic indic-wanted">
             <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" stroke-width="2" stroke-miterlimit="10"></circle>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
             </svg>
           </div>
        <% elsif found %>
           <div class="indic indic-found">
             <svg class="circular" viewBox="25 25 50 50">
-              <circle class="path" cx="50" cy="50" r="20" stroke-width="2" stroke-miterlimit="10"></circle>
+              <circle class="path" cx="50" cy="50" r="20" fill="none" .jsstroke-width="2" stroke-miterlimit="10"></circle>
             </svg>
             <div class="found-number">3</div>
           </div>
        <% else %>
          <%= link_to([record, Want.new], remote: true, method: :post) do %>
-         <div class="indic indic-dig">
+         <div class="indic indic-dig" data-record-id="<%= record.id %>">
            <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
             <g class="add">
@@ -58,6 +59,7 @@
     <% end %>
     <% end %>
   </div>
+
 <% end %>
 
 <% else %>
