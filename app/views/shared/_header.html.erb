@@ -2,16 +2,9 @@
 
   <%= render 'shared/logo' %>
 
-  <!-- essay de sarch   -->
-
-  <form action="/discogs/wantlist" action="GET" >
-   <input type="text" name="title">
-   <br>
-   <input type="submit" class="button" >
-  </form>
+  <%= render 'shared/searchbar' %>
 
   <div id="login" class="button">
-
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete do %>
       <%= t(".sign_out", default: "Log out") %>

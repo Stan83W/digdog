@@ -27,6 +27,22 @@ header {
       width: 40%;
     }
   }
+  #searchbar {
+        position: fixed;
+    top: 4px;
+    left: 18%;
+    width: calc(82% - #{$gutter});
+    input {
+    text-transform: uppercase;
+    width: 100%;
+    height: calc(6.6vw - #{$gutter});
+    padding-bottom: $gutter;
+    border-bottom: 3px solid;
+    &:focus {
+      outline: none;
+    }
+    }
+  }
   #login {
     text-transform: uppercase;
     position: absolute;

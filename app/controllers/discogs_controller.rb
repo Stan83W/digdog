@@ -45,8 +45,8 @@ class DiscogsController < ApplicationController
               discogs_uri: want["resource_url"]
             )
           end
-          if params[:artists]
-            @records = search(params[:artists])
+          if params[:query]
+            @records = search(params[:query])
           else
           @records << record
           end
@@ -72,9 +72,14 @@ class DiscogsController < ApplicationController
   private
 
   def search(params)
-    @records = Record.where(artists: params)
+    records = Record.arel_table
+    query_string = "%#{params}%"
+    param_matches_string =  ->(param){ 
+      records[param].matches(query_string) 
+    } 
+    @records = Record.where(param_matches_string.(:title))
+      #.or(param_matches_string.(:artists)))
   end
-
 
   def get_wantlist
     # Fetch wantlist
