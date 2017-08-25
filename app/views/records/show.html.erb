@@ -1,0 +1,22 @@
+<div class="container">
+	<div class="record-content">
+		<%= image_tag @record.images.first["uri"], class: "cover" %>
+		<div class="infos">
+			<h2 class="item-infos"><%= @record.title %></h2>
+			<% @record.artists.each do |artist| %>
+				<h3 class="item-infos">Artists : <br><%= artist["name"] %></h3>
+			<% end %>
+			<% @record.labels.each do |label| %>
+				<h3 class="item-infos">Labels : <br><%= label["name"] %></h3>
+			<% end %>
+			<h3 class="item-infos"><%= @record.year %></h3>
+			<% @record.genres.each do |genre| %>
+				<h3 class="item-infos">Genres : <br><%= genre %></h3>
+			<% end %>
+			<% @record.styles.each do |style| %>
+				<h3 class="item-infos">Styles : <br><%= style %></h3>
+			<% end %>
+		</div>
+	</div>
+	<a href="" class="button">Dig it</a>	
+</div>
