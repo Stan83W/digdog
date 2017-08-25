@@ -11,7 +11,7 @@
      <% found = true if !@findings.empty? %>
    <% end %> 
    <%= link_to record_path(record) do %>
-   <div class="record<%= " wanted" if wanted %><%= " found" if found %>">
+   <div class="record<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
      <% unless record.images.nil? %>
        <% record.images[0..1].each do |image| %>
           <div class="album-cover">

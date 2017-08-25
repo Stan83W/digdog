@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :records, only: [:index, :show] do
-    resources :wants, only: [ :create ]
+    resources :wants, only: [:create]
   end
 
   get 'discogs/:id' => 'discogs#show', :constraints  => {:id => /.+\.\w{3,4}/}

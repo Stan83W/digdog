@@ -79,7 +79,12 @@ h1, h2, h3 {
   font-size: inherit;
 }
 
-h1, h2 {
+h1, .title {
+  font-size: 6.6vw;
+  line-height: 0.9;
+}
+
+h1, h2, .title {
   text-transform: uppercase;
 }
 

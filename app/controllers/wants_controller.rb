@@ -6,7 +6,11 @@ class WantsController < ApplicationController
     @want.user_id = @user.id
     @want.save
     if @want.save
-      redirect_to wantlist_discogs_path
+      respond_to do |format|
+        format.html { redirect_to wantlist_discogs_path }
+        format.js  # <-- will render `app/views/wants/create.js.erb`
+      end
+      
       #affichage / réorganisation de la page
     else
       #afficher message de "pas sauvé / merci de faire..."
