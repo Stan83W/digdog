@@ -15,6 +15,15 @@ $record-height: 13vw;
   }
 }
 
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX($gutter);
+  }
+}
+
 @keyframes rotate {
     100% {
         transform: rotate(360deg);
@@ -37,7 +46,7 @@ $record-height: 13vw;
 }
 
 #records-list {
-  margin-top: 2px;
+  margin-top: 5px;
   .record {
     position: relative;
     vertical-align: top;
@@ -49,7 +58,7 @@ $record-height: 13vw;
     margin-right: 2vw;
     &:hover {
       h2 {
-        animation: blink 80ms infinite alternate;
+        // animation: wave 1s infinite alternate;
       }
     }
     &.wanted .record-infos{
@@ -78,6 +87,27 @@ $record-height: 13vw;
         align-items: center;
         &.indic-wanted {
           fill: transparent;
+        }
+        &.indic-dig {
+          transition: all 200ms ease;
+          border: 2px solid transparent;
+          border-radius: 50%;
+          &:hover {
+            border-color: $secondary;
+            border-radius: 50%;
+            transform: scale(0.92)
+          }
+        }
+        .arrow{
+          height: 100%;
+          transform-origin: center center;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
         }
         .circular{
           animation: rotate 2s linear infinite;

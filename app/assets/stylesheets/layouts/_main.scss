@@ -84,7 +84,7 @@ h1, h2 {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.6rem;
 }
 
 .button, input.button {
@@ -105,6 +105,6 @@ h2 {
 }
 
 .wrapper {
-  padding: calc(6.6vw + #{$gutter}) $gutter $gutter calc(6.3% + #{$gutter});
+  padding: 6.6vw $gutter $gutter calc(6.3% + #{$gutter});
 }
 
