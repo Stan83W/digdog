@@ -1,0 +1,19 @@
+.container {
+	float: right;
+  width: 74.3vw;
+}
+.record-content {
+	display: flex;
+}
+.cover {
+  height: 45vw;
+  margin-bottom: calc(#{$gutter} * 2);
+}
+.infos {
+	padding-left: $gutter;
+	width: 30vw;
+	.item-infos {
+		border-top: 3px inset $secondary;
+		padding-top: 1.2vw;
+	}
+}    
