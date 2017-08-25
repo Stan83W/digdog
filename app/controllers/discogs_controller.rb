@@ -30,7 +30,7 @@ class DiscogsController < ApplicationController
               title: want["title"],
               labels: want["labels"],
               artists: want["artists"],
-              styles: want["styles"],
+              styles: record_json["styles"],
               genres: record_json["genres"],
               year: want["year"],
               thumb: want["thumb"],
