@@ -4,18 +4,25 @@
 		<div class="infos">
 			<h2 class="item-infos"><%= @record.title %></h2>
 			<% @record.artists.each do |artist| %>
-				<h3 class="item-infos">Artists : <br><%= artist["name"] %></h3>
-			<% end %>
-			<% @record.labels.each do |label| %>
-				<h3 class="item-infos">Labels : <br><%= label["name"] %></h3>
-			<% end %>
-			<h3 class="item-infos"><%= @record.year %></h3>
-			<% @record.genres.each do |genre| %>
-				<h3 class="item-infos">Genres : <br><%= genre %></h3>
-			<% end %>
-			<% @record.styles.each do |style| %>
-				<h3 class="item-infos">Styles : <br><%= style %></h3>
-			<% end %>
+				<div class="item-infos">
+					<h2>Artists</h2>
+					<h2 class="categories">— <%= artist["name"] %></h2>
+					<% end %>
+					<% @record.labels.each do |label| %>
+						<h2>Labels</h2>
+						<h2 class="categories">— <%= label["name"] %></h2>
+					<% end %>
+					<h2>Year</h2>
+					<h2 class="categories">— <%= @record.year %></h2>
+					<% @record.genres.each do |genre| %>
+						<h2>Genres</h2>
+						<h2 class="categories">— <%= genre %></h2>
+					<% end %>
+					<% @record.styles.each do |style| %>
+						<h2>Styles</h2>
+						<h2 class="categories">— <%= style %></h2>
+					<% end %>
+				</div>
 		</div>
 	</div>
 	<a href="" class="button">Dig it</a>	
