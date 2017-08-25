@@ -1,6 +1,6 @@
 <% unless @records.nil? %>
   <div class="slider">
-      
+
     <% @records.each do |record| %>
         <% unless record.images.nil? %>
           <% record.images.each do |image| %>
@@ -13,5 +13,3 @@
     <div class="current-title"></div>
   </div>
 <% end %>
-
-

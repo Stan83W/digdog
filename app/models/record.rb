@@ -1,6 +1,6 @@
 class Record < ApplicationRecord
-  has_many :wants
-  has_many :findings
+  has_many :wants, dependent: :destroy
+  has_many :findings, dependent: :destroy
 
   validates :discogs_id, uniqueness: true, presence: true
 
