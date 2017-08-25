@@ -1,16 +1,23 @@
 <header>
 
-<%= render 'shared/logo' %>
+  <%= render 'shared/logo' %>
 
-<div id="login" class="button">
+  <!-- essay de sarch   -->
 
-  <% if user_signed_in? %>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-  <%= t(".sign_out", default: "Log out") %>
-  <% end %>
-  <% else %>
-  <%= link_to t(".sign_in", default: "Login with Discogs"), user_discogs_omniauth_authorize_path %>
-  <% end %>
-</div>
+  <form action="/discogs/wantlist" action="GET" >
+   <input type="text" name="title">
+   <br>
+   <input type="submit" class="button" >
+  </form>
 
+  <div id="login" class="button">
+
+    <% if user_signed_in? %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+      <%= t(".sign_out", default: "Log out") %>
+      <% end %>
+    <% else %>
+      <%= link_to t(".sign_in", default: "Login with Discogs"), user_discogs_omniauth_authorize_path %>
+    <% end %>
+  </div>
 </header>

@@ -9,7 +9,7 @@
      <% wanted = true %>
      <% @findings = Finding.where(record_id: record.id) %>
      <% found = true if !@findings.empty? %>
-   <% end %> 
+   <% end %>
    <%= link_to record_path(record) do %>
    <div class="record<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
      <% unless record.images.nil? %>
@@ -53,7 +53,7 @@
      <% end %>
      </div>
    </div>
-  <% end %> 
+  <% end %>
   <% end %>
 </div>
 
