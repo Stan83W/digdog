@@ -1,0 +1,5 @@
+<div>
+	<h2><%= @record.title %></h2>
+	<h3><%= @record.artists[0]["name"] %></h3>
+	<%= image_tag @record.images.first["uri"] %>
+</div>
