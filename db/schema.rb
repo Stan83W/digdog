@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824135501) do
+ActiveRecord::Schema.define(version: 20170825125613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170824135501) do
     t.string "discogs_uri"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "tracklist"
   end
 
   create_table "sessions", force: :cascade do |t|

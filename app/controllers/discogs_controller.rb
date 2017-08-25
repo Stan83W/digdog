@@ -29,6 +29,7 @@ class DiscogsController < ApplicationController
                 styles: record_json["styles"],
                 genres: record_json["genres"],
                 images: record_json["images"],
+                tracklist: record_json["tracklist"],
               )
             end
           else
@@ -38,6 +39,7 @@ class DiscogsController < ApplicationController
               title: want["title"],
               labels: want["labels"],
               artists: want["artists"],
+              tracklist: record_json["tracklist"],
               styles: record_json["styles"],
               genres: record_json["genres"],
               year: want["year"],
