@@ -47,7 +47,7 @@
           </div>
           <% want = Want.find_by(record_id: record.id) %>
              <%= link_to([record, want], remote: true, method: :delete) do %>
-                <h2 class="close psa t0 r0">X</h3>
+                <h2 class="close psa t0 r0">✕</h3>
              <% end %>
         <% end %>
        </div>
@@ -56,11 +56,11 @@
       <div class="fl c12">
         <% if @wants.count > 0 %>
         
-        <h2 class="mt3"><%= 10 - @wants.count %> digs left</h2>
+        <h2 class="dig-left mt3"><%= 10 - @wants.count %> digs left</h2>
         
         <% else %>
         
-        <h2 class="mt3">Create digs in your wantlist first</h2>
+        <h2 class="dig-left mt3">Create digs in your wantlist first</h2>
         
         <% end %>
       </div>

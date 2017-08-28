@@ -10,15 +10,17 @@
 
     <div id="current-title" class="title">
       List
-      <span class="close" data-target="toggle-list">x</span>
+      <span class="close" data-target="toggle-list">✕</span>
     </div>
-
+    
+    <% unless @wants.nil? %>  
     <div id="list-toggle" class="title" data-target="toggle-list">
       <span></span>
       <span></span>
       <span></span>
       <span><%= @wants.count %> digs</span>
     </div>
+    <% end %>
 
   <% end %>
 

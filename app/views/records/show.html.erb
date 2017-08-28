@@ -1,7 +1,8 @@
 <%= render template: 'discogs/wantlist' %>
+
 <div class="panel">
 
-	<div class="container" id="#">
+	<div class="container">
 		<div>
 			<h2><%= @record.title %></h2>
 			<% @record.artists.first(1).each do |artist| %>
@@ -38,7 +39,7 @@
 			<span>
 			<p></p>
       <% unless @record.tracklist.nil?  %>
-			<h3 class="upper">Tracklist:</h3>
+			<h3>Tracklist:</h3>
 			</span><br>
 				<% @record.tracklist.each do |tracklist| %>
 			<div class="x">

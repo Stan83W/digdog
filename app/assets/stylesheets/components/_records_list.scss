@@ -97,9 +97,12 @@ $record-height: 13vw;
       border-bottom: 3px inset $secondary;
     }
     .album-cover {
-      width: ($record-height/3);
+      width: 8vw;
       height: ($record-height/3);
       padding: 0;
+    }
+    .dig-left {
+      margin-left: 8vw;
     }
   }
 }
