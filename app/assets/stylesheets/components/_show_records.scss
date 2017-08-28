@@ -1,24 +1,30 @@
 .container {
-	float: right;
-  width: 74.3vw;
-}
-.record-content {
-	display: flex;
+  display: flex;
+  text-transform: uppercase;
 }
 .cover {
-  display: block;
+  width: 140%;
+  padding-left: $gutter;
 }
-.infos {
-	padding-left: calc(#{$gutter} * 2);
-	width: 30vw;
-    .indic {
-      position: relative;
-    }
-  .item-infos {
-    border-top: 3px inset $secondary;
-    padding-top: 0.9vw;
-	}
-}
-.categories {
-	text-transform: capitalize;
-} 
+
+
+// .record-content {
+// 	display: flex;
+// }
+// .cover {
+//   display: block;
+// }
+// .infos {
+// 	padding-left: calc(#{$gutter} * 2);
+// 	width: 30vw;
+//     .indic {
+//       position: relative;
+//     }
+//   .item-infos {
+//     border-top: 3px inset $secondary;
+//     padding-top: 0.9vw;
+// 	}
+// }
+// .categories {
+// 	text-transform: capitalize;
+// } 

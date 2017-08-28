@@ -1,30 +1,50 @@
 <%= render template: 'discogs/wantlist' %>
-
+<div class="container">
+	<div class="item">
 		<h2><%= @record.title %></h2>
-
 		<% @record.artists.first(1).each do |artist| %>
-			<h2><%= artist["name"] %></h2>
+			<h3><%= artist["name"] %></h3>
 		<% end %>
-
-		<% @record.labels.each do |label| %>
-		<h2>Labels</h2>
-			<h2><%= label["name"] %></h2>
+			<span>
+				<% @record.labels.each do |label| %>
+					Labels: <%= label["name"] %>
+				<% end %>
+			</span><br>
+			<span>
+				Format:
+				<% @record.formats[0]["descriptions"].each do |format| %>
+					<span><%= format %></span>
+				<% end %>
+			</span><br>
+			<span>
+				Year: <%= @record.year %>
+			</span><br>
+			<span>
+				<% @record.genres.each do |genre| %>
+					Genres: <%= genre %>
+				<% end %>
+			</span><br>
+			<span>
+				Styles:
+				<% @record.styles.each do |style| %>
+					<%= style %>
+				<% end %>
+			</span><br>
+		<span>
+			<h3>Tracklist:</h3>
+		</span><br>
+		<% @record.tracklist.each do |tracklist| %>
+		<span>
+			<%= tracklist["position"] %>
+			<%= tracklist["title"] %>			
+			<%= tracklist["duration"] %>
+		</span><br>
 		<% end %>
-		
-		<h2>Format</h2>
-		<% @record.formats[0]["descriptions"].each do |format| %>
-		<h2><%= format %></h2>	
-		<% end %>	
-			<h2>Year</h2>
-		<h2><%= @record.year %></h2>
-		<% @record.genres.each do |genre| %>
-			<h2>Genres</h2>
-				<h2><%= genre %></h2>
-		<% end %>
-			<% @record.styles.each do |style| %>
-		<h2>Styles</h2>
-		<h2><%= style %></h2>
-		<% end %>
+	</div>
+	<div class="item">
+	 <%= image_tag @record.images.first["uri"], class: "cover" %>		
+	</div>	
+</div>
 <!--       <%= link_to([@record, Want.new], remote: true, method: :post) do %>
          <div class="indic indic-dig" data-record-id="<%= @record.id %>">
            <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -39,4 +59,3 @@
             </svg> -->
 <!--          </div>
       <% end %> -->
-	 <%= image_tag @record.images.first["uri"], class: "cover" %>
