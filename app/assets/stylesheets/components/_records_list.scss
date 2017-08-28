@@ -16,7 +16,7 @@ $record-height: 13vw;
         img {
           transition: opacity 200ms ease, filter 200ms ease;;
           // filter: contrast(0.6) brightness(1.5);
-          opacity: 0.7;
+          opacity: 0.5;
         }
         &::after {
           content: "✓";
