@@ -1,57 +1,59 @@
 <%= render template: 'discogs/wantlist' %>
-<div class="container" id="#">
-	<div>
-		<h2><%= @record.title %></h2>
-		<% @record.artists.first(1).each do |artist| %>
-			<h3><%= artist["name"] %></h3>
-		<% end %>
-		<p></p>
-			<div>
-				<% @record.labels.each do |label| %>
-					Labels: <%= label["name"] %>
-				<% end %>
+<div class="panel">
+	<div class="container" id="#">
+		<div>
+			<h2><%= @record.title %></h2>
+			<% @record.artists.first(1).each do |artist| %>
+				<h3><%= artist["name"] %></h3>
+			<% end %>
+			<p></p>
+				<div>
+					<% @record.labels.each do |label| %>
+						Labels: <%= label["name"] %>
+					<% end %>
+				</div><br>
+				<div>
+					Format:
+					<% @record.formats[0]["descriptions"].each do |format| %>
+						<span><%= format %></span>
+					<% end %>
+				</div><br>
+				<div>
+					Year: <%= @record.year %>
+				</div><br>
+				<div>
+					<% @record.genres.each do |genre| %>
+						Genres: <%= genre %>
+					<% end %>
+				</div><br>
+				<div>
+					Styles:
+					<% @record.styles.each do |style| %>
+						<%= style %>
+					<% end %>
+				</div><br>
+			<span>
+			<p></p>
+			<h3 class="upper">Tracklist:</h3>
+			</span><br>
+				<% @record.tracklist.each do |tracklist| %>
+			<div class="x">
+				<div class="c2">
+					<%= tracklist["position"] %>				
+				</div>
+				<div class="c9">
+					<%= tracklist["title"] %>			
+					<%= tracklist["duration"] %>
+				</div>
 			</div><br>
-			<div>
-				Format:
-				<% @record.formats[0]["descriptions"].each do |format| %>
-					<span><%= format %></span>
-				<% end %>
-			</div><br>
-			<div>
-				Year: <%= @record.year %>
-			</div><br>
-			<div>
-				<% @record.genres.each do |genre| %>
-					Genres: <%= genre %>
-				<% end %>
-			</div><br>
-			<div>
-				Styles:
-				<% @record.styles.each do |style| %>
-					<%= style %>
-				<% end %>
-			</div><br>
-		<span>
-		<p></p>
-		<h3 class="upper">Tracklist:</h3>
-		</span><br>
-			<% @record.tracklist.each do |tracklist| %>
-		<div class="x">
-			<div class="c2">
-				<%= tracklist["position"] %>				
-			</div>
-			<div class="c9">
-				<%= tracklist["title"] %>			
-				<%= tracklist["duration"] %>
-			</div>
-		</div><br>
-		<% end %>
+			<% end %>
+		</div>
+		<div style="flex: 0 0 60%;">
+		 <%= image_tag @record.images.first["uri"], class: "cover" %>		
+		</div>	
 	</div>
-	<div>
-	 <%= image_tag @record.images.first["uri"], class: "cover" %>		
-	</div>	
+	
 </div>
-<div class="panel"></div>
 <!--       <%= link_to([@record, Want.new], remote: true, method: :post) do %>
          <div class="indic indic-dig" data-record-id="<%= @record.id %>">
            <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

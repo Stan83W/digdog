@@ -1,24 +1,27 @@
 .container {
   text-transform: uppercase;  
   display: flex;
-  float: right;
-  padding-right: 16%;
-  min-height: 100%;
+  width: 90%;
   p {
     margin-bottom: 3em;
   }
   color: $primary;
+  z-index: 202;
 }
 .panel {
   background-color: $secondary;
-  height: 100vh;
-  width: 67%;
-  position: sticky;
-  left: 50%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 30%;
+  z-index: 201;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .cover {
-  width: 140%;
-  padding-left: $gutter;
+  width: 100%;
 }
 #slideout {
   background: #fff;
