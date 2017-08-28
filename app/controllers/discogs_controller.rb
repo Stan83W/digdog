@@ -22,11 +22,13 @@ class DiscogsController < ApplicationController
             record = Record.find_by_discogs_id(discogs_id)
             if record.images.nil?
               record_json = get_release_json(want["id"])
+              record_json["images"] = [] if record_json["images"].nil?
               record.update(
+                tracklist: record_json["tracklist"],
                 styles: record_json["styles"],
                 genres: record_json["genres"],
                 images: record_json["images"],
-                tracklist: record_json["tracklist"],
+                formats: record_json["formats"]
               )
             end
           else
@@ -42,7 +44,8 @@ class DiscogsController < ApplicationController
               year: want["year"],
               thumb: want["thumb"],
               images: record_json["images"],
-              discogs_uri: want["resource_url"]
+              discogs_uri: want["resource_url"],
+              formats: record_json["formats"]
             )
           end
           if params[:query]
