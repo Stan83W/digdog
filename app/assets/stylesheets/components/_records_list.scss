@@ -11,6 +11,22 @@ $record-height: 13vw;
     height: $record-height;
     display: inline;
     margin-right: $gutter;
+    &.digged {
+      .album-cover {
+        img {
+          transition: opacity 200ms ease, filter 200ms ease;;
+          // filter: contrast(0.6) brightness(1.5);
+          opacity: 0.7;
+        }
+        &::after {
+          content: "✓";
+          position: absolute;
+          top: 5vw;
+          left: 9.6vw;
+          font-size: 8vw;
+        }
+      }
+    }
     h2.added {
       margin-top: ($gutter/2.8);
     }

@@ -23,7 +23,7 @@
   // }, 900);
 
   $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"]');
-  $record.find(".record-infos").empty().html("<h2>Added to Diglist</h2>");
+  $record.addClass('digged').find(".record-infos").empty().html("<h2>Added to Diglist</h2>");
   setTimeout(function() {
     $record.remove();
   }, 900);
