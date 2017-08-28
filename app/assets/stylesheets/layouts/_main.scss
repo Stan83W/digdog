@@ -92,6 +92,10 @@ h2 {
   font-size: 2.6rem;
 }
 
+[data-target] {
+  cursor: pointer;
+}
+
 .button, input.button {
   text-transform: uppercase;
   border: 1px solid $secondary !important;

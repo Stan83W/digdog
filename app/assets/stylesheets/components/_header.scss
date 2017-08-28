@@ -27,26 +27,92 @@ header {
       width: 40%;
     }
   }
-  #searchbar {
-        position: fixed;
+  #current-title {
+    display: none;
+    position: fixed;
     top: 4px;
-    left: 18%;
-    width: calc(82% - #{$gutter});
+    left: 15%;
+    width: calc(85% - #{$gutter});
+    background: $primary;
+    z-index: 300;
+    span.close { 
+     position: absolute;
+     top: 0;
+     right: 0;
+     font-size: 0.3em;
+   }
+ }
+ #list-toggle {
+  position: fixed;
+  top: $gutter;
+  right: $gutter;
+  width: 0.3em;
+  height: 0.2em;
+  span {
+    font-size: 0.25em;
+    position:absolute;
+    &:nth-child(1), &:nth-child(2), &:nth-child(3) {  
+      left: 0;
+      height: 3px;
+      background: $secondary;
+      width: 100%;
+    }
+    &:nth-child(1) {
+      top: 0;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      margin-top: -1.5px;
+    }
+    &:nth-child(3) {
+      bottom: 0;
+    }
+    &:nth-child(4) {
+      top: 0;
+      right: 1.5em;
+      width: auto;
+      white-space: nowrap;
+    }
+  }
+}
+#searchbar {
+  position: fixed;
+  top: 4px;
+  left: 18%;
+  width: calc(78% - #{$gutter});
+  &:hover {
     input {
+      opacity: 1;
+    }
+  }
+  input {
+    background: $primary;
+    // transition: opacity 100ms ease;
+    opacity: 0;
     text-transform: uppercase;
     width: 100%;
     height: calc(6.6vw - #{$gutter});
     padding-bottom: $gutter;
     border-bottom: 3px solid;
+    &[data-empty="false"] {
+      transition: opacity 0 ease;
+      opacity: 1
+    }
+    &::placeholder {
+      opacity: 1;
+      animation: blink 2s infinite alternate;
+    }
     &:focus {
       outline: none;
     }
-    }
   }
-  #login {
-    text-transform: uppercase;
-    position: absolute;
-    top: $gutter;
-    right: $gutter;
-  }
+}
+#login {
+  text-transform: uppercase;
+  position: fixed;
+  left: $gutter;
+  bottom: $gutter;
+  width: 5.5vw;
+  text-align: center;
+}
 }

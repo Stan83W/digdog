@@ -1,50 +1,5 @@
 $record-height: 13vw;
 
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  50.001% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes wave {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX($gutter);
-  }
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0
-  }
-  30% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px
-  }
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124px
-  }
-}
-
 #records-list {
   margin-top: 5px;
   .record {
@@ -55,7 +10,11 @@ $record-height: 13vw;
     transition: border-top 150ms ease;
     height: $record-height;
     display: inline;
-    margin-right: 2vw;
+    margin-right: $gutter;
+    .indic {
+      width: 2.5em;
+      height: 2.5em;
+    }
     &:hover {
       h2 {
         // animation: wave 1s infinite alternate;
@@ -71,19 +30,16 @@ $record-height: 13vw;
       position: relative;
       display: inline-block;
       vertical-align: top;
-      width: 25vw;
+      width: calc(100% / 3 - #{$record-height + 1});
       height: $record-height;
       h2 {
         margin-top: ($gutter/2.8);
       }
     }
-    
-
     .record-content {
      display: inline;
      margin-bottom: $gutter;
    }
-
    .album-cover {
     display: inline-block;
       // padding-right: ($gutter);
@@ -107,6 +63,51 @@ $record-height: 13vw;
       bottom: 0;
       left: 0;
     }
+  }
+
+  #wants {
+    border-top: 3px solid;
+    position: fixed;
+    top: 6.6vw;
+    overflow: scroll;
+    height: calc(100vh - 6.6vw);
+    left: calc(6.3% + #{$gutter});
+    width: calc(100% - 6.3% - #{($gutter*2)});
+    background: white;
+    z-index: 100;
+    transform-origin: right;
+    transform: translateX(205%) translateZ(0) scaleX(2);
+    transition: transform 600ms cubic-bezier(0.77, 0, 0.175, 1);
+    .dig-infos {
+      padding-left: $gutter;
+    }
+    .record {
+      padding: 0 $gutter 0 0;
+      height: auto;
+      display: inline-block;
+      width: 100%;
+      border-top: 0 inset $secondary;
+      padding-bottom: $gutter;
+      // &:not(:last-child) {
+      //   border-bottom: 3px inset $secondary;
+      // }
+      border-bottom: 3px inset $secondary;
+    }
+    .album-cover {
+      width: ($record-height/3);
+      height: ($record-height/3);
+      padding: 0;
+    }
+  }
+}
+
+body.diglist {
+  overflow: hidden;
+  #diglist, #current-title {
+    display: block;
+  }
+  #records-list #wants {
+    transform: translateX(0%) translateZ(0) scaleX(1)
   }
 }
 

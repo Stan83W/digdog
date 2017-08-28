@@ -7,58 +7,121 @@
     
     <div id="records-list">
     
-    <% @records.each do |record| %>
-     <% if @wants.include?(record) %>
-       <% wanted = true %>
-       <% @findings = Finding.where(record_id: record.id) %>
-       <% found = true if !@findings.empty? %>
-     <% end %>
-     <%= link_to record_path(record) do %>
-     <div class="record<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
-       <% unless record.images.nil? %>
-         <% record.images[0..1].each do |image| %>
-            <div class="album-cover">
-              <%= image_tag image['uri'] %>
-            </div>
-         <% end %>
+    <div id="wants" class="fl c12">
+    <% @wants.each do |record| %>
+       <% if @wants.include?(record) %>
+         <% wanted = true %>
+         <% @findings = Finding.where(record_id: record.id) %>
+         <% found = true if !@findings.empty? %>
        <% end %>
-       <div class="record-infos">
-       <h2><%= record.title %></h2>
-       <h3><%= record.artists[0]["name"] %></h3>
-       <% if wanted && !found %>
-          <div class="indic indic-wanted">
-            <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
-            </svg>
-          </div>
-       <% elsif found %>
-          <div class="indic indic-found">
-            <svg class="circular" viewBox="25 25 50 50">
-              <circle class="path" cx="50" cy="50" r="20" fill="none" .jsstroke-width="2" stroke-miterlimit="10"></circle>
-            </svg>
-            <div class="found-number">3</div>
-          </div>
-       <% else %>
-         <%= link_to([record, Want.new], remote: true, method: :post) do %>
-         <div class="indic indic-dig" data-record-id="<%= record.id %>">
-           <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-               viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
-            <g class="add">
-              <polygon points="103.8,159.5 103.8,40.5 96.2,40.5 96.2,159.5 "/>
-              <polygon points="40.5,103.8 159.5,103.8 159.5,96.2 40.5,96.2 "/>
-            </g>
-            <g class="arrow">
-            <polygon points="160.8,94.1 103.8,152.1 103.8,33.2 96.2,33.2 96.2,152.1 39.1,94.1 33.7,99.5 100,166.8 166.3,99.5 "/>
-            </g>
-            </svg>
+       <div class="record fl c12<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
+       <%= link_to record_path(record) do %>
+         <% unless record.images.nil? %>
+           <% record.images[0..0].each do |image| %>
+              <div class="album-cover fl p0 c2">
+                <%= image_tag image['uri'] %>
+              </div>
+           <% end %>
+         <% end %>
+         <div class="dig-infos fl c6">
+             <h2><%= record.title %></h2>
+             <h3><%= record.artists[0]["name"] %></h3>
          </div>
-         <% end %>
-       <% end %>
+         <div class="fl psr c4">
+           <% if wanted && !found %>
+                <div class="fl psr indic indic-wanted mr1">
+                  <svg class="circular" viewBox="25 25 50 50">
+                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                  </svg>
+                </div>
+                <h2 class="fl">Digging…</h2>
+             <% elsif found %>
+                <div class="fl psr indic indic-wanted mr1">
+                  <svg class="circular" viewBox="25 25 50 50">
+                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                  </svg>
+                  <div class="found-number"><%= @findings.count %></div>
+                </div>
+                <h2 class="fl">Found <%= @findings.count %> matching record</h2>
+             <% end %>
+          </div>
+          <% want = Want.find_by(record_id: record.id) %>
+             <%= link_to([record, want], remote: true, method: :delete) do %>
+                <h2 class="close psa t0 r0">X</h3>
+             <% end %>
+        <% end %>
        </div>
-     </div>
-    <% end %>
-    <% end %>
-  </div>
+      <% end %>
+
+      <div class="fl c12">
+        <% if @wants.count > 0 %>
+        
+        <h2 class="mt3"><%= 10 - @wants.count %> digs left</h2>
+        
+        <% else %>
+        
+        <h2 class="mt3">Create digs in your wantlist first</h2>
+        
+        <% end %>
+      </div>
+
+      </div>
+
+      
+      <div id="wantlist">
+        
+        <% @wantlist_without_wants.each do |record| %>
+       <% if @wants.include?(record) %>
+         <% wanted = true %>
+         <% @findings = Finding.where(record_id: record.id) %>
+         <% found = true if !@findings.empty? %>
+       <% end %>
+       <div class="record<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
+       <%= link_to record_path(record) do %>
+         <% unless record.images.nil? %>
+           <% record.images[0..0].each do |image| %>
+              <div class="album-cover">
+                <%= image_tag image['uri'] %>
+              </div>
+           <% end %>
+         <% end %>
+         <div class="record-infos">
+             <h2><%= record.title %></h2>
+             <h3><%= record.artists[0]["name"] %></h3>
+                 <% if wanted && !found %>
+                    <div class="indic indic-wanted">
+                      <svg class="circular" viewBox="25 25 50 50">
+                      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+                      </svg>
+                    </div>
+                 <% elsif found %>
+                    <div class="indic indic-found">
+                      <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+                      </svg>
+                      <div class="found-number">3</div>
+                    </div>
+                 <% else %>
+                   <%= link_to([record, Want.new], remote: true, method: :post) do %>
+                   <div class="indic indic-dig" data-record-id="<%= record.id %>">
+                     <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                      <g class="add">
+                        <polygon points="103.8,159.5 103.8,40.5 96.2,40.5 96.2,159.5 "/>
+                        <polygon points="40.5,103.8 159.5,103.8 159.5,96.2 40.5,96.2 "/>
+                      </g>
+                      </svg>
+                   </div>
+                   <% end %>
+                <% end %>
+         </div>
+        <% end %>
+       </div>
+      <% end %>
+
+      </div>
+
+    </div>
 
 <% end %>
 
