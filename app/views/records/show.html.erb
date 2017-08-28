@@ -1,30 +1,59 @@
 <%= render template: 'discogs/wantlist' %>
-
-		<h2><%= @record.title %></h2>
-
-		<% @record.artists.first(1).each do |artist| %>
-			<h2><%= artist["name"] %></h2>
-		<% end %>
-
-		<% @record.labels.each do |label| %>
-		<h2>Labels</h2>
-			<h2><%= label["name"] %></h2>
-		<% end %>
-		
-		<h2>Format</h2>
-		<% @record.formats[0]["descriptions"].each do |format| %>
-		<h2><%= format %></h2>	
-		<% end %>	
-			<h2>Year</h2>
-		<h2><%= @record.year %></h2>
-		<% @record.genres.each do |genre| %>
-			<h2>Genres</h2>
-				<h2><%= genre %></h2>
-		<% end %>
-			<% @record.styles.each do |style| %>
-		<h2>Styles</h2>
-		<h2><%= style %></h2>
-		<% end %>
+<div class="panel">
+	<div class="container" id="#">
+		<div>
+			<h2><%= @record.title %></h2>
+			<% @record.artists.first(1).each do |artist| %>
+				<h3><%= artist["name"] %></h3>
+			<% end %>
+			<p></p>
+				<div>
+					<% @record.labels.each do |label| %>
+						Labels: <%= label["name"] %>
+					<% end %>
+				</div><br>
+				<div>
+					Format:
+					<% @record.formats[0]["descriptions"].each do |format| %>
+						<span><%= format %></span>
+					<% end %>
+				</div><br>
+				<div>
+					Year: <%= @record.year %>
+				</div><br>
+				<div>
+					<% @record.genres.each do |genre| %>
+						Genres: <%= genre %>
+					<% end %>
+				</div><br>
+				<div>
+					Styles:
+					<% @record.styles.each do |style| %>
+						<%= style %>
+					<% end %>
+				</div><br>
+			<span>
+			<p></p>
+			<h3 class="upper">Tracklist:</h3>
+			</span><br>
+				<% @record.tracklist.each do |tracklist| %>
+			<div class="x">
+				<div class="c2">
+					<%= tracklist["position"] %>				
+				</div>
+				<div class="c9">
+					<%= tracklist["title"] %>			
+					<%= tracklist["duration"] %>
+				</div>
+			</div><br>
+			<% end %>
+		</div>
+		<div style="flex: 0 0 60%;">
+		 <%= image_tag @record.images.first["uri"], class: "cover" %>		
+		</div>	
+	</div>
+	
+</div>
 <!--       <%= link_to([@record, Want.new], remote: true, method: :post) do %>
          <div class="indic indic-dig" data-record-id="<%= @record.id %>">
            <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -39,4 +68,3 @@
             </svg> -->
 <!--          </div>
       <% end %> -->
-	 <%= image_tag @record.images.first["uri"], class: "cover" %>
