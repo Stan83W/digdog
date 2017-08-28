@@ -1,12 +1,15 @@
 .indic {
-  width: 50px;
-  height: 50px;
+  width: 1.7em;
+  height: 1.7em;
   position: absolute;
   bottom: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  .found-number {
+    font-size: 1rem;
+  }
   &.indic-wanted {
     fill: transparent;
   }
@@ -17,7 +20,7 @@
     .add {
       transition: transform 100ms ease;
       transform-origin: center;
-      transform: scale(0);
+      transform: scale(1);
     }
     .arrow {
       transition: all 200ms ease;
@@ -30,7 +33,7 @@
       border-radius: 50%;
       transform: scale(0.92);
       .add {
-        transform: scale(1);
+        transform: scale(0.9);
       }
       .arrow {
         transform: scale(0);

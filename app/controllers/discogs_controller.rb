@@ -54,6 +54,8 @@ class DiscogsController < ApplicationController
           @records << record
           end
         end
+
+        @wantlist_without_wants = @records - @wants
       end
     else
       redirect_to root_path

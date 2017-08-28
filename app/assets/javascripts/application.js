@@ -13,3 +13,14 @@ if($('#records-list').length > 0) {
     }
   });
 }
+
+$('#searchbar').find('input').on('input', function (e) {
+  $(e.currentTarget).attr('data-empty', !e.currentTarget.value);
+});
+$('#searchbar').find('input').each(function(index, el) {
+  $(el).trigger('input');
+});
+
+$("[data-target='toggle-list']").click(function(event) {
+  $('body').toggleClass('diglist');
+});

@@ -5,14 +5,30 @@
   <% unless @records.nil? %>
   <%= render 'shared/searchbar' %>
   <% end %>
+  
+  <% if user_signed_in? %>
+
+    <div id="current-title" class="title">
+      List
+      <span class="close" data-target="toggle-list">x</span>
+    </div>
+
+    <div id="list-toggle" class="title" data-target="toggle-list">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span><%= @wants.count %> digs</span>
+    </div>
+
+  <% end %>
 
   <div id="login" class="button">
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete do %>
-      <%= t(".sign_out", default: "Log out") %>
+      <%= t(".sign_out", default: "Quit") %>
       <% end %>
     <% else %>
-      <%= link_to t(".sign_in", default: "Login with Discogs"), user_discogs_omniauth_authorize_path %>
+      <%= link_to t(".sign_in", default: "Login"), user_discogs_omniauth_authorize_path %>
     <% end %>
   </div>
 </header>
