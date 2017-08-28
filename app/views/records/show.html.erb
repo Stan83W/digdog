@@ -5,40 +5,46 @@
 		<% @record.artists.first(1).each do |artist| %>
 			<h3><%= artist["name"] %></h3>
 		<% end %>
-			<span>
+		<p></p>
+			<div>
 				<% @record.labels.each do |label| %>
 					Labels: <%= label["name"] %>
 				<% end %>
-			</span><br>
-			<span>
+			</div><br>
+			<div>
 				Format:
 				<% @record.formats[0]["descriptions"].each do |format| %>
 					<span><%= format %></span>
 				<% end %>
-			</span><br>
-			<span>
+			</div><br>
+			<div>
 				Year: <%= @record.year %>
-			</span><br>
-			<span>
+			</div><br>
+			<div>
 				<% @record.genres.each do |genre| %>
 					Genres: <%= genre %>
 				<% end %>
-			</span><br>
-			<span>
+			</div><br>
+			<div>
 				Styles:
 				<% @record.styles.each do |style| %>
 					<%= style %>
 				<% end %>
-			</span><br>
+			</div><br>
 		<span>
-			<h3>Tracklist:</h3>
+		<p></p>
+		<h3 class="upper">Tracklist:</h3>
 		</span><br>
-		<% @record.tracklist.each do |tracklist| %>
-		<span>
-			<%= tracklist["position"] %>
-			<%= tracklist["title"] %>			
-			<%= tracklist["duration"] %>
-		</span><br>
+			<% @record.tracklist.each do |tracklist| %>
+		<div class="x">
+			<div class="c2">
+				<%= tracklist["position"] %>				
+			</div>
+			<div class="c9">
+				<%= tracklist["title"] %>			
+				<%= tracklist["duration"] %>
+			</div>
+		</div><br>
 		<% end %>
 	</div>
 	<div class="item">
