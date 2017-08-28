@@ -1,8 +1,62 @@
-<div class="record">
-	<p><%= @record.artists[0]["name"] %> — <%= @record.title %></p>
-	<% unless @record.image_thumb.nil? %>
-	<%= image_tag @record.image_thumb %>
-	<% end %>
-</div>
+<%= render template: 'discogs/wantlist' %>
 
-<%= p @record %>
+<div class="panel">
+
+  <div class="container">
+    <div>
+      <h2><%= @record.title %></h2>
+      <% @record.artists.first(1).each do |artist| %>
+        <h3><%= artist["name"] %></h3>
+      <% end %>
+      <p></p>
+        <div>
+          <% @record.labels.each do |label| %>
+            Labels: <%= label["name"] %>
+          <% end %>
+        </div><br>
+        <% unless @record.formats.nil?  %>
+        <div>
+          Format:
+          <% @record.formats.each do |format| %>
+            <span><%= format["name"] %></span>
+          <% end %>
+        </div><br>
+        <% end %>
+        <div>
+          Year: <%= @record.year %>
+        </div><br>
+        <div>
+          <% @record.genres.each do |genre| %>
+            Genres: <%= genre %>
+          <% end %>
+        </div><br>
+        <div>
+          Styles:
+          <% @record.styles.each do |style| %>
+            <%= style %>
+          <% end %>
+        </div><br>
+      <span>
+      <p></p>
+      <% unless @record.tracklist.nil?  %>
+      <h3>Tracklist:</h3>
+      </span><br>
+        <% @record.tracklist.each do |tracklist| %>
+      <div class="x">
+        <div class="c2">
+          <%= tracklist["position"] %>        
+        </div>
+        <div class="c9">
+          <%= tracklist["title"] %>     
+          <%= tracklist["duration"] %>
+        </div>
+      </div><br>
+      <% end %>
+      <% end %>
+    </div>
+    <div style="flex: 0 0 60%;">
+     <%= image_tag @record.images.first["uri"], class: "cover" %>   
+    </div>  
+  </div>
+  
+</div>

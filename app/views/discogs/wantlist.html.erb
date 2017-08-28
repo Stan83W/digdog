@@ -15,7 +15,7 @@
          <% found = true if !@findings.empty? %>
        <% end %>
        <div class="record fl c12<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
-       <%= link_to record_path(record) do %>
+       <%= link_to discog_path(record) do %>
          <% unless record.images.nil? %>
            <% record.images[0..0].each do |image| %>
               <div class="album-cover fl p0 c2">
@@ -42,7 +42,7 @@
                   </svg>
                   <div class="found-number"><%= @findings.count %></div>
                 </div>
-                <h2 class="fl">Found <%= @findings.count %> matching record</h2>
+                <h2 class="fl"><%= @findings.count %> matching record</h2>
              <% end %>
           </div>
           <% want = Want.find_by(record_id: record.id) %>
@@ -54,8 +54,12 @@
       <% end %>
 
       <div class="fl c12">
-        <% if @wants.count > 0 %>
+        <% if @wants.count >= 10 %>
         
+        <h2 class="dig-left mt3">No more digs left</h2>
+
+        <% elsif @wants.count > 0 %>
+
         <h2 class="dig-left mt3"><%= 10 - @wants.count %> digs left</h2>
         
         <% else %>
@@ -77,7 +81,7 @@
          <% found = true if !@findings.empty? %>
        <% end %>
        <div class="record<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
-       <%= link_to record_path(record) do %>
+       <%= link_to discog_path(record) do %>
          <% unless record.images.nil? %>
            <% record.images[0..0].each do |image| %>
               <div class="album-cover">
@@ -88,20 +92,7 @@
          <div class="record-infos">
              <h2><%= record.title %></h2>
              <h3><%= record.artists[0]["name"] %></h3>
-                 <% if wanted && !found %>
-                    <div class="indic indic-wanted">
-                      <svg class="circular" viewBox="25 25 50 50">
-                      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
-                      </svg>
-                    </div>
-                 <% elsif found %>
-                    <div class="indic indic-found">
-                      <svg class="circular" viewBox="25 25 50 50">
-                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
-                      </svg>
-                      <div class="found-number">3</div>
-                    </div>
-                 <% else %>
+                 <% if @wants.count < 10 %>
                    <%= link_to([record, Want.new], remote: true, method: :post) do %>
                    <div class="indic indic-dig" data-record-id="<%= record.id %>">
                      <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

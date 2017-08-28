@@ -66,7 +66,8 @@ class DiscogsController < ApplicationController
   end
 
   def show
-    @record = @discogs.get_release(params[:id])
+    wantlist
+    @record = Record.find(params[:id])
   end
 
   def reload_wantlist
