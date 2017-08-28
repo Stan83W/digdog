@@ -11,10 +11,6 @@ $record-height: 13vw;
     height: $record-height;
     display: inline;
     margin-right: $gutter;
-    .indic {
-      width: 2.5em;
-      height: 2.5em;
-    }
     &:hover {
       h2 {
         // animation: wave 1s infinite alternate;
@@ -34,6 +30,10 @@ $record-height: 13vw;
       height: $record-height;
       h2 {
         margin-top: ($gutter/2.8);
+      }
+      .indic {
+        width: 2.5em;
+        height: 2.5em;
       }
     }
     .record-content {
