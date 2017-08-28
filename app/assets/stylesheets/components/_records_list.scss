@@ -11,6 +11,9 @@ $record-height: 13vw;
     height: $record-height;
     display: inline;
     margin-right: $gutter;
+    h2.added {
+      margin-top: ($gutter/2.8);
+    }
     &:hover {
       h2 {
         // animation: wave 1s infinite alternate;

@@ -3,6 +3,20 @@
 <% else %>
   // $record = $('.indic[data-record-id="<%= @want.record.id %>"]');
   // $record.html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle></svg>').attr('class', 'indic indic-wanted');
-  
-  $record = $('.record[data-record-id="<%= @want.record.id %>"]').remove();
+  $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"]');
+  $clone = $record.clone().addClass('clone').empty().html("<h2 class='added'>Added to Diglist</h2>").appendTo('#wantlist');
+  $clone.css({
+    'z-index': 500,
+    'position': 'fixed',
+    'background': '#fff',
+    'width': "30vw",
+    'top': $record.offset().top,
+    'left': $record.position().left,
+    'margin': 0
+  });
+  $record.css('opacity', '0');
+  setTimeout(function() {
+    $clone.remove();
+    $record.remove();
+  }, 900);
 <% end %>
