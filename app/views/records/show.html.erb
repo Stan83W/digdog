@@ -1,6 +1,6 @@
 <%= render template: 'discogs/wantlist' %>
-<div class="container">
-	<div class="item">
+<div class="container" id="#">
+	<div>
 		<h2><%= @record.title %></h2>
 		<% @record.artists.first(1).each do |artist| %>
 			<h3><%= artist["name"] %></h3>
@@ -47,10 +47,11 @@
 		</div><br>
 		<% end %>
 	</div>
-	<div class="item">
+	<div>
 	 <%= image_tag @record.images.first["uri"], class: "cover" %>		
 	</div>	
 </div>
+<div class="panel"></div>
 <!--       <%= link_to([@record, Want.new], remote: true, method: :post) do %>
          <div class="indic indic-dig" data-record-id="<%= @record.id %>">
            <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
