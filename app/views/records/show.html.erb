@@ -1,5 +1,6 @@
 <%= render template: 'discogs/wantlist' %>
 <div class="panel">
+
 	<div class="container" id="#">
 		<div>
 			<h2><%= @record.title %></h2>
@@ -12,12 +13,14 @@
 						Labels: <%= label["name"] %>
 					<% end %>
 				</div><br>
-				<div>
-					Format:
-					<% @record.formats[0]["descriptions"].each do |format| %>
-						<span><%= format %></span>
-					<% end %>
-				</div><br>
+        <% unless @record.formats.nil?  %>
+        <div>
+          Format:
+          <% @record.formats.each do |format| %>
+            <span><%= format["name"] %></span>
+          <% end %>
+        </div><br>
+        <% end %>
 				<div>
 					Year: <%= @record.year %>
 				</div><br>
@@ -34,6 +37,7 @@
 				</div><br>
 			<span>
 			<p></p>
+      <% unless @record.tracklist.nil?  %>
 			<h3 class="upper">Tracklist:</h3>
 			</span><br>
 				<% @record.tracklist.each do |tracklist| %>
@@ -46,6 +50,7 @@
 					<%= tracklist["duration"] %>
 				</div>
 			</div><br>
+      <% end %>
 			<% end %>
 		</div>
 		<div style="flex: 0 0 60%;">
@@ -54,17 +59,3 @@
 	</div>
 	
 </div>
-<!--       <%= link_to([@record, Want.new], remote: true, method: :post) do %>
-         <div class="indic indic-dig" data-record-id="<%= @record.id %>">
-           <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-               viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
-            <g class="add">
-              <polygon points="103.8,159.5 103.8,40.5 96.2,40.5 96.2,159.5 "/>
-              <polygon points="40.5,103.8 159.5,103.8 159.5,96.2 40.5,96.2 "/>
-            </g>
-            <g class="arrow">
-            <polygon points="160.8,94.1 103.8,152.1 103.8,33.2 96.2,33.2 96.2,152.1 39.1,94.1 33.7,99.5 100,166.8 166.3,99.5 "/>
-            </g>
-            </svg> -->
-<!--          </div>
-      <% end %> -->
