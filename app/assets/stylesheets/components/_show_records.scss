@@ -1,4 +1,8 @@
 .container {
+  h2 {
+    margin-top: ($gutter/2.8);
+  }
+  border-top: 3px solid $primary;
   text-transform: uppercase;  
   display: flex;
   width: 90%;
@@ -22,6 +26,7 @@
 }
 .cover {
   width: 100%;
+  margin-top: ($gutter/2.8);
 }
 #slideout {
   background: #fff;
