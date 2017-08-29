@@ -58,3 +58,16 @@
 .photo > img {
   width: 70vh;
 }
+.steps-list {
+  img {
+    width: 150px;
+    border-radius: 50%;
+    justify-content: center;
+  }
+  h2 {
+    text-align: center;
+  }
+}
+ol {
+  display: flex;
+}

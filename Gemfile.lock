@@ -117,6 +117,11 @@ GEM
       mini_portile2 (~> 2.2.0)
     normalize-rails (4.1.1)
     oauth (0.5.3)
+    octicons (4.0.2)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (4.0.1)
+      octicons (~> 4.0)
+      rails
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
@@ -244,6 +249,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   normalize-rails
+  octicons_helper
   omniauth-discogs
   omniauth-oauth
   pg
