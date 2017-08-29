@@ -2,11 +2,11 @@
 
 <% render 'shared/searchbar' %>
 
-  
+
   <% if @records %>
-    
+
     <div id="records-list">
-    
+
     <div id="wants" class="fl c12">
 
       <div id="wants-counter" class="fl c12 record">
@@ -58,12 +58,10 @@
        </div>
       <% end %>
 
-
       </div>
 
-      
+
       <div id="wantlist">
-        
         <% @records.each do |record| %>
        <% if @wants.include?(record) %>
          <% wanted = true %>
@@ -84,14 +82,19 @@
              <h3><%= record.artists[0]["name"] %></h3>
                  <% if true # @wants.count < 10 %>
                    <%= link_to([record, Want.new], remote: true, method: :post) do %>
+
                    <div class="indic indic-dig" data-record-id="<%= record.id %>">
-                     <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
-                      <g class="add">
-                        <polygon points="103.8,159.5 103.8,40.5 96.2,40.5 96.2,159.5 "/>
-                        <polygon points="40.5,103.8 159.5,103.8 159.5,96.2 40.5,96.2 "/>
-                      </g>
-                      </svg>
+
+                      <div class="digit-text">DIG IT !</div>
+
+                      <div class="svg">
+                        <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                        <g class="add">
+                          <polygon points="103.8,159.5 103.8,40.5 96.2,40.5 96.2,159.5 "/>
+                          <polygon points="40.5,103.8 159.5,103.8 159.5,96.2 40.5,96.2 "/>
+                        </g>
+                        </svg>
+                      </div>
                    </div>
                    <% end %>
                 <% end %>
