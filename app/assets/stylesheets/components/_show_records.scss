@@ -12,6 +12,7 @@
   .record-title {
     margin-top: -($gutter/2);
     margin-left: -.06em;
+    line-height: .88;
   }
   .record-cover {
     padding-top: calc(6.6vw - #{$gutter});
@@ -20,5 +21,19 @@
     position: absolute;
     top: ($gutter/2);
     left: ($gutter/2);
+    .wanted {
+      span {
+        animation: blink 1s infinite alternate;
+      }
+      span:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      span:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    }
+    .found {
+      display: none;
+    }
   }
 }
