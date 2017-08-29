@@ -25,26 +25,26 @@
 </div>
 
 <div class="c12 x">
-  <div class="c4">
+  <div class="c4 infos">
       <% @record.labels.each do |label| %>
-        <h2>Labels: <%= label["name"] %></h2>  
+        <div class="subtitle">Labels: <%= label["name"] %></div>  
         <% end %>
         
       <% unless @record.formats.nil?  %>
         
         <% @record.formats.each do |format| %>
-          <h2>Format: <%= format["name"] %></h2>
+          <div class="subtitle">Format: <%= format["name"] %></div>
         <% end %>        
       <% end %>
-      <h2>Year: <%= @record.year %></h2>
+      <div class="subtitle">Year: <%= @record.year %></div>
         
         
         <% @record.genres.each do |genre| %>
-          <h2>Genres: <%= genre %></h2> 
+          <div class="subtitle">Genres: <%= genre %></div> 
         <% end %>
    
         <% @record.styles.each do |style| %>
-          <h2>Styles: <%= style %></h2> 
+          <div class="subtitle">Styles: <%= style %></div> 
         <% end %>
     
   </div>
