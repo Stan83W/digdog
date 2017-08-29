@@ -5,12 +5,25 @@
 <div class="inner">
   
   <div class="status title">
-    <span class="wanted">
-      ging<span>.</span><span>.</span><span>.</span>
-    </span>
-    <span class="found">
-      found <%=  %>
-    </span>
+    <% if @wants.include?(@record) %>
+       <% wanted = true %>
+       <% found = true if !@findings.empty? %>
+     <% end %>
+    <% if wanted %>
+      <span class="wanted">
+        ging<span>.</span><span>.</span><span>.</span>
+      </span>
+    <% elsif found %>
+     <span class="found">
+        found
+      </span>
+    <% else %>
+      <span class="default">
+      <%= link_to [@record, Want.new], remote: true, method: :post, class: "wsnw" do %>
+        it <span>✓</span>
+      <% end %>
+      </span>
+    <% end %>
   </div>
         
   <div class="c12 x">

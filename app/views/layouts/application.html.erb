@@ -15,6 +15,9 @@
     <div class="wrapper">
       <%= render 'shared/flashes' %>
       <div id="close-panel" data-target="close-panel"></div>
+      <% if @record.nil? %>
+        <div id="page-content"></div>
+      <% end %>
       <%= yield %>
       <%= javascript_include_tag 'application' %>
     </div>

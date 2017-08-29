@@ -39,7 +39,7 @@ function loadContent(url, target) {
   target.load( url + " #page-content .inner", function(response, status, xhr) {
     if ( status == "success" ) {
       $('body').addClass('page-content');
-    }
-    
+      history.pushState(null, "Digdog", url);
+    } 
   });
 }

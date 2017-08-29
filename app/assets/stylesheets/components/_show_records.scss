@@ -37,6 +37,16 @@
     position: absolute;
     top: ($gutter/2);
     left: ($gutter/2);
+    .default {
+      span {
+        display: none;
+      }
+      &:hover {
+        span {
+          display: inline-block;
+        }
+      }
+    }
     .wanted {
       span {
         animation: blink 1s infinite alternate;
