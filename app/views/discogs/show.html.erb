@@ -1,19 +1,16 @@
 <%= render template: 'discogs/wantlist' %>
 
 <div id="page-content">
-  
-<div class="status title">
-  <span class="wanted">
-    ging<span>.</span><span>.</span><span>.</span>
-  </span>
-  <span class="found">
-    found <%=  %>
-  </span>
-</div>
-      
-<div class="c12 x">
-  <div class="record-cover c4">
-  <%= image_tag @record.images.first["uri"], class: "w100" %>
+
+<div class="inner">
+    
+  <div class="status title">
+    <span class="wanted">
+      ging<span>.</span><span>.</span><span>.</span>
+    </span>
+    <span class="found">
+      found <%=  %>
+    </span>
   </div>
   
   <div class="c8 px2">
@@ -62,15 +59,13 @@
                   </div>
                   <div class="c10">
                     <%= tracklist["title"] %>     
+                
                   </div>
-                  <div class="c1">
-                    <%= tracklist["duration"] %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-        <% end %>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
       </div>
-    </div>
+</div>
   
 </div>

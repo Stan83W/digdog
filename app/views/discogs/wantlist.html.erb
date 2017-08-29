@@ -20,7 +20,7 @@
          <% found = true if !@findings.empty? %>
        <% end %>
        <div class="record fl c12<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
-       <%= link_to discog_path(record) do %>
+       <%= link_to discog_path(record), :data => { :recordtarget => '' } do %>
          <% unless record.images.nil? %>
            <% record.images[0..0].each do |image| %>
               <div class="album-cover fl p0 c2">
@@ -69,7 +69,7 @@
          <% found = true if !@findings.empty? %>
        <% end %>
        <div class="record<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
-       <%= link_to discog_path(record) do %>
+       <%= link_to discog_path(record), :data => { :recordtarget => '' } do %>
          <% unless record.images.nil? %>
            <% record.images[0..0].each do |image| %>
               <div class="album-cover">
@@ -112,3 +112,5 @@
 <% else %>
   <%= render 'shared/introduction' %>
 <% end %>
+
+<div id="page-content"></div>
