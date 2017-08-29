@@ -5,15 +5,15 @@
   <% unless @records.nil? %>
   <%= render 'shared/searchbar' %>
   <% end %>
-  
+
   <% if user_signed_in? %>
 
     <div id="current-title" class="title">
       List
       <span class="close" data-target="toggle-list">✕</span>
     </div>
-    
-    <% unless @wants.nil? %>  
+
+    <% unless @wants.nil? %>
     <div id="list-toggle" class="title" data-target="toggle-list">
       <span></span>
       <span></span>
