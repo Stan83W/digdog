@@ -68,6 +68,7 @@ class DiscogsController < ApplicationController
   def show
     wantlist
     @record = Record.find(params[:id])
+    @findings = Finding.where(record_id: @record.id)
   end
 
   def reload_wantlist

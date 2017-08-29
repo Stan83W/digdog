@@ -1,4 +1,4 @@
-<%= render template: 'discogs/wantlist' %>
+<%#= render template: 'discogs/wantlist' %>
 
 <div id="page-content">
   
@@ -109,6 +109,11 @@
                 <% end %>
               </div>
           <% end %>
+          <% if !@findings.blank? %>
+            <h2 class="current-provider">Found on <%= @findings.first.provider %> at $<%= rand(1..40) %><br>1 day ago</h2>
+            <p class="current-title ttu lh1"><%= @findings.first.record.title %></p>
+          <% end %>
+
         </div>
       </div>
   
