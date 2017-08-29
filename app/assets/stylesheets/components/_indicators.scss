@@ -10,6 +10,8 @@
   }
   &.indic-wanted {
     fill: transparent;
+    width: 1.7em;
+    height: 1.7em;
   }
   &.indic-dig {
     justify-content: space-between;
@@ -53,7 +55,7 @@
         opacity: 0;
       }
       .digit-text {
-      opacity: 0.80;
+        opacity: 0.80;
       }
     }
   }

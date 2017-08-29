@@ -60,19 +60,22 @@
         
         
         <% unless @record.tracklist.nil?  %>
-        <h3>Tracklist:</h3>
-        </span><br>
-        <% @record.tracklist.each do |tracklist| %>
-          <div class="x">
-            <div class="c2">
-              <%= tracklist["position"] %>        
+            <h3>Tracklist</h3>
+            <div class="c12 subtitle">
+                <% @record.tracklist.each do |tracklist| %>
+                <div class="track c12 x">
+                  <div class="c1">
+                    <%= tracklist["position"] %>        
+                  </div>
+                  <div class="c10">
+                    <%= tracklist["title"] %>     
+                  </div>
+                  <div class="c1">
+                    <%= tracklist["duration"] %>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <div class="c9">
-              <%= tracklist["title"] %>     
-              <%= tracklist["duration"] %>
-            </div>
-          </div>
-        <% end %>
         <% end %>
       </div>
     </div>
