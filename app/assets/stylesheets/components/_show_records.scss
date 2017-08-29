@@ -30,7 +30,7 @@
   .record-cover {
     padding-top: calc(6.6vw - #{$gutter});
     img {
-    border: 3px solid $primary;      
+    border: 2px solid $primary;      
     }
   }
   .status {
@@ -63,12 +63,15 @@
     }
   }
   .track {
-    border-bottom: 3px solid;
+    border-bottom: 2px solid;
     padding: .2em 0;
     margin-bottom: .2em;
   }
   .infos {
     padding-top: 3.4%;
+    & .c9 h3:not(:first-child) {
+        margin-top: -6px;
+    }
   }
 }
 
@@ -79,5 +82,10 @@ body.page-content {
   }
   #page-content {
     transform: translateZ(0);
+  }
+  .button-found {
+    border: 2px solid $primary !important;
+    padding: 10px 15px !important;
+    display: table;
   }
 }

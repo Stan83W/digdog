@@ -1,4 +1,4 @@
-<%= render template: 'discogs/wantlist' %>
+<%#= render template: 'discogs/wantlist' %>
 
 <div id="page-content">
   
@@ -67,12 +67,12 @@
 
         <% unless @record.labels.empty?  %>
           <div class="c12">
-            <% @record.labels.each do |label| %>
             <div class="c3 fl">Labels</div>
             <div class="c9 fl">
+            <% @record.labels.each do |label| %>
             <h3><%= label["name"] %></h3>
-            </div>  
             <% end %>
+            </div>  
           </div>
         <% end %>
           
@@ -129,6 +129,12 @@
                 <% end %>
               </div>
           <% end %>
+          <div style="padding-top: 10%;">
+          <% if !@findings.blank? %>
+            <h2 class="button-found">Found on <%= @findings.first.provider %> at $<%= rand(1..40) %>1 day ago</h2>
+          <% end %>
+          </div>
+
         </div>
       </div>
   
