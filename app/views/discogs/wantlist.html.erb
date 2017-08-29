@@ -9,23 +9,11 @@
     
     <div id="wants" class="fl c12">
 
-      <div class="fl c12 record">
-        <% if @wants.count >= 10 %>
-        
-        <h2 class="dig-left mt1">No more digs left</h2>
-
-        <% elsif @wants.count > 0 %>
-
-        <h2 class="dig-left mt1"><%= 10 - @wants.count %> digs left</h2>
-        
-        <% else %>
-        
-        <h2 class="dig-left mt1">Create digs in your wantlist first</h2>
-        
-        <% end %>
+      <div id="wants-counter" class="fl c12 record">
+        <%= render 'shared/wants_counter', wants: @wants %>
       </div>
 
-    <% @wants.each do |record| %>
+    <% @records.each do |record| %>
        <% if @wants.include?(record) %>
          <% wanted = true %>
          <% @findings = Finding.where(record_id: record.id) %>
@@ -76,7 +64,7 @@
       
       <div id="wantlist">
         
-        <% @wantlist_without_wants.each do |record| %>
+        <% @records.each do |record| %>
        <% if @wants.include?(record) %>
          <% wanted = true %>
          <% @findings = Finding.where(record_id: record.id) %>
@@ -94,7 +82,7 @@
          <div class="record-infos">
              <h2><%= record.title %></h2>
              <h3><%= record.artists[0]["name"] %></h3>
-                 <% if @wants.count < 10 %>
+                 <% if true # @wants.count < 10 %>
                    <%= link_to([record, Want.new], remote: true, method: :post) do %>
                    <div class="indic indic-dig" data-record-id="<%= record.id %>">
                      <svg version="1.1" class="dig" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

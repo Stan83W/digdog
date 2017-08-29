@@ -22,6 +22,8 @@ class WantsController < ApplicationController
 
   def destroy
     @want = Want.find(params[:id])
+    @user = current_user
+    @wants = Want.where(user_id: @user.id)
     @want.destroy
     if @want.destroy
       respond_to do |format|

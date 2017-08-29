@@ -1,6 +1,5 @@
 <% if @want.id.nil? %>
   // Render new review form with errors
-  console.log('ok');
   $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"] .record-infos');
   text = $record.html();
   $record.empty().html("<h2>Only 10 digs at the same time</h2>");
@@ -31,7 +30,11 @@
 
   $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"]');
   $record.addClass('digged').find(".record-infos").empty().html("<h2>Added to the Diglist</h2>");
+  $('#dig-counter').text("<%= @wants.count %> digs");
+  $('#wants-counter').html("<%= escape_javascript(render('shared/wants_counter', wants: @wants)) %>");
+
   setTimeout(function() {
-    $record.remove();
+    $record.addClass('wanted');
+    $('#wants .record[data-record-id="<%= @want.record.id %>"]').addClass('wanted');
   }, 900);
 <% end %>
