@@ -3,7 +3,7 @@
   console.log('ok');
   $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"] .record-infos');
   text = $record.html();
-  $record.empty().html("<h2>10 digs allowed at the same time</h2>");
+  $record.empty().html("<h2>Only 10 digs at the same time</h2>");
   setTimeout(function() {
     $record.html(text);
   }, 900);
