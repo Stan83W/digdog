@@ -51,18 +51,19 @@
 .record-brackground {
   background-image: url("https://cdn.pixabay.com/photo/2017/08/02/22/51/vinyl-2573856_960_720.jpg");
 }
-.centered-text {
-  justify-content: center;
+.headline-lower {
   margin-bottom: 50px;
+  text-align: center;
 }
 .photo > img {
   width: 70vh;
 }
 .steps-list {
   img {
-    width: 150px;
+    width: 132px;
     border-radius: 50%;
-    justify-content: center;
+    position: relative;
+    left: 20%;
   }
   h2 {
     text-align: center;
@@ -70,4 +71,11 @@
 }
 ol {
   display: flex;
+}
+.infos-horizontal {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.icon-info {
+  margin: 40px;
 }
