@@ -12,66 +12,54 @@
       found <%=  %>
     </span>
   </div>
-        
-  <div class="c12 x">
-    <div class="record-cover c4">
-    <%= image_tag @record.images.first["uri"], class: "w100" %>
-    </div>
-    
-    <div class="c8 px2">
-    
+  
+  <div class="c8 px2">
     <h1 class="record-title"><%= @record.title %></h1>
-    
     <% @record.artists.first(1).each do |artist| %>
       <h2><%= artist["name"] %></h2>
     <% end %>
-    
-    </div>
   </div>
-  
-  <div class="c12 x">
-      <div class="c8 co4 px2">
-        <% @record.labels.each do |label| %>
-          Labels: <%= label["name"] %>
+</div>
+
+<div class="c12 x">
+  <div class="c4 infos">
+      <% @record.labels.each do |label| %>
+        <div class="subtitle">Labels: <%= label["name"] %></div>  
         <% end %>
-          
-        <% unless @record.formats.nil?  %>
-          
-          Format:
-          <% @record.formats.each do |format| %>
-            <span><%= format["name"] %></span>
-          <% end %>
-          
+        
+      <% unless @record.formats.nil?  %>
+        
+        <% @record.formats.each do |format| %>
+          <div class="subtitle">Format: <%= format["name"] %></div>
+        <% end %>        
+      <% end %>
+      <div class="subtitle">Year: <%= @record.year %></div>
+        
+        
+        <% @record.genres.each do |genre| %>
+          <div class="subtitle">Genres: <%= genre %></div> 
         <% end %>
-          
-          
-          Year: <%= @record.year %>
-          
-          
-          <% @record.genres.each do |genre| %>
-            Genres: <%= genre %>
-          <% end %>
-            
-          
-          Styles:
-          <% @record.styles.each do |style| %>
-            <%= style %>
-          <% end %>
-          
-          <% unless @record.tracklist.nil?  %>
-              <h3>Tracklist</h3>
-              <div class="c12 subtitle">
-                  <% @record.tracklist.each do |tracklist| %>
-                  <div class="track c12 x">
-                    <div class="c1">
-                      <%= tracklist["position"] %>        
-                    </div>
-                    <div class="c10">
-                      <%= tracklist["title"] %>     
-                    </div>
-                    <div class="c1">
-                      <%= tracklist["duration"] %>
-                    </div>
+   
+        <% @record.styles.each do |style| %>
+          <div class="subtitle">Styles: <%= style %></div> 
+        <% end %>
+    
+  </div>
+    <div class="c8 px2">
+        
+        
+        
+        <% unless @record.tracklist.nil?  %>
+            <h2 class="subtitle">Tracklist</h2>
+            <div class="c12 subtitle">
+                <% @record.tracklist.each do |tracklist| %>
+                <div class="track c12 x">
+                  <div class="c1">
+                    <%= tracklist["position"] %>        
+                  </div>
+                  <div class="c10">
+                    <%= tracklist["title"] %>     
+                
                   </div>
                 <% end %>
               </div>
