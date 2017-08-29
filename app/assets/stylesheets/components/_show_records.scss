@@ -16,6 +16,9 @@
   }
   .record-cover {
     padding-top: calc(6.6vw - #{$gutter});
+    img {
+    border: 3px solid $primary;      
+    }
   }
   .status {
     position: absolute;

@@ -17,50 +17,43 @@
   </div>
   
   <div class="c8 px2">
-  
-  <h1 class="record-title"><%= @record.title %></h1>
-  
-  <% @record.artists.first(1).each do |artist| %>
-    <h2><%= artist["name"] %></h2>
-  <% end %>
-  
+    <h1 class="record-title"><%= @record.title %></h1>
+    <% @record.artists.first(1).each do |artist| %>
+      <h2><%= artist["name"] %></h2>
+    <% end %>
   </div>
 </div>
 
 <div class="c12 x">
-    <div class="c8 co4 px2">
+  <div class="c4">
       <% @record.labels.each do |label| %>
-          Labels: <%= label["name"] %>
+        <h2>Labels: <%= label["name"] %></h2>  
         <% end %>
         
       <% unless @record.formats.nil?  %>
         
-        Format:
         <% @record.formats.each do |format| %>
-          <span><%= format["name"] %></span>
-        <% end %>
-        
+          <h2>Format: <%= format["name"] %></h2>
+        <% end %>        
       <% end %>
-        
-        
-        Year: <%= @record.year %>
+      <h2>Year: <%= @record.year %></h2>
         
         
         <% @record.genres.each do |genre| %>
-          Genres: <%= genre %>
+          <h2>Genres: <%= genre %></h2> 
         <% end %>
-        
-        
-        
-        Styles:
+   
         <% @record.styles.each do |style| %>
-          <%= style %>
+          <h2>Styles: <%= style %></h2> 
         <% end %>
+    
+  </div>
+    <div class="c8 px2">
         
         
         
         <% unless @record.tracklist.nil?  %>
-            <h3>Tracklist</h3>
+            <h2 class="subtitle">Tracklist</h2>
             <div class="c12 subtitle">
                 <% @record.tracklist.each do |tracklist| %>
                 <div class="track c12 x">
