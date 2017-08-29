@@ -1,5 +1,12 @@
-<% if @want.errors.any? %>
+<% if @want.id.nil? %>
   // Render new review form with errors
+  console.log('ok');
+  $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"] .record-infos');
+  text = $record.html();
+  $record.empty().html("<h2>10 digs allowed at the same time</h2>");
+  setTimeout(function() {
+    $record.html(text);
+  }, 900);
 <% else %>
   // $record = $('.indic[data-record-id="<%= @want.record.id %>"]');
   // $record.html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle></svg>').attr('class', 'indic indic-wanted');
@@ -23,7 +30,7 @@
   // }, 900);
 
   $record = $('#wantlist .record[data-record-id="<%= @want.record.id %>"]');
-  $record.addClass('digged').find(".record-infos").empty().html("<h2>Added to Diglist</h2>");
+  $record.addClass('digged').find(".record-infos").empty().html("<h2>Added to the Diglist</h2>");
   setTimeout(function() {
     $record.remove();
   }, 900);

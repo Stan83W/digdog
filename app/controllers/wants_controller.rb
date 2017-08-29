@@ -2,11 +2,10 @@ class WantsController < ApplicationController
   def create
     @user = current_user
     @wants = Want.where(user_id: @user.id)
-
+    @want = Want.new
+    @want.record_id = params[:record_id]
+    @want.user_id = @user.id
     if @wants.count < 10
-      @want = Want.new
-      @want.record_id = params[:record_id]
-      @want.user_id = @user.id
       @want.save
       if @want.save
         respond_to do |format|
