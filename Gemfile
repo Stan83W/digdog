@@ -13,6 +13,7 @@ gem 'omniauth-discogs'
 gem 'discogs-wrapper'
 gem 'activerecord-session_store'
 gem 'pg_search'
+gem 'yt', '~> 0.28.0'
 
 #Background Tasks
 gem 'sidekiq'
@@ -31,6 +32,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'plyr-rails'
 gem 'octicons_helper'
 
 group :development, :test do

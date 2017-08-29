@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :wants, only: [:create, :destroy]
   end
 
+  get 'no_access' => 'pages#no_access'
+
   get 'discogs/:id' => 'discogs#show', :constraints  => {:id => /.+\.\w{3,4}/}
 
   resources :discogs do
