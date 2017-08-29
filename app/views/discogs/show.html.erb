@@ -17,7 +17,7 @@
      <span class="found">
         found
       </span>
-    <% else %>
+    <% elsif @wants.count < 10 %>
       <span class="default">
       <%= link_to [@record, Want.new], remote: true, method: :post, class: "wsnw" do %>
         it <span>✓</span>
