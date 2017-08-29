@@ -8,6 +8,23 @@
     <div id="records-list">
     
     <div id="wants" class="fl c12">
+
+      <div class="fl c12 record">
+        <% if @wants.count >= 10 %>
+        
+        <h2 class="dig-left mt1">No more digs left</h2>
+
+        <% elsif @wants.count > 0 %>
+
+        <h2 class="dig-left mt1"><%= 10 - @wants.count %> digs left</h2>
+        
+        <% else %>
+        
+        <h2 class="dig-left mt1">Create digs in your wantlist first</h2>
+        
+        <% end %>
+      </div>
+
     <% @wants.each do |record| %>
        <% if @wants.include?(record) %>
          <% wanted = true %>
@@ -53,21 +70,6 @@
        </div>
       <% end %>
 
-      <div class="fl c12">
-        <% if @wants.count >= 10 %>
-        
-        <h2 class="dig-left mt3">No more digs left</h2>
-
-        <% elsif @wants.count > 0 %>
-
-        <h2 class="dig-left mt3"><%= 10 - @wants.count %> digs left</h2>
-        
-        <% else %>
-        
-        <h2 class="dig-left mt3">Create digs in your wantlist first</h2>
-        
-        <% end %>
-      </div>
 
       </div>
 
