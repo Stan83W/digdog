@@ -1,7 +1,7 @@
 <% if wants.count >= 10 %>
   <h2 class="dig-left mt1">No more digs left</h2>
 <% elsif wants.count > 0 %>
-  <h2 class="dig-left mt1"><%= 10 - wants.count %> digs left</h2>
+  <h2 class="dig-left mt1"><%= pluralize(10 - wants.count, 'dig') %> left</h2>
 <% else %>
   <h2 class="dig-left mt1">Create digs in your wantlist first</h2>
 <% end %>

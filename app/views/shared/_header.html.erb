@@ -18,7 +18,7 @@
       <span></span>
       <span></span>
       <span></span>
-      <span id="dig-counter"><%= @wants.count %> digs</span>
+      <span id="dig-counter"><%= pluralize(@wants.count, 'dig') %></span>
     </div>
     <% end %>
 

@@ -6,7 +6,7 @@ class DiscogsController < ApplicationController
     if @discogs.authenticated?
 
       redirect_to '/no_access' if !current_user.has_access
-      
+
       if current_user.discogs_wantlist.nil?
         get_wantlist
       end
@@ -78,24 +78,23 @@ class DiscogsController < ApplicationController
 
   def load_videos(record)
     unless record.tracklist.nil?
-      if record.videos.nil?
+      if true # record.videos.nil?
         
         Yt.configure do |config|
           config.api_key = ENV["YT_API_KEY"]
         end
         videos = Yt::Collections::Videos.new
-        artist_videos = videos.where(q: record.artists[0]["name"], safe_search: 'none')
+        # artist_videos = videos.where(q: record.artists[0]["name"], safe_search: 'none')
         ep_videos = Hash.new
 
         record.tracklist.each do |track|
-          track_video = artist_videos.where(q: record.artists[0]["name"] + '+' + track["title"]).first
+          track_video = videos.where(q: record.title + ' ' + record.artists[0]["name"] + '+' + track["title"], order: 'viewCount').first
           ep_videos[track["title"]] = track_video.id unless track_video.nil?
         end
 
         unless ep_videos.nil?
           record.update(videos: ep_videos)
         end
-        raise
       end
     end
   end

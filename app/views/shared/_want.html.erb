@@ -1,0 +1,30 @@
+<% if wants.include?(record) %>
+	 <% wanted = true %>
+	 <% found = true if !findings.empty? %>
+	<% end %>
+	<div class="record fl c12<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
+	<%= link_to discog_path(record), :data => { :recordtarget => '' } do %>
+	 <% unless record.images.nil? %>
+	   <% record.images[0..0].each do |image| %>
+	      <div class="album-cover fl p0 c2">
+	        <%= image_tag image['uri'] %>
+	      </div>
+	   <% end %>
+	 <% end %>
+	 <div class="dig-infos fl c6">
+	     <h2><%= record.title %></h2>
+	     <h3><%= record.artists[0]["name"] %></h3>
+	 </div>
+	 <div class="fl psr c4">
+	   <% if found %>
+	        <h2 class="fl"><%= findings.count %> matching <%= 'record'.pluralize(findings.count) %></h2>
+	     <% else %>
+	        <h2 class="dig-blink fl">Digging<span>.</span><span>.</span><span>.</span></h2>
+	     <% end %>
+	  </div>
+	  	 <% want = Want.find_by(record_id: record.id) %>
+	     <%= link_to([record, want], remote: true, method: :delete) do %>
+	        <h2 class="close psa t0 r0">✕</h3>
+	     <% end %>
+	<% end %>
+</div>
