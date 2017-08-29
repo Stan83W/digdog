@@ -10,10 +10,11 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
-  <body>
+  <body<%= ' class=page-content' if !@record.nil? %>>
     <%= render "shared/header" %>
     <div class="wrapper">
       <%= render 'shared/flashes' %>
+      <div id="close-panel" data-target="close-panel"></div>
       <%= yield %>
       <%= javascript_include_tag 'application' %>
     </div>

@@ -1,3 +1,13 @@
+#close-panel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15%;
+    height: 100%;
+    z-index: 201;
+    cursor: crosshair;
+  }
 #page-content {
   padding: $gutter;
   background-color: $secondary;
@@ -9,6 +19,9 @@
   right: 0;
   width: 85%;
   z-index: 201;
+  transform-origin: right;
+  transform: translateX(105%) translateZ(0);
+  transition: transform 600ms cubic-bezier(0.77, 0, 0.175, 1);
   .record-title {
     margin-top: -($gutter/2);
     margin-left: -.06em;
@@ -40,5 +53,15 @@
     border-bottom: 3px solid;
     padding: .2em 0;
     margin-bottom: .2em;
+  }
+}
+
+body.page-content {
+  overflow: hidden;
+  #close-panel {
+    display: block;
+  }
+  #page-content {
+    transform: translateZ(0);
   }
 }

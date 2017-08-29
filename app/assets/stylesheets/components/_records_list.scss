@@ -118,6 +118,9 @@ $record-height: 13vw;
         display: block;
       }
     }
+    #wants-counter {
+      display: block;
+    }
     .album-cover {
       width: 8vw;
       height: ($record-height/3);
