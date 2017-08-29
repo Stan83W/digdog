@@ -11,6 +11,9 @@ $record-height: 13vw;
     height: $record-height;
     display: inline;
     margin-right: $gutter;
+    &.wanted {
+      display: none;
+    }
     &.digged {
       .album-cover {
         img {
@@ -101,9 +104,9 @@ $record-height: 13vw;
       padding-left: $gutter;
     }
     .record {
+      display: none;
       padding: 0 $gutter 0 0;
       height: auto;
-      display: inline-block;
       width: 100%;
       border-top: 0 inset $secondary;
       padding-bottom: $gutter;
@@ -111,6 +114,9 @@ $record-height: 13vw;
       //   border-bottom: 3px inset $secondary;
       // }
       border-bottom: 3px inset $secondary;
+      &.wanted {
+        display: block;
+      }
     }
     .album-cover {
       width: 8vw;
@@ -118,7 +124,7 @@ $record-height: 13vw;
       padding: 0;
     }
     .dig-left {
-      margin-left: 8vw;
+      margin-left: 8.5vw;
     }
   }
 }
