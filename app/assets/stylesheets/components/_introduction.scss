@@ -1,17 +1,85 @@
-.intro {
-	display: flex;
-	justify-content: space-between;
-}
+// .intro {
+// 	display: flex;
+// 	justify-content: space-between;
+// }
 .banner-text h1 {
 	font-size: 5em;
 	font-weight: lighter;
 	margin-top: 10px;
 }
-.content-body > ol > li {
-  font-size: 20px;
-  font-weight: lighter;
-  line-height: 140%;
+// .content-body > ol > li {
+//   font-size: 20px;
+//   font-weight: lighter;
+//   line-height: 140%;
+// }
+// .content-body {
+//   flex-shrink: 15;
+// }
+.content-area {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-.content-body {
-  flex-shrink: 15;
+.bottom-border {
+  border-bottom: 3px solid black;
+}
+// .top-border {
+//   border-top: 1px solid black;
+.box {
+  display: flex;
+  justify-content: space-around;
+  height: 300px;
+  padding: 10px;
+}
+.homepage-lower {
+  margin-top: 80px;
+  .box {
+    .content-area {
+      line-height: 225%;
+    }
+  }
+}
+.inner-content {
+  display: flex;
+  justify-content: space-around;
+}
+.record-brackground {
+  background-image: url("https://cdn.pixabay.com/photo/2017/08/02/22/51/vinyl-2573856_960_720.jpg");
+}
+.headline-lower {
+  margin-bottom: 50px;
+  text-align: center;
+}
+.photo > img {
+  width: 70vh;
+}
+.steps-list {
+  img {
+    width: 132px;
+    border-radius: 50%;
+    position: relative;
+    left: 17%;
+  }
+  h2 {
+    text-align: center;
+  }
+}
+ol {
+  display: flex;
+}
+.infos-horizontal {
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.icon-info {
+  margin-bottom: 40px;
+}
+.octicon {
+  position: relative;
+  left: 7%;
 }

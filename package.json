@@ -2,6 +2,7 @@
   "name": "digdog",
   "private": true,
   "dependencies": {
-    "gr8": "^2.1.8"
+    "gr8": "^2.1.8",
+    "octicons": "^6.0.1"
   }
 }
