@@ -69,11 +69,10 @@
   }
   .infos {
     padding-top: 3.4%;
+    & .c9 h3:not(:first-child) {
+        margin-top: -6px;
+    }
   }
-  .infos .c9 h2 :not(:last-child) {
-    margin: 0;
-  }
-
 }
 
 body.page-content {

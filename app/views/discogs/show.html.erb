@@ -67,12 +67,12 @@
 
         <% unless @record.labels.empty?  %>
           <div class="c12">
-            <% @record.labels.each do |label| %>
             <div class="c3 fl">Labels</div>
             <div class="c9 fl">
+            <% @record.labels.each do |label| %>
             <h3><%= label["name"] %></h3>
-            </div>  
             <% end %>
+            </div>  
           </div>
         <% end %>
           
