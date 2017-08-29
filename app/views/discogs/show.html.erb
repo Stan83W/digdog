@@ -1,8 +1,117 @@
-<div class="record">
-	<p><%= @record.artists[0]["name"] %> — <%= @record.title %></p>
-	<% unless @record.image_thumb.nil? %>
-	<%= image_tag @record.image_thumb %>
-	<% end %>
-</div>
+<%= render template: 'discogs/wantlist' %>
 
-<%= p @record %>
+<div id="page-content">
+  
+<div class="inner">
+  
+  <div class="status title">
+    <span class="wanted">
+      ging<span>.</span><span>.</span><span>.</span>
+    </span>
+    <span class="found">
+      found <%=  %>
+    </span>
+  </div>
+        
+  <div class="c12 x">
+    <div class="record-cover c4">
+    <%= image_tag @record.images.first["uri"], class: "w100" %>
+    </div>
+    
+    <div class="c8 px2">
+      <h1 class="record-title"><%= @record.title %></h1>
+      <% @record.artists.first(1).each do |artist| %>
+        <h2><%= artist["name"] %></h2>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="c12 x">
+    <div class="c4 infos pt3">
+        <% unless @record.year.nil?  %>
+          <div class="c12">
+          <div class="c3 fl">
+              Year
+            </div>
+            <div class="c9 fl">  
+              <h3><%= @record.year %></h3>
+            </div>      
+          </div>
+        <% end %>
+        
+        <% unless @record.formats.empty?  %>
+          <div class="c12">
+          <div class="c3 fl">
+              Formats
+            </div>
+            <div class="c9 fl">
+            <% @record.formats.each do |format| %>
+              <h3><%= format["name"] %></h3>
+            <% end %>
+            </div>      
+          </div>
+        <% end %>
+
+        <% unless @record.labels.empty?  %>
+          <div class="c12">
+            <% @record.labels.each do |label| %>
+            <div class="c3 fl">Labels</div>
+            <div class="c9 fl">
+            <h3><%= label["name"] %></h3>
+            </div>  
+            <% end %>
+          </div>
+        <% end %>
+          
+        <% unless @record.genres.empty?  %>
+          <div class="c12">
+          <div class="c3 fl">
+              Genres
+            </div>
+            <div class="c9 fl">
+            <% @record.genres.each do |genre| %>
+              <h3><%= genre %></h3>
+            <% end %>
+            </div>      
+          </div>
+        <% end %>
+  
+        <% unless @record.styles.empty?  %>
+          <div class="c12">
+          <div class="c3 fl">
+              Styles
+            </div>
+            <div class="c9 fl">
+            <% @record.styles.each do |style| %>
+              <h3><%= style %></h3>
+            <% end %>
+            </div>      
+          </div>
+        <% end %>
+      
+    </div>
+      <div class="c8 px2">
+          
+          <% unless @record.tracklist.nil?  %>
+              <div class="c12 subtitle pt3">
+                  <% @record.tracklist.each do |tracklist| %>
+                  <div class="track c12 x">
+                    <div class="c1">
+                      <%= tracklist["position"] %>        
+                    </div>
+                    <div class="c10">
+                      <%= tracklist["title"] %>     
+                    </div>
+                    <div class="c1">
+                      <%= tracklist["duration"] %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  
+  </div>
+  
+</div>

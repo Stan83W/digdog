@@ -1,0 +1,10 @@
+<% if @want.errors.any? %>
+  // Render new review form with errors
+<% else %>
+  // $record = $('.indic[data-record-id="<%= @want.record.id %>"]');
+  // $record.html('<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle></svg>').attr('class', 'indic indic-wanted');
+  $('#dig-counter').text("<%= @wants.count %> digs");
+  $record = $('#wants .record[data-record-id="<%= @want.record.id %>"]').removeClass('wanted');
+  $('#wantlist .record[data-record-id="<%= @want.record.id %>"]').removeClass('wanted');
+  $('#wants-counter').html("<%= escape_javascript(render('shared/wants_counter', wants: @wants)) %>");
+<% end %>

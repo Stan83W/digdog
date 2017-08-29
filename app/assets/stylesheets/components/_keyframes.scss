@@ -1,0 +1,44 @@
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  50.001% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX($gutter);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0
+  }
+  30% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px
+  }
+}

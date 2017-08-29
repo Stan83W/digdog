@@ -1,6 +1,6 @@
 // Import your components CSS files here.
+@import "keyframes";
 @import "header";
-@import "mixins";
 @import "alert";
 @import "introduction";
 @import "findings";
@@ -8,3 +8,4 @@
 @import "indicators";
 @import "records_list";
 @import "show_records";
+@import "mixins";

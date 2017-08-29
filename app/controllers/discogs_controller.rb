@@ -20,13 +20,18 @@ class DiscogsController < ApplicationController
           discogs_id = want["id"]
           if Record.has?(discogs_id)
             record = Record.find_by_discogs_id(discogs_id)
-            if record.images.nil?
+            if record.styles.nil? || record.genres.nil? || record.images.nil? || record.formats.nil?
               record_json = get_release_json(want["id"])
+              record_json["styles"] = [] if record_json["styles"].nil?
+              record_json["genres"] = [] if record_json["genres"].nil?
+              record_json["images"] = [] if record_json["images"].nil?
+              record_json["formats"] = [] if record_json["formats"].nil?
               record.update(
+                tracklist: record_json["tracklist"],
                 styles: record_json["styles"],
                 genres: record_json["genres"],
                 images: record_json["images"],
-                tracklist: record_json["tracklist"],
+                formats: record_json["formats"]
               )
             end
           else
@@ -42,7 +47,8 @@ class DiscogsController < ApplicationController
               year: want["year"],
               thumb: want["thumb"],
               images: record_json["images"],
-              discogs_uri: want["resource_url"]
+              discogs_uri: want["resource_url"],
+              formats: record_json["formats"]
             )
           end
           if params[:query]
@@ -51,6 +57,8 @@ class DiscogsController < ApplicationController
           @records << record
           end
         end
+
+        @wantlist_without_wants = @records - @wants
       end
     else
       redirect_to root_path
@@ -58,7 +66,8 @@ class DiscogsController < ApplicationController
   end
 
   def show
-    @record = @discogs.get_release(params[:id])
+    wantlist
+    @record = Record.find(params[:id])
   end
 
   def reload_wantlist

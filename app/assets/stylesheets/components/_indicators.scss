@@ -1,23 +1,33 @@
 .indic {
-  width: 50px;
-  height: 50px;
   position: absolute;
   bottom: 0;
   right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  .found-number {
+    font-size: 1rem;
+  }
   &.indic-wanted {
     fill: transparent;
+    width: 1.7em;
+    height: 1.7em;
   }
   &.indic-dig {
+    justify-content: space-between;
     transition: all 200ms ease;
-    border: 2px solid transparent;
     border-radius: 50%;
+    .svg {
+      position: relative;
+      border: 1px solid transparent;
+      height: 2.5em;
+      width: 2.5em;
+    }
     .add {
       transition: transform 100ms ease;
       transform-origin: center;
-      transform: scale(0);
+      transform: scale(1);
+      // height: ;
     }
     .arrow {
       transition: all 200ms ease;
@@ -25,24 +35,33 @@
       transform-origin: center;
       opacity: 1;
     }
+    .digit-text {
+      // invisible avant hover
+      opacity: 0;
+      padding-right: 5px;
+    }
     &:hover {
-      border-color: $secondary;
-      border-radius: 50%;
-      transform: scale(0.92);
+      .svg {
+        border-color: $secondary;
+        opacity: 0.9;
+        border-radius: 50%;
+        transform: scale(0.92);
+      }
       .add {
-        transform: scale(1);
+        transform: scale(0.9);
       }
       .arrow {
         transform: scale(0);
         opacity: 0;
       }
+      .digit-text {
+        opacity: 0.80;
+      }
     }
   }
   svg.dig {
-    height: 100%;
-    transform-origin: center center;
-    width: 100%;
     position: absolute;
+    transform-origin: center center;
     top: 0;
     bottom: 0;
     left: 0;
