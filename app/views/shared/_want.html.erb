@@ -1,6 +1,6 @@
 <% if wants.include?(record) %>
 	 <% wanted = true %>
-	 <% found = true if !findings.empty? %>
+	 <% found = true if !findings.nil? && !findings.empty? %>
 	<% end %>
 	<div class="record fl c12<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
 	<%= link_to discog_path(record), :data => { :recordtarget => '' } do %>
@@ -23,7 +23,7 @@
 	     <% end %>
 	  </div>
 	  	 <% want = Want.find_by(record_id: record.id) %>
-	     <%= link_to([record, want], remote: true, method: :delete) do %>
+	     <%= link_to(record_wants_path(record), remote: true, method: :delete) do %>
 	        <h2 class="close psa t0 r0">✕</h3>
 	     <% end %>
 	<% end %>

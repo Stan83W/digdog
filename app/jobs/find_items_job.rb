@@ -3,7 +3,7 @@ class FindItemsJob < ApplicationJob
 
   def perform(user)
     # @user = User.find(user_id)
-    puts "Fetching wants"
+    puts "Get wants"
     wants = Want.where(user_id: user.id)
     records = wants.map(&:record)
     

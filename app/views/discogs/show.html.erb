@@ -9,13 +9,13 @@
        <% wanted = true %>
        <% found = true if !@findings.empty? %>
      <% end %>
-    <% if wanted %>
+    <% if found %>
+      <span class="found">
+        found
+      </span>
+    <% elsif wanted %>
       <span class="wanted">
         ging<span>.</span><span>.</span><span>.</span>
-      </span>
-    <% elsif found %>
-     <span class="found">
-        found
       </span>
     <% elsif @wants.count < 10 %>
       <span class="default">
