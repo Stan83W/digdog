@@ -135,10 +135,10 @@
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
                 <div class="track subtitle c12 x">
-                  <div clas="c3">
-                    <%= finding.provider %>
+                  <div class="c10">
+                    Found on <%= finding.provider %>
                   </div>
-                  <div class="c11 tar">
+                  <div class="c2 tar">
                     <%= rand(1..40) %> <%= finding.currency %>
                     <%#= finding.price %>
                   </div>
@@ -150,9 +150,12 @@
                       <%#= finding.title %>
                       <div class="c8 pl1">
                         <h3><%= @record.title %></h3>
+                        <% @record.artists.first(1).each do |artist| %>
+                          <h3><%= artist["name"] %></h3>
+                        <% end %>
                       </div>
                       <div class="c2">
-                        <h3><%= finding.location %></h3>
+                        <h3>From <%= finding.location %></h3>
                       </div>  
                       <div class="button-found fr">
                         Buy ↓
