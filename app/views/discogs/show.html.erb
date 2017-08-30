@@ -134,7 +134,7 @@
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
-                <div class="track subtitle c12 x">
+                <div class="finding-title subtitle c12 x">
                   <div class="c6">
                     Found on <%= finding.provider %>
                   </div>
@@ -145,7 +145,7 @@
                   <div class="track">
                     <%= link_to finding.url, class: "c12 x" do %>
                       <%= image_tag finding.thumb, class: "c1 h100 pb1", target: "blank" %>
-                      <div class="c4 pl1">
+                      <div class="c4">
                         <h3><%= finding.title %></h3>
                       </div>
                       <div class="c4 co1">
