@@ -12,11 +12,7 @@ Rails.application.routes.draw do
 
   resources :discogs do
     collection do
-      get :add_want
-      get :edit_want
-      get :remove_want
       get :wantlist
-      get :search
       get :reload_wantlist
     end
   end

@@ -22,6 +22,10 @@ body {
   font-feature-settings: "calt";
 }
 
+body.loading {
+  cursor: wait !important;
+}
+
 p {
   margin-bottom: 1em;
   line-height: 100%;

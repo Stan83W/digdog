@@ -129,11 +129,28 @@
                 <% end %>
               </div>
           <% end %>
-          <div style="padding-top: 10%;">
-          <% if !@findings.blank? %>
-            <h2 class="button-found">Found on <%= @findings.first.provider %> at $<%= rand(1..40) %>1 day ago</h2>
-          <% end %>
+          <% if !@findings.nil? %>
+          <div id="record-findings" class="mt4">
+            <h2><%= @findings.count %> matching <%= 'record'.pluralize(@findings.count) %></h2>
+            <div id="findings-results" class="mt4 subtitle">
+              <% @findings.each do |finding| %>
+                <div class="finding c12 x jcsp button-found">
+                  <div class="provider c6">
+                    <%= finding.provider %>
+                  </div>
+                  <div class="price c3">
+                    <%= finding.price %>
+                  </div>
+                  <%= link_to finding.url do %>
+                  <div class="cta-buy">
+                    Buy it
+                  </div>
+                  <% end %>
+                </h2>
+              <% end %>
+            </div>
           </div>
+          <% end %>
 
         </div>
       </div>
