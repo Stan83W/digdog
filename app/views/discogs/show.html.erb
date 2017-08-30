@@ -5,7 +5,25 @@
 <div class="inner">
   
   <div class="status title">
-    <%= render('shared/status', status: @status, record: @record) %>
+    <% if @wants.include?(@record) %>
+       <% wanted = true %>
+       <% found = true if !@findings.empty? %>
+     <% end %>
+    <% if wanted %>
+      <span class="wanted">
+        ging<span>.</span><span>.</span><span>.</span>
+      </span>
+    <% elsif found %>
+     <span class="found">
+        found
+      </span>
+    <% elsif @wants.count < 10 %>
+      <span class="default">
+      <%= link_to [@record, Want.new], remote: true, method: :post, class: "wsnw" do %>
+        it <span>✓</span>
+      <% end %>
+      </span>
+    <% end %>
   </div>
         
   <div class="c12 x">
@@ -112,33 +130,39 @@
               </div>
           <% end %>
           <% if !@findings.nil? %>
-          <div id="record-findings" class="mt4">
+          <div class="mt4">
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
-            <div id="findings-results" class="mt4 subtitle">
+            <div class="mt4">
               <% @findings_for_show.each do |finding| %>
                 <div class="track subtitle c12 x">
-                  <div clas="c3">
-                    <%= finding.provider %>
+                  <div class="c10">
+                    Found on <%= finding.provider %>
                   </div>
-                  <div class="c11 tar">
+                  <div class="c2 tar">
                     <%= rand(1..40) %> <%= finding.currency %>
                     <%#= finding.price %>
                   </div>
                 </div>
-                    <%#= finding.thumb %>
-                    <%= image_tag @record.images.first["uri"] %>
-                  <div>
-                    <h3><%= finding.location %></h3> 
+                  <div class="track">
+                    <%= link_to finding.url, class: "c12 x" do %>
+                      <%#= finding.thumb %>
+                      <%= image_tag @record.images.first["uri"], class: "c1 h100 pb1", target: "blank" %>
+                      <%#= finding.title %>
+                      <div class="c8 pl1">
+                        <h3><%= @record.title %></h3>
+                        <% @record.artists.first(1).each do |artist| %>
+                          <h3><%= artist["name"] %></h3>
+                        <% end %>
+                      </div>
+                      <div class="c2">
+                        <h3>From <%= finding.location %></h3>
+                      </div>  
+                      <div class="button-found fr">
+                        Buy ↓
+                      </div>
+                    <% end %>
                   </div>
-                  <div>
-                    <%#= finding.title %>
-                    <h3><%= @record.title %></h3>
-                  </div>
-                  <%= link_to finding.url do %>
-                  <div class="cta-buy button-found">
-                    Buy it
-                  </div>
-                  <% end %>
+
               <% end %>
             </div>
           </div>
