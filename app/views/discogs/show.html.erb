@@ -129,36 +129,33 @@
                 <% end %>
               </div>
           <% end %>
-          <% if !@findings.nil? %>
+          <% if !@findings_for_show.nil? %>
           <div class="mt4">
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
                 <div class="track subtitle c12 x">
-                  <div class="c10">
+                  <div class="c6">
                     Found on <%= finding.provider %>
                   </div>
-                  <div class="c2 tar">
-                    <%= rand(1..40) %> <%= finding.currency %>
-                    <%#= finding.price %>
+                  <div class="c6 tar">
+                    <%= finding.price %> <%= finding.currency %>
                   </div>
                 </div>
                   <div class="track">
                     <%= link_to finding.url, class: "c12 x" do %>
-                      <%#= finding.thumb %>
-                      <%= image_tag @record.images.first["uri"], class: "c1 h100 pb1", target: "blank" %>
-                      <%#= finding.title %>
-                      <div class="c8 pl1">
-                        <h3><%= @record.title %></h3>
-                        <% @record.artists.first(1).each do |artist| %>
-                          <h3><%= artist["name"] %></h3>
-                        <% end %>
+                      <%= image_tag finding.thumb, class: "c1 h100 pb1", target: "blank" %>
+                      <div class="c4 pl1">
+                        <h3><%= finding.title %></h3>
                       </div>
-                      <div class="c2">
-                        <h3>From <%= finding.location %></h3>
+                      <div class="c4 co1">
+                        From
+                        <h3><%= finding.location %></h3>
                       </div>  
-                      <div class="button-found fr">
-                        Buy ↓
+                      <div class="c3 tar">
+                        <div class="button-found dib">
+                          Buy ↓
+                        </div>
                       </div>
                     <% end %>
                   </div>
