@@ -7,16 +7,27 @@ class EbayScrapperService
       keywords = CGI::escape(keywords)
       url = @base_api_url + "&categoryId=11233&keywords=#{keywords}"
       json_response = JSON.parse(open(url).read)
-      raise
-      @results = json_response["findItemsByKeywordsResponse"][0]["searchResult"][0]["item"]
+      @results = json_response["findItemsAdvancedResponse"][0]["searchResult"][0]["item"]
     end
     return @results ||= []
   end
 
-  def self.create_findings(wants)
-    wants.each do |want|
-      record = want.record
-      results = find_by_keywords("")
+  def self.create_findings(records)
+    records.each do |record|
+      results = self.find_by_keywords(record.artists[0]["name"] + "+" + record.title)
+      results.each do |item|
+        finding = Finding.create(
+          provider: "Ebay",
+          title: item["title"],
+          location: item["location"],
+          thumb: item["galleryURL"],
+          url: item["viewItemURL"],
+          price: item["sellingStatus"]["currentPrice"]["__value__"],
+          currency: item["sellingStatus"]["currentPrice"]["@currencyId"]
+          )
+        finding.record = record
+        finding.save!
+      end
     end
   end
 

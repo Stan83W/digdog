@@ -4,10 +4,10 @@ class FindItemsJob < ApplicationJob
   def perform(user)
     # @user = User.find(user_id)
     puts "Fetching wants"
-    @wants = Want.where(user_id: user.id)
-    @wants = @wants.map(&:record)
+    wants = Want.where(user_id: user.id)
+    records = wants.map(&:record)
     
     # Search on Ebay
-    EbayScrapperService.create_findings(@wants)
+    EbayScrapperService.create_findings(records)
   end
 end
