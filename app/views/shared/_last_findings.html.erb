@@ -10,9 +10,14 @@
         <% end %>
       <% end %>
     <% end %>
-    <div class="current-infos">
-      <h2 class="current-provider">Found on <%= findings.first.provider %> at $<%= rand(1..40) %><br>1 day ago</h2>
-      <p class="current-title ttu lh1"><%= findings.first.record.title %></p>
+    <div class="slider-right">
+    <div class="banner-text title c10">
+    Track down<br>rare records<br>24/7
+    </div>
+      <div class="current-infos">
+        <h2 class="current-provider">Found on <%= findings.first.provider %> at $<%= rand(1..40) %><br>1 day ago</h2>
+        <p class="current-title ttu lh1"><%= findings.first.record.title %></p>
+      </div>
     </div>
   </div>
 <% end %>
