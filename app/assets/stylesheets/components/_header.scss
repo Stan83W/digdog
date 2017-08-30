@@ -42,6 +42,7 @@ header {
      font-size: 2.5rem;
    }
  }
+}
  #list-toggle {
   position: fixed;
   top: $gutter;
@@ -108,11 +109,11 @@ header {
   }
 }
 #login {
-  text-transform: uppercase;
-  position: fixed;
-  right: $gutter;
-  top: $gutter;
-  min-width: 5.5vw;
-  text-align: center;
+    right: 10px;
+    top: 10px;
+    min-width: 5.5vw;
+    text-align: center;
+    height: 6.6vw;
+    display: -ms-flexbox;
 }
-}
+
