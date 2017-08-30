@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Digdog helps you find rare vinyls without the hassle of entering the same search into every website day after day.">
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/octicons/3.5.0/octicons.css">
-    <script src='https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js'></script>
-  <!--   <title>Digdog: rare records auto digger on internet 24/7</title> -->
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-
-    <title><%= meta_title %></title>
-    <meta name="description" content="<%= meta_description %>">
-
+    
     <!-- Facebook Open Graph data -->
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
