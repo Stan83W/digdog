@@ -72,7 +72,7 @@ class DiscogsController < ApplicationController
   def show
     wantlist
     @record = Record.find(params[:id])
-    @findings = Finding.where(record_id: @record.id)
+    @findings_for_show = Finding.where(record_id: @record.id)
     load_videos(@record)
   end
 
