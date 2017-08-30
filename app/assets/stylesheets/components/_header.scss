@@ -35,7 +35,7 @@ header {
     width: calc(85% - #{$gutter});
     background: $primary;
     z-index: 300;
-    span.close { 
+    span.close {
      position: absolute;
      top: 0;
      right: 0;
@@ -51,7 +51,7 @@ header {
   span {
     font-size: 0.25em;
     position:absolute;
-    &:nth-child(1), &:nth-child(2), &:nth-child(3) {  
+    &:nth-child(1), &:nth-child(2), &:nth-child(3) {
       left: 0;
       height: 3px;
       background: $secondary;
@@ -110,8 +110,8 @@ header {
 #login {
   text-transform: uppercase;
   position: fixed;
-  left: $gutter;
-  bottom: $gutter;
+  right: $gutter;
+  top: $gutter;
   min-width: 5.5vw;
   text-align: center;
 }

@@ -1,19 +1,11 @@
-
 <%= render "shared/last_findings", findings: Finding.all %>
-
-<div class="x m4">
-  <div class="banner-text title c10">
-    Track down<br>rare records<br>24/7
-  </div>
-</div>
-
 <div class="homepage-lower">
   <hr>
   <div class="x p4">
     <div class="c4">
       <h2>Many marketplaces,<br>one search</h2>
     </div>
-    <div class="c7 title tal">
+    <div class="marketplaces c7 title tal">
       Amazon
       <br>Ebay
       <br>Leboncoin
@@ -41,12 +33,9 @@
     <div>
       <h1>Get an alert the minute it's on sale</h1>
     </div>
-    <div>
-      <img src="http://www.freeiconspng.com/uploads/call-phone-smart-icon--icon-search-engine-29.png" alt="smartphone" height="130">
+    <div class="x button button-go">
+      <h1><%= link_to t(".sign_in", default: "Go"), user_discogs_omniauth_authorize_path %></h1>
     </div>
-  </div>
-  <div class="x p4">
-  <h1><%= link_to "Go!", "#", class: "btn btn-primary tar" %></h1>
   </div>
 
   <!-- <div class="x p4">

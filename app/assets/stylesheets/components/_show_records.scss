@@ -39,11 +39,11 @@
     left: ($gutter/2);
     .default {
       span {
-        display: none;
+        visibility: hidden;
       }
       &:hover {
         span {
-          display: inline-block;
+          visibility: visible;
         }
       }
     }

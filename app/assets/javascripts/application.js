@@ -8,7 +8,7 @@ var players;
 function loadContent(url, target) {
     target.load(url + " #page-content .inner", function(response, status, xhr) {
         if (status == "success") {
-            $('body').addClass('page-content');
+            $('body').addClass('page-content').removeClass('loading');
             history.pushState(null, "Digdog", url);
             // plyr.setup();
         }
@@ -56,6 +56,7 @@ $(document).ready(function() {
     });
     $('body').on('click', "a[data-recordtarget]", function(event) {
         event.preventDefault();
+        $('body').addClass('loading');
         loadContent($(this).attr('href'), $('#page-content'));
     });
     // plyr.setup(); 
