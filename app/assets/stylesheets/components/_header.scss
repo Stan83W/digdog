@@ -112,7 +112,7 @@ header {
   position: fixed;
   left: $gutter;
   bottom: $gutter;
-  width: 5.5vw;
+  min-width: 5.5vw;
   text-align: center;
 }
 }

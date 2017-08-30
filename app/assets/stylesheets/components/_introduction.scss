@@ -56,7 +56,8 @@
   text-align: center;
 }
 .photo > img {
-  width: 70vh;
+  width: 150px;
+  border-radius: 50%;
 }
 .steps-list {
   img {
@@ -79,7 +80,6 @@ ol {
 .icon-info {
   margin-bottom: 40px;
 }
-.octicon {
-  position: relative;
-  left: 7%;
+.band {
+  justify-content: space-between;
 }

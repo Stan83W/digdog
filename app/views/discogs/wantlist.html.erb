@@ -34,19 +34,8 @@
          </div>
          <div class="fl psr c4">
            <% if wanted && !found %>
-                <div class="fl psr indic indic-wanted mr1">
-                  <svg class="circular" viewBox="25 25 50 50">
-                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
-                  </svg>
-                </div>
-                <h2 class="fl">Digging…</h2>
+                <h2 class="dig-blink fl">Digging<span>.</span><span>.</span><span>.</span></h2>
              <% elsif found %>
-                <div class="fl psr indic indic-wanted mr1">
-                  <svg class="circular" viewBox="25 25 50 50">
-                  <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
-                  </svg>
-                  <div class="found-number"><%= @findings.count %></div>
-                </div>
                 <h2 class="fl"><%= @findings.count %> matching record</h2>
              <% end %>
           </div>

@@ -1,4 +1,4 @@
-<%#= render template: 'discogs/wantlist' %>
+<%= render template: 'discogs/wantlist' %>
 
 <div id="page-content">
   
@@ -107,17 +107,24 @@
           
           <% unless @record.tracklist.nil?  %>
               <div class="c12 subtitle pt3">
-                  <% @record.tracklist.each do |tracklist| %>
+                  <% @record.tracklist.each do |track| %>
                   <div class="track c12 x">
                     <div class="c1">
-                      <%= tracklist["position"] %>        
+                      <%= track["position"] %>        
                     </div>
                     <div class="c10">
-                      <%= tracklist["title"] %>     
+                      <%= track["title"] %>     
                     </div>
-                    <div class="c1">
-                      <%= tracklist["duration"] %>
+                    <div class="c1 tar">
+                      <%= track["duration"] %>
                     </div>
+                  </div>
+                  <div class="c12">
+                  <% if @record.videos.key?(track["title"]) %>
+                      <div class="plyr c8">
+                        <div data-video-id="<%= @record.videos[track["title"]] %>" data-type="youtube"></div>
+                      </div>
+                  <% end %>
                   </div>
                 <% end %>
               </div>

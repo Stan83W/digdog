@@ -2,6 +2,9 @@
   width: 100%;
   height: 30vw;
   z-index: 0;
+  .flickity-slider {
+    transform: none !important;
+  }
   .current-infos {
     position: absolute;
     top: 0;
@@ -12,14 +15,16 @@
 
 .slide {
   height: 100%;
-  transform: scale(0.7);
   transform-origin: bottom;
-  transition: transform 500ms ease;
+  transition: left 1s ease;
+  left: 100% !important;
+  transform: none !important;
   img {
     height: 100%;
   }
 }
 .slide.is-selected {
+  left: 0 !important;
   filter: blur(0px);
   transform: scale(1);
 }

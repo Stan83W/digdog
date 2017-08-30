@@ -4,6 +4,9 @@ class DiscogsController < ApplicationController
 
   def wantlist
     if @discogs.authenticated?
+
+      redirect_to '/no_access' if !current_user.has_access
+
       if current_user.discogs_wantlist.nil?
         get_wantlist
       end
@@ -20,12 +23,13 @@ class DiscogsController < ApplicationController
           discogs_id = want["id"]
           if Record.has?(discogs_id)
             record = Record.find_by_discogs_id(discogs_id)
-            if record.styles.nil? || record.genres.nil? || record.images.nil? || record.formats.nil?
+            if record.styles.nil? || record.genres.nil? || record.images.nil? || record.formats.nil? || record.tracklist.nil?
               record_json = get_release_json(want["id"])
               record_json["styles"] = [] if record_json["styles"].nil?
               record_json["genres"] = [] if record_json["genres"].nil?
               record_json["images"] = [] if record_json["images"].nil?
               record_json["formats"] = [] if record_json["formats"].nil?
+              record_json["tracklist"] = [] if record_json["tracklist"].nil?
               record.update(
                 tracklist: record_json["tracklist"],
                 styles: record_json["styles"],
@@ -54,7 +58,7 @@ class DiscogsController < ApplicationController
           if params[:query]
             @records = search(params[:query])
           else
-          @records << record
+            @records << record
           end
         end
 
@@ -69,6 +73,30 @@ class DiscogsController < ApplicationController
     wantlist
     @record = Record.find(params[:id])
     @findings = Finding.where(record_id: @record.id)
+    load_videos(@record)
+  end
+
+  def load_videos(record)
+    unless record.tracklist.nil?
+      if true # record.videos.nil?
+        
+        Yt.configure do |config|
+          config.api_key = ENV["YT_API_KEY"]
+        end
+        videos = Yt::Collections::Videos.new
+        # artist_videos = videos.where(q: record.artists[0]["name"], safe_search: 'none')
+        ep_videos = Hash.new
+
+        record.tracklist.each do |track|
+          track_video = videos.where(q: record.title + ' ' + record.artists[0]["name"] + '+' + track["title"], order: 'viewCount').first
+          ep_videos[track["title"]] = track_video.id unless track_video.nil?
+        end
+
+        unless ep_videos.nil?
+          record.update(videos: ep_videos)
+        end
+      end
+    end
   end
 
   def reload_wantlist
@@ -84,11 +112,11 @@ class DiscogsController < ApplicationController
   def search(params)
     records = Record.arel_table
     query_string = "%#{params}%"
-    param_matches_string =  ->(param){ 
-      records[param].matches(query_string) 
-    } 
+    param_matches_string =  ->(param){
+      records[param].matches(query_string)
+    }
     @records = Record.where(param_matches_string.(:title))
-      #.or(param_matches_string.(:artists)))
+    #.or(param_matches_string.(:artists)))
   end
 
   def get_wantlist

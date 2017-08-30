@@ -6,7 +6,7 @@
     width: 15%;
     height: 100%;
     z-index: 201;
-    cursor: crosshair;
+    cursor: url('close-b.png') 8 8, auto;
   }
 #page-content {
   padding: $gutter;
