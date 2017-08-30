@@ -129,11 +129,11 @@
                 <% end %>
               </div>
           <% end %>
-          <% if !@findings.nil? %>
+          <%# if !@findings.nil? %>
           <div id="record-findings" class="mt4">
-            <h2><%= @findings.count %> matching <%= 'record'.pluralize(@findings.count) %></h2>
+            <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div id="findings-results" class="mt4 subtitle">
-              <% @findings.each do |finding| %>
+              <% @findings_for_show.each do |finding| %>
                 <div class="finding c12 x jcsp button-found">
                   <div class="provider c6">
                     <%= finding.provider %>
@@ -147,7 +147,7 @@
                   </div>
                   <% end %>
                 </h2>
-              <% end %>
+              <%# end %>
             </div>
           </div>
           <% end %>
