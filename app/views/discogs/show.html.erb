@@ -129,10 +129,10 @@
                 <% end %>
               </div>
           <% end %>
-          <%# if !@findings.nil? %>
+          <% if !@findings.nil? %>
           <div id="record-findings" class="mt4">
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
-            <div id="findings-results" class="mt4 subtitle">
+            <div id="findings-results" class="mt4">
               <% @findings_for_show.each do |finding| %>
                 <div class="track subtitle c12 x">
                   <div clas="c3">
@@ -143,21 +143,20 @@
                     <%#= finding.price %>
                   </div>
                 </div>
+                  <div class="track c12 x">
+                    <%= link_to finding.url do %>
                     <%#= finding.thumb %>
-                    <%= image_tag @record.images.first["uri"] %>
-                  <div>
-                    <h3><%= finding.location %></h3> 
-                  </div>
-                  <div>
+                    <%= image_tag @record.images.first["uri"], class: "c2", target: "blank" %>
                     <%#= finding.title %>
-                    <h3><%= @record.title %></h3>
+                    <div class="c3"><h3><%= @record.title %></h3></div>
+                    <div class="c3"><h3><%= finding.location %></h3></div>  
+                    <div class="button-found c3 tar">
+                      Buy ↓
+                    </div>
+                    <% end %>
                   </div>
-                  <%= link_to finding.url do %>
-                  <div class="cta-buy button-found">
-                    Buy it
-                  </div>
-                  <% end %>
-              <%# end %>
+
+              <% end %>
             </div>
           </div>
           <% end %>
