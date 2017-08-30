@@ -82,16 +82,20 @@ ol {
 }
 .band {
   justify-content: space-between;
+  padding-right: 0;
+  padding-left: 4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .button-go {
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   padding: 4px;
   align-items: center;
   justify-content: center;
   border: none;
     &:hover {
-      background-color: rgba(0, 0, 0, 0.8)
+      background-color: black
     }
 }
 .marketplaces {

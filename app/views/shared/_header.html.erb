@@ -21,16 +21,18 @@
       <span id="dig-counter"><%= pluralize(@wants.count, 'dig') %></span>
     </div>
     <% end %>
-
   <% end %>
 
-  <div id="login" class="button">
     <% if user_signed_in? %>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-      <%= t(".sign_out", default: "Quit") %>
-      <% end %>
-    <% else %>
-      <%= link_to t(".sign_in", default: "Login"), user_discogs_omniauth_authorize_path %>
+      <div id="logout" class="button">
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= t(".sign_out", default: "Quit") %>
+      </div>
     <% end %>
-  </div>
+
+  <% else %>
+    <div id="login" class="button">
+      <%= link_to t(".sign_in", default: "Login"), user_discogs_omniauth_authorize_path %>
+    </div>
+  <% end %>
 </header>
