@@ -35,14 +35,6 @@ gem 'uglifier'
 gem 'plyr-rails'
 gem 'octicons_helper'
 
-group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "quiet_assets"
-  gem "pry-byebug"
-  gem "faker"
-  gem "letter_opener"
-end
 
 group :development, :test do
   gem 'pry-byebug'
