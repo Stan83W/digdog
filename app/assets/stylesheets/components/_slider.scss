@@ -5,11 +5,18 @@
   .flickity-slider {
     transform: none !important;
   }
-  .current-infos {
+  .slider-right {
     position: absolute;
     top: 0;
     left: 37.5%;
-    width: 35%;
+    height: 100%;
+    width: 85%;
+    padding-left: 3%;
+    background: white;
+    z-index: 300;
+  }
+  .current-infos {
+    margin-top: 80px;
   }
 }
 
