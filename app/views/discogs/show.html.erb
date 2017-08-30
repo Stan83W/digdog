@@ -134,19 +134,29 @@
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div id="findings-results" class="mt4 subtitle">
               <% @findings_for_show.each do |finding| %>
-                <div class="finding c12 x jcsp button-found">
-                  <div class="provider c6">
+                <div class="track subtitle c12 x">
+                  <div clas="c3">
                     <%= finding.provider %>
                   </div>
-                  <div class="price c3">
-                    <%= finding.price %>
+                  <div class="c11 tar">
+                    <%= rand(1..40) %> <%= finding.currency %>
+                    <%#= finding.price %>
+                  </div>
+                </div>
+                    <%#= finding.thumb %>
+                    <%= image_tag @record.images.first["uri"] %>
+                  <div>
+                    <h3><%= finding.location %></h3> 
+                  </div>
+                  <div>
+                    <%#= finding.title %>
+                    <h3><%= @record.title %></h3>
                   </div>
                   <%= link_to finding.url do %>
-                  <div class="cta-buy">
+                  <div class="cta-buy button-found">
                     Buy it
                   </div>
                   <% end %>
-                </h2>
               <%# end %>
             </div>
           </div>
