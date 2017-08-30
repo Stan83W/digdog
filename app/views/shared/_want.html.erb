@@ -1,4 +1,3 @@
-<%= wants.count %>
 <% if wants.include?(record) %>
  <% findings = Finding.where(record_id: record.id) %>
  <% wanted = true %>
