@@ -1,9 +1,13 @@
 class FindItemsJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
-    puts "I'm starting the fake job"
-    sleep 3
-    puts "OK I'm done now"
+  def perform(user)
+    # @user = User.find(user_id)
+    puts "Fetching wants"
+    @wants = Want.where(user_id: user.id)
+    @wants = @wants.map(&:record)
+    
+    # Search on Ebay
+    EbayScrapperService.create_findings(@wants)
   end
 end
