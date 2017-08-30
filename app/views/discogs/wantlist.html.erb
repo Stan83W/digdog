@@ -14,7 +14,7 @@
       </div>
 
       <% @records.each do |record| %>
-        <%= render 'shared/want', wants: @wants, record: record, findings: @findings %>
+        <%= render 'shared/want', wants: @wants, record: @record %>
       <% end %>
 
     </div>
@@ -40,7 +40,7 @@
              <h2><%= record.title %></h2>
              <h3><%= record.artists[0]["name"] %></h3>
                  <% if true # @wants.count < 10 %>
-                   <%= link_to([record, Want.new], remote: true, method: :post) do %>
+                   <%= link_to(record_wants_path(record, Want.new), remote: true, method: :post) do %>
 
                    <div class="indic indic-dig" data-record-id="<%= record.id %>">
 

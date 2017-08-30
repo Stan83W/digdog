@@ -32,7 +32,7 @@
   $record.addClass('digged').find(".record-infos").empty().html("<h2>Added to the Diglist</h2>");
   $('#dig-counter').text("<%= @wants.count %> digs");
   $('#wants-counter').html("<%= escape_javascript(render('shared/wants_counter', wants: @wants)) %>");
-  $('.status.title').html('<span class="wanted">ging<span>.</span><span>.</span><span>.</span></span>');
+  $('.status.title').html("<%= escape_javascript(render('shared/status', wants: @wants, record: @record)) %>");
 
   setTimeout(function() {
     $record.addClass('wanted');

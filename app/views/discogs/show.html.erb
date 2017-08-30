@@ -5,25 +5,7 @@
 <div class="inner">
   
   <div class="status title">
-    <% if @wants.include?(@record) %>
-       <% wanted = true %>
-       <% found = true if !@findings.empty? %>
-     <% end %>
-    <% if found %>
-      <span class="found">
-        found
-      </span>
-    <% elsif wanted %>
-      <span class="wanted">
-        ging<span>.</span><span>.</span><span>.</span>
-      </span>
-    <% elsif @wants.count < 10 %>
-      <span class="default">
-      <%= link_to [@record, Want.new], remote: true, method: :post, class: "wsnw" do %>
-        it <span>✓</span>
-      <% end %>
-      </span>
-    <% end %>
+    <%= render('shared/status', wants: @wants, record: @record, findings: @findings) %>
   </div>
         
   <div class="c12 x">
@@ -129,7 +111,7 @@
                 <% end %>
               </div>
           <% end %>
-          <%# if !@findings.nil? %>
+          <% if !@findings.nil? %>
           <div id="record-findings" class="mt4">
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div id="findings-results" class="mt4 subtitle">
@@ -157,7 +139,7 @@
                     Buy it
                   </div>
                   <% end %>
-              <%# end %>
+              <% end %>
             </div>
           </div>
           <% end %>

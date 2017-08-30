@@ -1,0 +1,20 @@
+<% if wants.include?(record) %>
+  <% findings = Finding.where(record_id: record.id) %>
+  <% wanted = true %>
+  <% found = true if !findings.empty? %>
+<% end %>
+<% if found %>
+  <span class="found">
+    found
+  </span>
+<% elsif wanted %>
+  <span class="wanted">
+    ging<span>.</span><span>.</span><span>.</span>
+  </span>
+<% else wants.count < 10 %>
+  <span class="default">
+    <%= link_to record_wants_path(record), remote: true, method: :post, class: "wsnw" do %>
+    it <span>✓</span>
+    <% end %>
+  </span>
+<% end %>
