@@ -2,15 +2,17 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :records, only: [:index, :show] do
-    resources :wants, only: [:create, :destroy]
+  resources :records do
+    resources :wants, only: [:create] do
+      collection do
+        delete :destroy
+      end
+    end
   end
 
   get 'no_access' => 'pages#no_access'
 
-  get 'discogs/:id' => 'discogs#show', :constraints  => {:id => /.+\.\w{3,4}/}
-
-  resources :discogs do
+  resources :discogs, only: [:show] do
     collection do
       get :wantlist
       get :reload_wantlist

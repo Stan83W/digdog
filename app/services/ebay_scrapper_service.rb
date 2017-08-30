@@ -18,12 +18,12 @@ class EbayScrapperService
       results.each do |item|
         finding = Finding.create(
           provider: "Ebay",
-          title: item["title"],
-          location: item["location"],
-          thumb: item["galleryURL"],
-          url: item["viewItemURL"],
-          price: item["sellingStatus"]["currentPrice"]["__value__"],
-          currency: item["sellingStatus"]["currentPrice"]["@currencyId"]
+          title: item["title"][0],
+          location: item["location"][0],
+          thumb: item["galleryURL"][0],
+          url: item["viewItemURL"][0],
+          price: item["sellingStatus"][0]["currentPrice"][0]["__value__"].to_f,
+          currency: item["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
           )
         finding.record = record
         finding.save!

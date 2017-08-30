@@ -73,6 +73,12 @@ class DiscogsController < ApplicationController
     wantlist
     @record = Record.find(params[:id])
     @findings_for_show = Finding.where(record_id: @record.id)
+    @status = 'none'
+    if @wants.include?(@record)
+      findings = Finding.where(record_id: @record.id)
+      @status = 'wanted'
+      @status = 'found' if !findings.nil? && !findings.empty?
+    end
     load_videos(@record)
   end
 
