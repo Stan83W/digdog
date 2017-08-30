@@ -5,25 +5,7 @@
 <div class="inner">
   
   <div class="status title">
-    <% if @wants.include?(@record) %>
-       <% wanted = true %>
-       <% found = true if !@findings.empty? %>
-     <% end %>
-    <% if wanted %>
-      <span class="wanted">
-        ging<span>.</span><span>.</span><span>.</span>
-      </span>
-    <% elsif found %>
-     <span class="found">
-        found
-      </span>
-    <% elsif @wants.count < 10 %>
-      <span class="default">
-      <%= link_to [@record, Want.new], remote: true, method: :post, class: "wsnw" do %>
-        it <span>✓</span>
-      <% end %>
-      </span>
-    <% end %>
+    <%= render('shared/status', status: @status, record: @record) %>
   </div>
         
   <div class="c12 x">
@@ -108,7 +90,7 @@
           <% unless @record.tracklist.nil?  %>
               <div class="c12 subtitle pt3">
                   <% @record.tracklist.each do |track| %>
-                  <div class="track c12 x">
+                  <div class="track c12 x mb1">
                     <div class="c1">
                       <%= track["position"] %>        
                     </div>
@@ -134,19 +116,22 @@
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
-                <div class="track subtitle c12 x">
-                  <div class="c6">
-                    Found on <%= finding.provider %>
+                <div class="finding c12 pb1 mt1">
+                  <div class="subtitle c12 x mb1">
+                    <div class="c6">
+                      Found on <%= finding.provider %>
+                    </div>
+                    <div class="c6 tar">
+                      <%= finding.price %> <%= finding.currency %>
+                    </div>
                   </div>
-                  <div class="c6 tar">
-                    <%= finding.price %> <%= finding.currency %>
-                  </div>
-                </div>
-                  <div class="track">
-                    <%= link_to finding.url, class: "c12 x" do %>
-                      <%= image_tag finding.thumb, class: "c1 h100 pb1", target: "blank" %>
-                      <div class="c4 pl1">
-                        <h3><%= finding.title %></h3>
+                  <div class="c12 x">
+                    <%= link_to finding.url, class: "c12 x", target: "_blank" do %>
+                      <div class="c1">
+                        <%= image_tag finding.thumb, class: "w100 pr1" %>
+                      </div>
+                      <div class="c4">
+                        <h3 class="m0"><%= truncate(finding.title, length: 70) %></h3>
                       </div>
                       <div class="c4 co1">
                         From
@@ -159,7 +144,7 @@
                       </div>
                     <% end %>
                   </div>
-
+                </div>
               <% end %>
             </div>
           </div>

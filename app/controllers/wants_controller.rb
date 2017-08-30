@@ -10,6 +10,7 @@ class WantsController < ApplicationController
     if @wants.count < 10
       if @want.save
       	@status = 'wanted'
+      	FindRecordItemsJob.perform_now(@record)
       	findings = Finding.where(record_id: @record.id)
       	@status = 'found' if !findings.nil? && !findings.empty?
         respond_to do |format|
