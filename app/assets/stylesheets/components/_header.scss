@@ -6,8 +6,6 @@ header {
   background: $primary;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: space-between;
   z-index: 200;
   #site-logo {
     position: relative;
@@ -34,10 +32,10 @@ header {
     left: 15%;
     width: calc(85% - #{$gutter});
     background: $primary;
-    z-index: 300;
+    z-index: 250;
     span.close {
      position: absolute;
-     top: 0;
+     top: 6rem;
      right: 0;
      font-size: 2.5rem;
    }
@@ -45,16 +43,15 @@ header {
 }
  #list-toggle {
   position: fixed;
-  top: $gutter;
+  top: 6.5rem;
   right: $gutter;
   width: 0.3em;
   height: 0.2em;
   span {
-    font-size: 0.25em;
     position:absolute;
     &:nth-child(1), &:nth-child(2), &:nth-child(3) {
       left: 0;
-      height: 3px;
+      height: 2px;
       background: $secondary;
       width: 100%;
     }
@@ -69,7 +66,7 @@ header {
       bottom: 0;
     }
     &:nth-child(4) {
-      top: 0;
+      top: -2px;
       right: 1.5em;
       width: auto;
       white-space: nowrap;
@@ -109,21 +106,23 @@ header {
   }
 }
 #login {
-  background-color: white;
-  font-size: 3em;
-  right: 10px;
-  top: 5px;
-  min-width: 5.5vw;
-  align-items: center;
-  height: 5.2vw;
-  display: flex;
-  text-align: center;
-}
-#logout {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    background-color: white;
-    min-width: -6.5vw;
-    display: -ms-flexbox
+  position: fixed;
+  right: $gutter;
+  top: $gutter;
+  z-index: 260;
+  text-align: right;
+  #logout {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  &:hover {
+    #username {
+      opacity: 0;
+    }
+    #logout {
+      opacity: 1;
+    }
+  }
 }
