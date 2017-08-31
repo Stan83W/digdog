@@ -55,11 +55,6 @@
   margin-bottom: 50px;
   text-align: center;
 }
-.photo > img {
-  width: 150px;
-  border-radius: 50%;
-  margin-right: 4px;
-}
 .steps-list {
   img {
     width: 132px;
@@ -83,23 +78,22 @@ ol {
 }
 .band {
   justify-content: space-between;
-  padding: 4rem 7%;
+  padding: 4rem 0 4rem 7%;
 }
 .button-go {
   background-color: white;
-  color: black;
-  padding: 4px;
+  font-size: 3em;
+  right: 10px;
+  top: 5px;
+  min-width: 5.5vw;
   align-items: center;
-  justify-content: center;
-  border: none;
-    &:hover {
-      background-color: black
-    }
-}
+  height: 5.2vw;
+  display: flex;
+  text-align: center;
+  }
+
 .marketplaces {
   margin-left: 71px;
 }
 
-.tick {
-  margin-right: 43px;
-}
+
