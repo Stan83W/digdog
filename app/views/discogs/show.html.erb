@@ -127,7 +127,7 @@
                   </div>
                   <div class="c12 x">
                     <%= link_to finding.url, class: "c12 x", target: "_blank" do %>
-                      <% if finding.thumb.empty? %>   
+                      <% if finding.thumb.blank? %>   
                         <div class="c1 pr1">
                           <%= render 'shared/placeholder' %>
                         </div>

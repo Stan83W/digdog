@@ -20,10 +20,10 @@ class EbayScrapperService
         if Finding.find_by(title: item["title"][0]).nil?
           finding = Finding.create(
             provider: "Ebay",
-            title: item["title"][0],
-            location: item["location"][0],
-            thumb: item["galleryURL"][0],
-            url: item["viewItemURL"][0],
+            title: item["title"] && item["title"][0],
+            location: item["location"] && item["location"][0],
+            thumb: item["galleryURL"] && item["galleryURL"][0],
+            url: item["viewItemURL"] && item["viewItemURL"][0],
             price: item["sellingStatus"][0]["currentPrice"][0]["__value__"].to_f,
             currency: item["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
           )
