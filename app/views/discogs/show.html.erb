@@ -111,9 +111,9 @@
                 <% end %>
               </div>
           <% end %>
-          <% if !@findings_for_show.nil? %>
+          <% if !@findings_for_show.nil? && @status != "none" %>
           <div class="mt4">
-            <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
+            <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %> found</h2>
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
                 <div class="finding c12 mt1 pb1">
