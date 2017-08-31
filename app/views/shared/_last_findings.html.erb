@@ -1,6 +1,6 @@
 <% if findings.any? %>
   <div class="slider">
-    <% slider_images = findings.shuffle %>
+    <% slider_images = findings.shuffle.sample(30) %>
     <% slider_images.each do |finding| %>
       <% record = finding.record %>
       <% unless record.images.nil? %>

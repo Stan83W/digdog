@@ -24,12 +24,16 @@
 
 .slide {
   height: 100%;
+  width: 36%;
   transform-origin: bottom;
   transition: left 1s ease;
   left: 100% !important;
   transform: none !important;
   img {
     height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: top left;
   }
 }
 .slide.is-selected {
