@@ -68,6 +68,21 @@
     .found {
     }
   }
+  .track[data-video-id] {
+    position: relative;
+    cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      top: .3em;
+      left: -.8em;
+      width: 0; 
+      height: 0; 
+      border-top: .6rem solid transparent;
+      border-bottom: .6rem solid transparent;
+      border-left: .8rem solid $primary;
+    }
+  }
   .track, .finding {
     border-bottom: 2px solid;
     padding-bottom: .3em;

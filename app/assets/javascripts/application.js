@@ -34,9 +34,10 @@ $(document).ready(function() {
     $("[data-target='toggle-list']").click(function(event) {
         $('body').toggleClass('diglist');
     });
-    $('body').on('click', '.track', function(event) {
+    $('body').on('click', '[data-video-id]', function(event) {
         event.preventDefault();
-        players = plyr.setup($(this).next(".plyr").get(0), {
+        $(this).after('<div class="c12 mb1"><div class="plyr c8"><div data-video-id="'+$(this).data("video-id")+'" data-type="youtube"></div></div></div>');
+        players = plyr.setup({
             controls: ['play', 'progress', 'current-time', 'mute']
         });
     });

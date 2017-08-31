@@ -96,7 +96,7 @@
           <% unless @record.tracklist.nil?  %>
               <div class="c12 subtitle pt3">
                   <% @record.tracklist.each do |track| %>
-                  <div class="track c12 x mb1">
+                  <div class="track c12 x mb1"<%= " data-video-id=#{@record.videos[track["title"]]}" if @record.videos.key?(track["title"]) %>>
                     <div class="c1">
                       <%= track["position"] %>        
                     </div>
@@ -107,13 +107,7 @@
                       <%= track["duration"] %>
                     </div>
                   </div>
-                  <div class="c12">
-                  <% if @record.videos.key?(track["title"]) %>
-                      <div class="plyr c8">
-                        <div data-video-id="<%= @record.videos[track["title"]] %>" data-type="youtube"></div>
-                      </div>
-                  <% end %>
-                  </div>
+                  
                 <% end %>
               </div>
           <% end %>
