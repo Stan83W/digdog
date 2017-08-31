@@ -93,31 +93,13 @@
     </div>
       <div class="c8 px2">
           
-          <% unless @record.tracklist.nil?  %>
-              <div class="c12 subtitle pt3">
-                  <% @record.tracklist.each do |track| %>
-                  <div class="track c12 x mb1"<%= " data-video-id=#{@record.videos[track["title"]]}" if @record.videos.key?(track["title"]) %>>
-                    <div class="c1">
-                      <%= track["position"] %>        
-                    </div>
-                    <div class="c10">
-                      <%= track["title"] %>     
-                    </div>
-                    <div class="c1 tar">
-                      <%= track["duration"] %>
-                    </div>
-                  </div>
-                  
-                <% end %>
-              </div>
-          <% end %>
           <% if !@findings_for_show.nil? && @status != "none" %>
           <div class="mt4">
             <div class="finding subtitle c12 x mb1 pb1">
               <%= link_to @record.discogs_uri, target: "_blank", class: "c12 x" do %>
                 <% if @discogs_price %>
                   <div class="c6">
-                    Lowest price on Discogs
+                    Discogs lowest price
                   </div>
                   <div class="c6 tar">
                     <%= @discogs_price %> <%= current_user.currency %>
@@ -131,14 +113,14 @@
             </div>
             <div class="finding subtitle c12 x mb3 pb1">
               <div class="c6">
-                Matching <%= 'record'.pluralize(@findings_for_show.count) %> found
+                DIGDOG's <%= 'finding'.pluralize(@findings_for_show.count) %>
               </div>
               <div class="c6 tar">
                 <%= @findings_for_show.count %>
               </div>
             </div>
             
-            <div class="mt4">
+            <div class="mb4">
               <% @findings_for_show.each do |finding| %>
                 <div class="finding c12 mt1 pb1">
                   <div class="subtitle c12 x mb1">
@@ -178,6 +160,25 @@
               <% end %>
             </div>
           </div>
+          <% end %>
+          
+          <% unless @record.tracklist.nil?  %>
+              <div class="c12 subtitle pt3">
+                  <% @record.tracklist.each do |track| %>
+                  <div class="track c12 x mb1"<%= " data-video-id=#{@record.videos[track["title"]]}" if @record.videos.key?(track["title"]) %>>
+                    <div class="c1">
+                      <%= track["position"] %>        
+                    </div>
+                    <div class="c10">
+                      <%= track["title"] %>     
+                    </div>
+                    <div class="c1 tar">
+                      <%= track["duration"] %>
+                    </div>
+                  </div>
+                  
+                <% end %>
+              </div>
           <% end %>
 
         </div>
