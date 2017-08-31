@@ -34,9 +34,9 @@ $(document).ready(function() {
     $("[data-target='toggle-list']").click(function(event) {
         $('body').toggleClass('diglist');
     });
-    $('body').on('click', '[data-video-id]', function(event) {
+    $('body').on('click', '[data-video-id]:not(.opened)', function(event) {
         event.preventDefault();
-        $(this).after('<div class="c12 mb1"><div class="plyr c8"><div data-video-id="'+$(this).data("video-id")+'" data-type="youtube"></div></div></div>');
+        $(this).addClass('opened').after('<div class="c12 mb1"><div class="plyr c8"><div data-video-id="'+$(this).data("video-id")+'" data-type="youtube"></div></div></div>');
         players = plyr.setup({
             controls: ['play', 'progress', 'current-time', 'mute']
         });
