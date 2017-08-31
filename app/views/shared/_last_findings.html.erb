@@ -5,7 +5,7 @@
       <% record = finding.record %>
       <% unless record.images.nil? %>
         <% record.images.each do |image| %>
-          <div class="slide" data-title="<%= finding.record.artists[0]["name"] %> — <%= finding.record.title %>" data-provider="Found on <%= finding.provider %> at $<%= rand(1..40) %><br><%= pluralize(rand(1..6), 'day') %> ago">
+          <div class="slide" data-title="<%= finding.record.artists[0]["name"] %> — <%= finding.record.title %>" data-provider="Found on <%= finding.provider %> for $<%= rand(1..40) %><br><%= pluralize(rand(1..6), 'day') %> ago">
             <%= image_tag image["uri"] %>
           </div>
         <% end %>
@@ -16,7 +16,7 @@
     Track down<br>rare records<br>24/7
     </div>
       <div class="current-infos">
-        <h2 class="current-provider">Found on <%= slider_images.first.provider %> at $<%= rand(1..40) %><br><%= pluralize(rand(1..6), 'day') %> ago</h2>
+        <h2 class="current-provider">Found on <%= slider_images.first.provider %> for $<%= rand(1..40) %><br><%= pluralize(rand(1..6), 'day') %> ago</h2>
         <p class="current-title ttu lh1"><%= slider_images.first.record.artists[0]["name"] %> — <%= slider_images.first.record.title %></p>
       </div>
     </div>

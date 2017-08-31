@@ -55,11 +55,11 @@ class DiscogsController < ApplicationController
               formats: record_json["formats"]
             )
           end
-          if params[:query]
-            @records = search(params[:query])
-          else
-            @records << record
-          end
+          @records << record
+        end
+        if params[:query]
+          @records = search(params[:query])
+          @records.reject { |r| @wants.include?(r) }
         end
 
         @wantlist_without_wants = @records - @wants
@@ -85,7 +85,7 @@ class DiscogsController < ApplicationController
   def load_videos(record)
     unless record.tracklist.nil?
       if record.videos.nil?
-        
+
         Yt.configure do |config|
           config.api_key = ENV["YT_API_KEY"]
         end
