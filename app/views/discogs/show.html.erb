@@ -113,7 +113,31 @@
           <% end %>
           <% if !@findings_for_show.nil? && @status != "none" %>
           <div class="mt4">
-            <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %> found</h2>
+            <div class="finding subtitle c12 x mb1 pb1">
+              <%= link_to @record.discogs_uri, target: "_blank", class: "c12 x" do %>
+                <% if @discogs_price %>
+                  <div class="c6">
+                    Lowest price on Discogs
+                  </div>
+                  <div class="c6 tar">
+                    <%= @discogs_price %> <%= current_user.currency %>
+                  </div>
+                <% else %>
+                  <div class="c6">
+                    Not on sale on Discogs
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="finding subtitle c12 x mb3 pb1">
+              <div class="c6">
+                Matching <%= 'record'.pluralize(@findings_for_show.count) %> found
+              </div>
+              <div class="c6 tar">
+                <%= @findings_for_show.count %>
+              </div>
+            </div>
+            
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
                 <div class="finding c12 mt1 pb1">

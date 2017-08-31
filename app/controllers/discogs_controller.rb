@@ -23,19 +23,21 @@ class DiscogsController < ApplicationController
           discogs_id = want["id"]
           if Record.has?(discogs_id)
             record = Record.find_by_discogs_id(discogs_id)
-            if record.styles.nil? || record.genres.nil? || record.images.nil? || record.formats.nil? || record.tracklist.nil?
+            if record.styles.nil? || record.genres.nil? || record.images.nil? || record.formats.nil? || record.tracklist.nil? || record.discogs_uri.nil?
               record_json = get_release_json(want["id"])
               record_json["styles"] = [] if record_json["styles"].nil?
               record_json["genres"] = [] if record_json["genres"].nil?
               record_json["images"] = [] if record_json["images"].nil?
               record_json["formats"] = [] if record_json["formats"].nil?
               record_json["tracklist"] = [] if record_json["tracklist"].nil?
+              record_json["discogs_uri"] = [] if record_json["discogs_uri"].nil?
               record.update(
                 tracklist: record_json["tracklist"],
                 styles: record_json["styles"],
                 genres: record_json["genres"],
                 images: record_json["images"],
-                formats: record_json["formats"]
+                formats: record_json["formats"],
+                discogs_uri: record_json["uri"]
               )
             end
           else
@@ -51,7 +53,7 @@ class DiscogsController < ApplicationController
               year: want["year"],
               thumb: want["thumb"],
               images: record_json["images"],
-              discogs_uri: want["resource_url"],
+              discogs_uri: record_json["uri"],
               formats: record_json["formats"]
             )
           end
@@ -73,6 +75,7 @@ class DiscogsController < ApplicationController
     wantlist
     @record = Record.find(params[:id])
     @findings_for_show = Finding.where(record_id: @record.id)
+    @discogs_price = get_lower_price(@record.discogs_id)
     @status = 'none'
     if @wants.include?(@record)
       findings = Finding.where(record_id: @record.id)
@@ -134,6 +137,14 @@ class DiscogsController < ApplicationController
 
   def get_release_json(id)
     @discogs.get_release(id)
+  end
+
+  def get_lower_price(release_id)
+  	  if current_user.currency.nil?
+  	  	currency = @discogs.get_user(current_user.username)["curr_abbr"]
+  	  	current_user.update(currency: currency)
+  	  end
+      price = @discogs.get_release(release_id)["lowest_price"]
   end
 
   def set_client
