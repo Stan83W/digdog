@@ -2,21 +2,23 @@
   width: 100%;
   height: 30vw;
   z-index: 0;
+  overflow: hidden;
   .flickity-slider {
     transform: none !important;
   }
   .slider-right {
+    white-space: nowrap;
     position: absolute;
     top: 0;
     left: 35.5%;
     height: 100%;
-    width: 85%;
+    width: 66%;
     padding-left: 3%;
     background: white;
     z-index: 300;
   }
   .current-infos {
-    margin-top: 80px;
+    margin-top: 6.6vw;
   }
 }
 

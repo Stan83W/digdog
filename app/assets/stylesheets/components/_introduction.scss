@@ -79,6 +79,12 @@ ol {
 .band {
   justify-content: space-between;
   padding: 4rem 0 4rem 7%;
+  sup {
+    position: absolute;
+    top: .47em;
+    left: -.92em;
+    font-size: 92%;
+  }
 }
 .button-go {
   background-color: white;
@@ -86,11 +92,11 @@ ol {
   right: 10px;
   top: 5px;
   min-width: 5.5vw;
-  align-items: center;
   height: 5.2vw;
   display: flex;
+  align-items: center;
   text-align: center;
-  }
+}
 
 .marketplaces {
   margin-left: 71px;
