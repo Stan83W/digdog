@@ -7,10 +7,11 @@
   <div class="status title">
     <%= render('shared/status', status: @status, record: @record) %>
   </div>
-  <% if @record.images.empty? %>   
-    <div class="record-cover">
-      <%= render 'shared/placeholder' %>
-    </div>
+  <% if @record.images.empty? %>
+     <div class="c12 x">
+        <div class="record-cover c4">
+        <%= render 'shared/placeholder' %>
+      </div>
   <% else %>
       <div class="c12 x">
         <div class="record-cover c4">
@@ -121,7 +122,7 @@
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
             <div class="mt4">
               <% @findings_for_show.each do |finding| %>
-                <div class="finding c12 pb1 mt1">
+                <div class="finding c12 mt1">
                   <div class="subtitle c12 x mb1">
                     <div class="c6">
                       Found on <%= finding.provider %>
@@ -133,7 +134,7 @@
                   <div class="c12 x">
                     <%= link_to finding.url, class: "c12 x", target: "_blank" do %>
                       <% if finding.thumb.empty? %>   
-                        <div class="c1">
+                        <div class="c1 pr1">
                           <%= render 'shared/placeholder' %>
                         </div>
                       <% else %>

@@ -1,13 +1,13 @@
 #close-panel {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 15%;
-    height: 100%;
-    z-index: 201;
-    cursor: url('close-b.png') 8 8, auto;
-  }
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  z-index: 201;
+  cursor: url('close-b.png') 8 8, auto;
+}
 #page-content {
   padding: $gutter;
   padding-bottom: 6.6vw;
@@ -31,7 +31,13 @@
   .record-cover {
     padding-top: calc(6.6vw - #{$gutter});
     img {
-    border: 2px solid $primary;      
+      border: 2px solid $primary;      
+    }
+  }
+  .placeholder {
+    img {
+      border: 0;
+      filter: invert(1);
     }
   }
   .status {
@@ -64,6 +70,7 @@
   }
   .track, .finding {
     border-bottom: 2px solid;
+    padding-bottom: .3em;
   }
   .finding {
 
@@ -71,7 +78,7 @@
   .infos {
     padding-top: 3.4%;
     & .c9 h3:not(:first-child) {
-        margin-top: -6px;
+      margin-top: -6px;
     }
   }
   .c8 h3:not(:first-child) {
@@ -88,8 +95,8 @@ body.page-content {
     transform: translateZ(0);
   }
   .button-found {
-    border: 2px solid $primary !important;
-    padding: 10px 15px !important;
+    border: 2px solid $primary;
+    padding: 10px 15px;
   }
   .finding-title {
     margin-bottom: .2em;
