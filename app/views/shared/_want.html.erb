@@ -5,7 +5,11 @@ found = true if !findings.nil? && !findings.empty?
 %>
 <div class="record fl c12<%= " wanted" if wanted %><%= " found" if found %>" data-record-id="<%= record.id %>">
 <%= link_to discog_path(record), :data => { :recordtarget => '' } do %>
- <% unless record.images.nil? %>
+   <% if record.images.empty? %>
+   	  <div class="album-cover fl p0 c2">
+        <%= render('shared/placeholder') %>
+      </div>
+   <% else %>
    <% record.images[0..0].each do |image| %>
       <div class="album-cover fl p0 c2">
         <%= image_tag image['uri'] %>

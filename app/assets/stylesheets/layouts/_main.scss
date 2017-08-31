@@ -99,6 +99,9 @@ h2, .subtitle {
 hr {
   margin: 6rem 0;
   border-top: 3px solid;
+  display: block;
+  float: left;
+  width: 100%;
 }
 
 [data-target] {

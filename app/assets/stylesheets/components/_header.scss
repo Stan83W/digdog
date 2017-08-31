@@ -77,7 +77,7 @@ header {
   position: fixed;
   top: 4px;
   left: 18%;
-  width: calc(78% - #{$gutter});
+  width: 50%;
   &:hover {
     input {
       opacity: 1;
