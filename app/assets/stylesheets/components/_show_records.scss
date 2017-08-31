@@ -10,6 +10,7 @@
   }
 #page-content {
   padding: $gutter;
+  padding-bottom: 6.6vw;
   background-color: $secondary;
   color: $primary;
   height: 100vh;
@@ -61,16 +62,20 @@
     .found {
     }
   }
-  .track, .provider {
+  .track, .finding {
     border-bottom: 2px solid;
-    padding: .2em 0;
-    margin-bottom: .2em;
+  }
+  .finding {
+
   }
   .infos {
     padding-top: 3.4%;
     & .c9 h3:not(:first-child) {
         margin-top: -6px;
     }
+  }
+  .c8 h3:not(:first-child) {
+    margin-top: -6px;
   }
 }
 
@@ -85,6 +90,9 @@ body.page-content {
   .button-found {
     border: 2px solid $primary !important;
     padding: 10px 15px !important;
-    display: table;
+  }
+  .finding-title {
+    margin-bottom: .2em;
+    margin-top: .4em;
   }
 }

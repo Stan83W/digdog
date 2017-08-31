@@ -15,18 +15,21 @@ class EbayScrapperService
   def self.create_findings(records)
     records.each do |record|
       results = self.find_by_keywords(record.artists[0]["name"] + "+" + record.title)
+      p results
       results.each do |item|
-        finding = Finding.create(
-          provider: "Ebay",
-          title: item["title"][0],
-          location: item["location"][0],
-          thumb: item["galleryURL"][0],
-          url: item["viewItemURL"][0],
-          price: item["sellingStatus"][0]["currentPrice"][0]["__value__"].to_f,
-          currency: item["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
+        if Finding.find_by(title: item["title"][0]).nil?
+          finding = Finding.create(
+            provider: "Ebay",
+            title: item["title"][0],
+            location: item["location"][0],
+            thumb: item["galleryURL"][0],
+            url: item["viewItemURL"][0],
+            price: item["sellingStatus"][0]["currentPrice"][0]["__value__"].to_f,
+            currency: item["sellingStatus"][0]["currentPrice"][0]["@currencyId"]
           )
-        finding.record = record
-        finding.save!
+          finding.record = record
+          finding.save!
+        end
       end
     end
   end

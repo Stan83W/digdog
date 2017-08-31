@@ -5,7 +5,7 @@
 <div class="inner">
   
   <div class="status title">
-    <%= render('shared/status', wants: @wants, record: @record, findings: @findings) %>
+    <%= render('shared/status', status: @status, record: @record) %>
   </div>
         
   <div class="c12 x">
@@ -90,7 +90,7 @@
           <% unless @record.tracklist.nil?  %>
               <div class="c12 subtitle pt3">
                   <% @record.tracklist.each do |track| %>
-                  <div class="track c12 x">
+                  <div class="track c12 x mb1">
                     <div class="c1">
                       <%= track["position"] %>        
                     </div>
@@ -111,34 +111,40 @@
                 <% end %>
               </div>
           <% end %>
-          <% if !@findings.nil? %>
-          <div id="record-findings" class="mt4">
+          <% if !@findings_for_show.nil? %>
+          <div class="mt4">
             <h2><%= @findings_for_show.count %> matching <%= 'record'.pluralize(@findings_for_show.count) %></h2>
-            <div id="findings-results" class="mt4 subtitle">
+            <div class="mt4">
               <% @findings_for_show.each do |finding| %>
-                <div class="track subtitle c12 x">
-                  <div clas="c3">
-                    <%= finding.provider %>
+                <div class="finding c12 pb1 mt1">
+                  <div class="subtitle c12 x mb1">
+                    <div class="c6">
+                      Found on <%= finding.provider %>
+                    </div>
+                    <div class="c6 tar">
+                      <%= finding.price %> <%= finding.currency %>
+                    </div>
                   </div>
-                  <div class="c11 tar">
-                    <%= rand(1..40) %> <%= finding.currency %>
-                    <%#= finding.price %>
+                  <div class="c12 x">
+                    <%= link_to finding.url, class: "c12 x", target: "_blank" do %>
+                      <div class="c1">
+                        <%= image_tag finding.thumb, class: "w100 pr1" %>
+                      </div>
+                      <div class="c4">
+                        <h3 class="m0"><%= truncate(finding.title, length: 70) %></h3>
+                      </div>
+                      <div class="c4 co1">
+                        From
+                        <h3><%= finding.location %></h3>
+                      </div>  
+                      <div class="c3 tar">
+                        <div class="button-found dib">
+                          Buy ↓
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
-                    <%#= finding.thumb %>
-                    <%= image_tag @record.images.first["uri"] %>
-                  <div>
-                    <h3><%= finding.location %></h3> 
-                  </div>
-                  <div>
-                    <%#= finding.title %>
-                    <h3><%= @record.title %></h3>
-                  </div>
-                  <%= link_to finding.url do %>
-                  <div class="cta-buy button-found">
-                    Buy it
-                  </div>
-                  <% end %>
               <% end %>
             </div>
           </div>
