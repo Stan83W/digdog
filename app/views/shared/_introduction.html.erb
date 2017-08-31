@@ -1,11 +1,11 @@
 <%= render "shared/last_findings", findings: Finding.all %>
 <div class="homepage-lower">
   <hr>
-  <div class="band x">
-    <div class="c4">
+  <div class="band c12 fl">
+    <div class="c4 fl">
       <h2>Many marketplaces,<br>one search</h2>
     </div>
-    <div class="marketplaces c7 title tal">
+    <div class="marketplaces c7 title tal ml0 fl">
       Amazon
       <br>Ebay
       <br>Leboncoin
@@ -14,32 +14,37 @@
   </div>
   <hr>
   <div class="band x c12">
-    <div class="c8 title">
-      Sync your Discogs wantlist
+    <div class="c9 title">
+      <h1>1. Sync your Discogs wantlist</h1>
     </div>
-     <div class="c4">
-       <div class="photo">
-        <img src="https://formatvrevista.files.wordpress.com/2016/02/discogs1.png?w=300&h=300" alt="discogs logo">
-      </div>
+     <div class="c3 x xac xje">
+        <div class="c4 mr2">
+        <%= image_tag "https://www.discogs.com/images/brand/discogs-logo.svg", width: "100%"%>
+        </div>
      </div>
   </div>
   <div class="band x c12">
-    <div class="c8 title">
-      Pick your dig
+    <div class="c9 title">
+      <h1>2. Pick your dig</h1>
     </div>
-    <div class="c4">
-      <h1 class="tick">✓</h1>
-    </div>
+    <div class="c3 x xac xje">
+      <div class="c4 mr2">
+        <h1>✓</h1>
+        </div>
+     </div>
+
   </div>
   <div class="band x c12">
-    <div class="c8 title">
-      <h1>Get an alert the minute it's on sale</h1>
+    <div class="c9 title">
+      <h1>3. Get an alert the minute it's on sale</h1>
     </div>
-    <div class="c4">
-      <div class="x button button-go">
-        <%= link_to t(".sign_in", default: "Go"), user_discogs_omniauth_authorize_path %>
+    <div class="c3 x xac xje">
+      <div class="c4 mr2">
+        <div class="x button button-go">
+          <%= link_to t(".sign_in", default: "Go"), user_discogs_omniauth_authorize_path %>
+        </div>
       </div>
-    </div>
+     </div>
   </div>
 
   <!-- <div class="x p4">
