@@ -1,7 +1,7 @@
 <%= render "shared/last_findings", findings: Finding.all %>
 <div class="homepage-lower">
   <hr>
-  <div class="x p4">
+  <div class="band x">
     <div class="c4">
       <h2>Many marketplaces,<br>one search</h2>
     </div>
@@ -13,28 +13,32 @@
     </div>
   </div>
   <hr>
-  <div class="band x p4">
-    <div>
-      <h1>Sync your Discogs wantlist</h1>
+  <div class="band x c12">
+    <div class="c8 title">
+      Sync your Discogs wantlist
     </div>
-     <div class="photo">
+     <div class="c4">
+       <div class="photo">
         <img src="https://formatvrevista.files.wordpress.com/2016/02/discogs1.png?w=300&h=300" alt="discogs logo">
+      </div>
      </div>
   </div>
-  <div class="band x p4">
-    <div>
-      <h1>Pick your dig</h1>
+  <div class="band x c12">
+    <div class="c8 title">
+      Pick your dig
     </div>
-    <div>
-      <h1>✓</h1>
+    <div class="c4">
+      <h1 class="tick">✓</h1>
     </div>
   </div>
-  <div class="band x p4">
-    <div>
+  <div class="band x c12">
+    <div class="c8 title">
       <h1>Get an alert the minute it's on sale</h1>
     </div>
-    <div class="x button button-go">
-      <h1><%= link_to t(".sign_in", default: "Go"), user_discogs_omniauth_authorize_path %></h1>
+    <div class="c4">
+      <div class="x button button-go">
+        <%= link_to t(".sign_in", default: "Go"), user_discogs_omniauth_authorize_path %>
+      </div>
     </div>
   </div>
 
