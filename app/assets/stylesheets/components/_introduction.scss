@@ -83,17 +83,31 @@ ol {
 }
 .band {
   justify-content: space-between;
-  padding: 4rem 7%;
+  // padding: 4rem 7%;
+  padding-bottom: 4em;
+  padding-top: 4em;
+  padding-left: 0;
+  padding-right: 0;
 }
 .button-go {
   background-color: white;
-  color: black;
-  padding: 4px;
+  font-size: 3em;
+  right: 10px;
+  top: 5px;
+  min-width: 5.5vw;
   align-items: center;
-  justify-content: center;
-  border: none;
+  height: 5.2vw;
+  display: flex;
+  text-align: right;
+
+  // background-color: white;
+  // color: black;
+  // padding: 4px;
+  // align-items: center;
+  // justify-content: center;
+  // border: none;
     &:hover {
-      background-color: black
+      font-size: 2.9em;
     }
 }
 .marketplaces {
