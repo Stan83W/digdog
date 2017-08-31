@@ -7,11 +7,16 @@
   <div class="status title">
     <%= render('shared/status', status: @status, record: @record) %>
   </div>
-        
-  <div class="c12 x">
-    <div class="record-cover c4">
-    <%= image_tag @record.images.first["uri"], class: "w100" %>
+  <% if @record.images.empty? %>   
+    <div class="record-cover">
+      <%= render 'shared/placeholder' %>
     </div>
+  <% else %>
+      <div class="c12 x">
+        <div class="record-cover c4">
+        <%= image_tag @record.images.first["uri"], class: "w100" %>
+      </div>
+  <% end %>     
     
     <div class="c8 px2">
       <h1 class="record-title"><%= @record.title %></h1>
@@ -127,9 +132,15 @@
                   </div>
                   <div class="c12 x">
                     <%= link_to finding.url, class: "c12 x", target: "_blank" do %>
-                      <div class="c1">
-                        <%= image_tag finding.thumb, class: "w100 pr1" %>
-                      </div>
+                      <% if finding.thumb.empty? %>   
+                        <div class="c1">
+                          <%= render 'shared/placeholder' %>
+                        </div>
+                      <% else %>
+                        <div class="c1">
+                          <%= image_tag finding.thumb, class: "w100 pr1" %>
+                        </div>
+                      <% end %>
                       <div class="c4">
                         <h3 class="m0"><%= truncate(finding.title, length: 70) %></h3>
                       </div>
