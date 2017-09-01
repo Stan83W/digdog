@@ -1,3 +1,17 @@
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transform-style: flat;
+  transform-style: flat;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-drag: none;
+  outline: 0;
+}
+
 body,
 html {
   width: 100%;
