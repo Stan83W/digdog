@@ -26,7 +26,7 @@ $(document).ready(function() {
         });
     }
     $('#searchbar').find('input').on('input', function(e) {
-        $(e.currentTarget).attr('data-empty', !e.currentTarget.value);
+        $(e.currentTarget).attr('data-empty', !e.currentTarget.value).parents("#searchbar").attr('data-empty', !e.currentTarget.value);
     });
     $('#searchbar').find('input').each(function(index, el) {
         $(el).trigger('input');

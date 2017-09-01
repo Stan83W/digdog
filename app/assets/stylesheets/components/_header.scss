@@ -41,7 +41,7 @@ header {
    }
  }
 }
- #list-toggle {
+#list-toggle {
   position: fixed;
   top: 6.5rem;
   right: $gutter;
@@ -78,12 +78,24 @@ header {
   top: 4px;
   left: 18%;
   width: 50%;
+  &[data-empty="true"]::after {
+    content: '';
+    background: black;
+    width: 3px;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: -5px;
+    animation: blink 2s infinite
+  }
   &:hover {
     input {
       opacity: 1;
     }
   }
   input {
+    color: transparent;
+    text-shadow: 0 0 0 $secondary;
     background: $primary;
     // transition: opacity 100ms ease;
     opacity: 0;
