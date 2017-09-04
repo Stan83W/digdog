@@ -130,7 +130,7 @@ class DiscogsController < ApplicationController
 
   def get_wantlist
     # Fetch wantlist
-    discogs_wantlist = @discogs.get_user_wantlist(current_user.username).wants
+    discogs_wantlist = @discogs.get_user_wantlist(current_user.username, :per_page => 500).wants
     # Save it in DB
     current_user.update(discogs_wantlist: discogs_wantlist)
   end
